@@ -1,6 +1,14 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import heroImg from "@/assets/hero-skyline.jpg";
+import { ArrowRight, Building2, Droplets, Landmark, GraduationCap, Cpu } from "lucide-react";
+import tgLogo from "@/assets/tg-rising-logo.png";
+
+const pillars = [
+  { icon: Building2, label: "Urban Development" },
+  { icon: Droplets, label: "Sanitation" },
+  { icon: Landmark, label: "Heritage" },
+  { icon: GraduationCap, label: "Capacity Building" },
+  { icon: Cpu, label: "IT & Digital" },
+];
 
 export function Hero() {
   return (
@@ -9,16 +17,13 @@ export function Hero() {
       className="relative min-h-screen flex items-center overflow-hidden"
       style={{ background: "var(--gradient-hero)" }}
     >
-      <img
-        src={heroImg}
-        alt=""
-        width={1920}
-        height={1080}
-        className="absolute inset-0 h-full w-full object-cover opacity-55 mix-blend-screen"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)] via-transparent to-[var(--navy)]/40" />
+      {/* layered glows */}
+      <div className="absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full bg-[var(--cyan-brand)]/25 blur-3xl" />
+      <div className="absolute -bottom-40 -left-32 h-[520px] w-[520px] rounded-full bg-accent/20 blur-3xl" />
+
+      {/* subtle grid */}
       <div
-        className="absolute inset-0 opacity-[0.08]"
+        className="absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px)",
@@ -26,7 +31,25 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-32 pb-20 w-full">
+      {/* giant pillar word backdrop */}
+      <div aria-hidden className="absolute inset-x-0 bottom-0 pointer-events-none select-none overflow-hidden">
+        <div className="font-display font-black uppercase text-white/[0.04] text-[14vw] leading-[0.85] whitespace-nowrap tracking-tighter px-6">
+          Urban · Sanitation · Heritage · Capacity · IT
+        </div>
+      </div>
+
+      {/* Telangana emblem top */}
+      <div className="absolute top-24 right-6 md:right-10 z-10">
+        <div className="rounded-2xl bg-white/95 backdrop-blur px-4 py-3 shadow-[var(--shadow-elevated)] flex items-center gap-3">
+          <img src={tgLogo} alt="Telangana Rising" className="h-14 w-auto" />
+          <div className="hidden sm:block leading-tight">
+            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Government of</div>
+            <div className="font-display font-bold text-primary text-sm">Telangana</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative mx-auto max-w-7xl px-6 pt-36 pb-24 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -34,7 +57,7 @@ export function Hero() {
           className="max-w-4xl"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-4 py-1.5 text-xs font-medium text-white/85 uppercase tracking-[0.18em]">
-            <Sparkles size={14} className="text-accent" />
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
             Government of Telangana · MAUD
           </span>
 
@@ -61,26 +84,30 @@ export function Hero() {
               <ArrowRight size={18} className="transition group-hover:translate-x-1" />
             </a>
             <a
-              href="#nium-it"
+              href="#contact"
               className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 backdrop-blur px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition"
             >
-              NIUM-IT spotlight
+              Contact us
             </a>
           </div>
 
-          <dl className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 max-w-3xl">
-            {[
-              ["4 yrs", "TG-bPASS PMU"],
-              ["₹166 Cr", "AI-ICCC corridor"],
-              ["130+", "Municipalities served"],
-              ["324+", "Officers trained"],
-            ].map(([n, l]) => (
-              <div key={l} className="border-l-2 border-accent/70 pl-4">
-                <dt className="font-display text-2xl md:text-3xl font-bold text-white">{n}</dt>
-                <dd className="text-xs uppercase tracking-wider text-white/65 mt-1">{l}</dd>
-              </div>
+          {/* pillars row replaces the stat tombs */}
+          <div className="mt-16 flex flex-wrap gap-3">
+            {pillars.map((p, i) => (
+              <motion.div
+                key={p.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
+                className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm pl-3 pr-5 py-2"
+              >
+                <span className="h-7 w-7 rounded-full bg-accent/90 text-accent-foreground flex items-center justify-center">
+                  <p.icon size={14} />
+                </span>
+                <span className="text-sm font-medium text-white/90">{p.label}</span>
+              </motion.div>
             ))}
-          </dl>
+          </div>
         </motion.div>
       </div>
 

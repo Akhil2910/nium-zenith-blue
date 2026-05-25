@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
+  { id: "gallery", label: "Gallery" },
+  { id: "leadership", label: "Leadership" },
   { id: "about", label: "About" },
   { id: "verticals", label: "Verticals" },
-  { id: "nium-it", label: "NIUM-IT" },
   { id: "partnerships", label: "Partnerships" },
   { id: "contact", label: "Contact" },
 ];
