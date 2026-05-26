@@ -166,8 +166,8 @@ export function Hero() {
 
               <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
                 <div>
-                  <div className="font-display font-bold text-2xl text-white">5M+</div>
-                  <div className="text-[11px] uppercase tracking-wider text-white/55 mt-1">bPASS permits</div>
+                  <div className="font-display font-bold text-2xl text-white">4+ yrs</div>
+                  <div className="text-[11px] uppercase tracking-wider text-white/55 mt-1">TG-bPASS PMU</div>
                 </div>
                 <div>
                   <div className="font-display font-bold text-2xl text-white">23</div>
