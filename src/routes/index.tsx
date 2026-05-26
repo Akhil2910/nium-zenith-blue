@@ -5,6 +5,7 @@ import { Gallery } from "@/components/sections/Gallery";
 import { Leadership } from "@/components/sections/Leadership";
 import { About } from "@/components/sections/About";
 import { Verticals } from "@/components/sections/Verticals";
+import { Aiccc } from "@/components/sections/Aiccc";
 import { Partnerships } from "@/components/sections/Partnerships";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
@@ -40,6 +41,7 @@ function Index() {
         <Leadership />
         <About />
         <Verticals />
+        <Aiccc />
         <Partnerships />
         <Contact />
       </main>
