@@ -6,6 +6,7 @@ const links = [
   { id: "leadership", label: "Leadership" },
   { id: "about", label: "About" },
   { id: "verticals", label: "Verticals" },
+  { id: "aiccc", label: "AI-ICCC" },
   { id: "partnerships", label: "Partnerships" },
   { id: "contact", label: "Contact" },
 ];
