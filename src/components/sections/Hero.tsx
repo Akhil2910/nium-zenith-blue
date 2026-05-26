@@ -1,118 +1,206 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Building2, Droplets, Landmark, GraduationCap, Cpu } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
+import heroCity from "@/assets/hero-city.jpg";
 import tgLogo from "@/assets/tg-rising-logo.png";
 
-const pillars = [
-  { icon: Building2, label: "Urban Development" },
-  { icon: Droplets, label: "Sanitation" },
-  { icon: Landmark, label: "Heritage" },
-  { icon: GraduationCap, label: "Capacity Building" },
-  { icon: Cpu, label: "IT & Digital" },
+const partners = [
+  "MoHUA",
+  "World Bank",
+  "UN-Habitat",
+  "ADB",
+  "Smart Cities Mission",
+  "AMRUT",
+  "NITI Aayog",
+  "Government of Telangana",
+  "NIUA",
+  "HUDCO",
+  "TISS",
+  "UNICEF",
 ];
 
 export function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{ background: "var(--gradient-hero)" }}
-    >
-      {/* layered glows */}
-      <div className="absolute -top-32 -right-32 h-[520px] w-[520px] rounded-full bg-[var(--cyan-brand)]/25 blur-3xl" />
-      <div className="absolute -bottom-40 -left-32 h-[520px] w-[520px] rounded-full bg-accent/20 blur-3xl" />
+    <section id="hero" className="relative min-h-screen overflow-hidden bg-[var(--navy)] text-white">
+      {/* Government strip */}
+      <div className="absolute top-20 inset-x-0 z-20 border-y border-white/10 bg-black/20 backdrop-blur-sm">
+        <div className="mx-auto max-w-7xl px-6 py-2.5 flex items-center justify-between text-[10px] md:text-xs uppercase tracking-[0.22em] text-white/70">
+          <span className="flex items-center gap-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            Government of Telangana · Telangana Rising
+          </span>
+          <span className="hidden md:flex items-center gap-6">
+            <span>Est. 2024</span>
+            <span className="h-3 w-px bg-white/20" />
+            <span>Hyderabad, India</span>
+          </span>
+        </div>
+      </div>
 
-      {/* subtle grid */}
+      {/* Background city image with deep blue overlay */}
+      <div className="absolute inset-0">
+        <img
+          src={heroCity}
+          alt="Hyderabad cityscape at golden hour"
+          className="h-full w-full object-cover object-center"
+          width={1920}
+          height={1080}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)] via-[var(--navy)]/85 to-[var(--royal)]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)] via-transparent to-[var(--navy)]/60" />
+      </div>
+
+      {/* Grid texture */}
       <div
-        className="absolute inset-0 opacity-[0.07]"
+        className="absolute inset-0 opacity-[0.06] pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px)",
-          backgroundSize: "64px 64px",
+            "linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px)",
+          backgroundSize: "72px 72px",
         }}
       />
 
-      {/* giant pillar word backdrop */}
-      <div aria-hidden className="absolute inset-x-0 bottom-0 pointer-events-none select-none overflow-hidden">
-        <div className="font-display font-black uppercase text-white/[0.04] text-[14vw] leading-[0.85] whitespace-nowrap tracking-tighter px-6">
-          Urban · Sanitation · Heritage · Capacity · IT
-        </div>
-      </div>
+      {/* Glows */}
+      <div className="absolute -bottom-32 -left-32 h-[520px] w-[520px] rounded-full bg-[var(--cyan-brand)]/20 blur-3xl" />
+      <div className="absolute top-40 -right-32 h-[420px] w-[420px] rounded-full bg-accent/15 blur-3xl" />
 
-      {/* Telangana emblem top */}
-      <div className="absolute top-24 right-6 md:right-10 z-10">
-        <div className="rounded-2xl bg-white/95 backdrop-blur px-4 py-3 shadow-[var(--shadow-elevated)] flex items-center gap-3">
-          <img src={tgLogo} alt="Telangana Rising" className="h-14 w-auto" />
-          <div className="hidden sm:block leading-tight">
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Government of</div>
-            <div className="font-display font-bold text-primary text-sm">Telangana</div>
-          </div>
-        </div>
-      </div>
+      <div className="relative mx-auto max-w-7xl px-6 pt-44 pb-32 lg:pt-52">
+        <div className="grid lg:grid-cols-12 gap-10 items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-8"
+          >
+            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-white/70">
+              <span className="h-px w-10 bg-accent" />
+              National Institute of Urban Management
+            </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 pt-36 pb-24 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl"
-        >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur px-4 py-1.5 text-xs font-medium text-white/85 uppercase tracking-[0.18em]">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Government of Telangana · MAUD
-          </span>
-
-          <h1 className="mt-7 font-display font-bold text-white text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.02] tracking-tight">
-            Empowering Cities.
-            <br />
-            <span className="bg-gradient-to-r from-[var(--cyan-brand)] via-white to-[var(--gold)] bg-clip-text text-transparent">
-              Enabling Futures.
-            </span>
-          </h1>
-
-          <p className="mt-8 max-w-2xl text-lg md:text-xl text-white/80 leading-relaxed">
-            NIUM is an execution-ready institutional platform helping States plan better,
-            deliver faster, and govern smarter — through research, capacity building, and
-            digital public infrastructure.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="#verticals"
-              className="group inline-flex items-center gap-2 rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-elevated)] hover:brightness-95 transition"
-            >
-              Explore our verticals
-              <ArrowRight size={18} className="transition group-hover:translate-x-1" />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 backdrop-blur px-7 py-3.5 text-sm font-semibold text-white hover:bg-white/10 transition"
-            >
-              Contact us
-            </a>
-          </div>
-
-          {/* pillars row replaces the stat tombs */}
-          <div className="mt-16 flex flex-wrap gap-3">
-            {pillars.map((p, i) => (
-              <motion.div
-                key={p.label}
-                initial={{ opacity: 0, y: 16 }}
+            <h1 className="mt-6 font-display font-bold leading-[0.95] tracking-tight text-[clamp(2.75rem,8vw,7.5rem)]">
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm pl-3 pr-5 py-2"
+                transition={{ duration: 0.8, delay: 0.1 }}
+                className="block"
               >
-                <span className="h-7 w-7 rounded-full bg-accent/90 text-accent-foreground flex items-center justify-center">
-                  <p.icon size={14} />
+                Building
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.25 }}
+                className="block"
+              >
+                the cities
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.4 }}
+                className="block font-serif italic font-normal bg-gradient-to-r from-[var(--gold)] via-[var(--cyan-brand)] to-white bg-clip-text text-transparent pr-2"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                Telangana deserves.
+              </motion.span>
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
+              className="mt-8 max-w-xl text-base md:text-lg text-white/75 leading-relaxed"
+            >
+              Telangana's premier institute for urban management — training the leaders,
+              shaping the policies and engineering the digital systems that build tomorrow's cities.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.75 }}
+              className="mt-10 flex flex-wrap items-center gap-4"
+            >
+              <a
+                href="#verticals"
+                className="group inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-elevated)] hover:brightness-95 transition"
+              >
+                Explore programs
+                <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+              </a>
+              <a
+                href="#aiccc"
+                className="group inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/5 backdrop-blur px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
+              >
+                <span className="h-7 w-7 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition">
+                  <Play size={12} className="ml-0.5" />
                 </span>
-                <span className="text-sm font-medium text-white/90">{p.label}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+                Watch AI-ICCC story
+              </a>
+            </motion.div>
+          </motion.div>
+
+          {/* Live impact card */}
+          <motion.aside
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.5 }}
+            className="lg:col-span-4 relative"
+          >
+            <div className="rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-xl p-6 shadow-[var(--shadow-elevated)]">
+              <div className="flex items-center justify-between">
+                <span className="inline-flex items-center gap-2 rounded-full bg-accent/90 text-accent-foreground px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent-foreground animate-pulse-dot" />
+                  Live impact
+                </span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-white/50">2024–26</span>
+              </div>
+
+              <div className="mt-6">
+                <div className="font-display font-bold text-6xl md:text-7xl bg-gradient-to-br from-white to-[var(--cyan-brand)] bg-clip-text text-transparent">
+                  130+
+                </div>
+                <p className="mt-2 text-sm text-white/70">
+                  Urban Local Bodies served across Telangana through digital and capacity-building programs.
+                </p>
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
+                <div>
+                  <div className="font-display font-bold text-2xl text-white">5M+</div>
+                  <div className="text-[11px] uppercase tracking-wider text-white/55 mt-1">bPASS permits</div>
+                </div>
+                <div>
+                  <div className="font-display font-bold text-2xl text-white">23</div>
+                  <div className="text-[11px] uppercase tracking-wider text-white/55 mt-1">AI-ICCC ULBs</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="absolute -top-6 -right-4 rounded-2xl bg-white/95 backdrop-blur px-3 py-2 shadow-[var(--shadow-elevated)] flex items-center gap-2">
+              <img src={tgLogo} alt="Telangana Rising" className="h-10 w-auto" />
+            </div>
+          </motion.aside>
+        </div>
+
+        <div className="mt-20 flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-white/40">
+          <span>Scroll</span>
+          <span className="h-px w-10 bg-white/30" />
+        </div>
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-xs uppercase tracking-[0.3em]">
-        Scroll
+      {/* Partner marquee */}
+      <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/30 backdrop-blur-sm py-4 overflow-hidden">
+        <div className="flex animate-marquee whitespace-nowrap">
+          {[...partners, ...partners].map((p, i) => (
+            <span
+              key={i}
+              className="mx-8 text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-white/55"
+            >
+              {p}
+              <span className="ml-8 text-accent">◆</span>
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
