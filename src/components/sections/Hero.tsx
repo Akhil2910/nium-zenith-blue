@@ -54,6 +54,12 @@ const partners = [
 ];
 
 export function Hero() {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % impacts.length), 3800);
+    return () => clearInterval(t);
+  }, []);
+  const cur = impacts[idx];
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden bg-[var(--navy)] text-white">
       {/* Government strip */}
