@@ -251,6 +251,19 @@ export function Verticals() {
                   <p className="text-base text-foreground/85 leading-relaxed">
                     {activeItem.description}
                   </p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 }}
+                    className="mt-5 rounded-2xl border-l-4 border-accent bg-accent/5 p-4"
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-accent font-bold">
+                      Major Impact
+                    </div>
+                    <p className="mt-1 text-sm text-foreground/90 leading-relaxed">
+                      {activeItem.impact}
+                    </p>
+                  </motion.div>
                   <div className="mt-6">
                     <h4 className="text-xs uppercase tracking-[0.2em] text-accent font-semibold">
                       Flagship projects
