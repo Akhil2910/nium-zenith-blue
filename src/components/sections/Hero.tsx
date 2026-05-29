@@ -187,35 +187,53 @@ export function Hero() {
             transition={{ duration: 0.9, delay: 0.5 }}
             className="lg:col-span-4 relative"
           >
-            <div className="rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-xl p-6 shadow-[var(--shadow-elevated)]">
+            <div className="rounded-2xl border border-white/15 bg-white/[0.06] backdrop-blur-xl p-6 shadow-[var(--shadow-elevated)] overflow-hidden">
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 rounded-full bg-accent/90 text-accent-foreground px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em]">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent-foreground animate-pulse-dot" />
                   Live impact
                 </span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-white/50">2024–26</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-white/50">
+                  {cur.vertical}
+                </span>
               </div>
 
-              <div className="mt-6">
-                <div className="font-display font-bold text-6xl md:text-7xl bg-gradient-to-br from-white to-[var(--cyan-brand)] bg-clip-text text-transparent">
-                  130+
-                </div>
-                <p className="mt-2 text-sm text-white/70">
-                  Urban Local Bodies served across Telangana through digital and capacity-building programs.
-                </p>
+              <div className="mt-6 relative min-h-[180px]">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -16 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <div className="font-display font-bold text-5xl md:text-6xl bg-gradient-to-br from-white to-[var(--cyan-brand)] bg-clip-text text-transparent">
+                      {cur.stat}
+                    </div>
+                    <p className="mt-3 text-base font-semibold text-white">
+                      {cur.headline}
+                    </p>
+                    <p className="mt-2 text-sm text-white/70 leading-relaxed">
+                      {cur.detail}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
-                <div>
-                  <div className="font-display font-bold text-2xl text-white">4+ yrs</div>
-                  <div className="text-[11px] uppercase tracking-wider text-white/55 mt-1">TG-bPASS PMU</div>
-                </div>
-                <div>
-                  <div className="font-display font-bold text-2xl text-white">23</div>
-                  <div className="text-[11px] uppercase tracking-wider text-white/55 mt-1">AI-ICCC ULBs</div>
-                </div>
+              <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between gap-2">
+                {impacts.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setIdx(i)}
+                    aria-label={`Show impact ${i + 1}`}
+                    className={`h-1 flex-1 rounded-full transition-all ${
+                      i === idx ? "bg-accent" : "bg-white/15 hover:bg-white/30"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
+
 
             <div className="absolute -top-6 -right-4 rounded-2xl bg-white/95 backdrop-blur px-3 py-2 shadow-[var(--shadow-elevated)] flex items-center gap-2">
               <img src={tgLogo} alt="Telangana Rising" className="h-10 w-auto" />
