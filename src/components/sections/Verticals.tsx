@@ -16,17 +16,19 @@ const verticals = [
     blurb:
       "Conservation, adaptive reuse and site management for India's living heritage — from Charminar to Warangal Fort.",
     description:
-      "NIUM partners with ASI, AKTC and the World Monuments Fund to deliver conservation-grade restoration, adaptive reuse and visitor management for some of India's most important heritage assets. Our teams combine traditional craft, modern documentation (3D scans, condition mapping) and PMU rigour so every site is preserved as a living, breathing public space — not a frozen monument.",
+      "NIUM partners with ASI, AKTC and the World Monuments Fund to deliver conservation-grade restoration, adaptive reuse and visitor management for some of India's most important heritage assets. Our teams combine traditional craft, modern documentation and PMU rigour so every site is preserved as a living, breathing public space.",
+    impact:
+      "Revived the Heritage of Musi and trained AKTC engineers, while leading the Heritage Partner Scheme PMU and site management plans for ASI's Charminar and Warangal Fort.",
     projects: [
-      "Shaikpet Sarai adaptive reuse",
-      "ASI Charminar site plan",
-      "AKTC engineer training",
-      "Heritage Partner Scheme PMU",
-      "Warangal Fort precinct studies",
+      "Shaikpet Sarai adaptive reuse (₹13.1 L)",
+      "ASI Charminar site management plan (₹3.83 L)",
+      "PDCOR legislation, tourism & survey consulting (₹9.22 L)",
+      "Heritage-related works with QQSUDA (₹5.77 L)",
+      "AKTC engineer training (completed)",
     ],
     stats: [
-      { value: "12+", label: "Heritage sites" },
-      { value: "₹40 Cr", label: "Works under PMU" },
+      { value: "8", label: "Active projects" },
+      { value: "₹32 L+", label: "Project value" },
     ],
   },
   {
@@ -37,16 +39,19 @@ const verticals = [
     blurb:
       "Evidence-led planning for health, mobility and resilience — backed by GIS, satellite data and field surveys.",
     description:
-      "From last-mile health access to climate-resilient infrastructure, our planners turn satellite, sensor and survey data into actionable DPRs. We have mapped urban health for UNICEF, built foot-over-bridge feasibility for GHMC and authored cooling DPRs that link city design to lived outcomes for the poorest residents.",
+      "From last-mile health access to climate-resilient infrastructure, our planners turn satellite, sensor and survey data into actionable DPRs. We have mapped urban health for UNICEF, built foot-over-bridge feasibility for GHMC and authored cooling DPRs.",
+    impact:
+      "Mapped urban health coverage of Hyderabad for UNICEF and reorganised ASHA / ANM / UPHC service areas across the district — directly improving last-mile maternal and child health access.",
     projects: [
-      "UNICEF urban health mapping",
-      "GHMC foot-over-bridge feasibility",
-      "FCDA PMU for urban & GIS services",
-      "Urban cooling DPR for NDRF",
+      "Mapping Urban Health Coverage, Hyderabad – UNICEF",
+      "Digital Micro-Planning for Urban Health Facilities – UNICEF",
+      "Pre-feasibility Study for Foot Over Bridges – GHMC",
+      "Consultancy on Retainership – MRDCL (₹1.95 Cr)",
+      "FCDA PMU for Urban & GIS Services (proposed)",
     ],
     stats: [
-      { value: "130+", label: "ULBs covered" },
-      { value: "8", label: "States engaged" },
+      { value: "₹1.95 Cr", label: "MRDCL retainer" },
+      { value: "100%", label: "Hyderabad coverage" },
     ],
   },
   {
@@ -57,15 +62,18 @@ const verticals = [
     blurb:
       "Structured training for Municipal Commissioners, Accounts Officers and partner institutions across India and Nepal.",
     description:
-      "NIUM runs structured, role-based capacity programmes for the people who actually run cities — Commissioners, Accounts Officers, Engineers and field staff. Curricula are co-designed with MoHUA, RCUES and partner academies, with field immersion built in. We have also trained Nepal's NIRDI cohorts and led TNA workshops for SBM (U) 2.0.",
+      "NIUM runs structured, role-based capacity programmes for the people who actually run cities — Commissioners, Accounts Officers, Engineers and field staff. Curricula are co-designed with MoHUA, RCUES and partner academies, with field immersion built in.",
+    impact:
+      "Trained 324+ municipal officers — 23 Municipal Commissioners, 49 Grade-II MCs and 252 Accounts Officers — and facilitated 2 programmes for Nepal NIRDI officials, delivering ₹77+ L of capacity work.",
     projects: [
-      "23 + 49 Municipal Commissioners trained",
-      "252 Accounts Officers certified",
-      "SBM (U) 2.0 TNA workshops",
-      "NIRDI Nepal officials",
+      "23 Municipal Commissioners trained (₹2.71 L)",
+      "49 Grade-II MCs trained (₹38.16 L)",
+      "252 Accounts Officers trained (₹35.97 L)",
+      "Nepal NIRDI – 2 facilitation programmes (₹84 K)",
+      "SASCI workshop conducted",
     ],
     stats: [
-      { value: "500+", label: "Officers trained" },
+      { value: "324+", label: "Officers trained" },
       { value: "2", label: "Countries" },
     ],
   },
@@ -75,39 +83,42 @@ const verticals = [
     image: itImg,
     tagline: "The digital backbone of Telangana's urban stack",
     blurb:
-      "Digital public infrastructure for Telangana — running TG-bPASS, DTCP/HMDA platforms and the upcoming AI-ICCC.",
+      "Digital public infrastructure for Telangana — TG-bPASS, DTCP/HMDA platforms and the proposed GIS HUB.",
     description:
-      "We design, build and operate the platforms that power Telangana's urban governance. The TG-bPASS PMU has processed lakhs of building permits with self-certification; DTCP / CDMA / ENC officer transfer applications are run end-to-end by NIUM; and the upcoming AI Integrated Command & Control Centre brings video analytics, IoT and AI decisioning to 23 ULBs.",
+      "We design, build and operate the platforms that power Telangana's urban governance. The TG-bPASS PMU has run building permits and self-certification since 2020, IT-PMU services support DTCP / HMDA, and a strategic proposal positions NIUM-IT as the preferred PMU for the GIS HUB and websites for new municipalities.",
+    impact:
+      "Ran the TG-bPASS PMU end-to-end from 2020–2025 — a ₹20 Crore programme delivering Build Now, Land Use Certificate and self-certified building permits across Telangana.",
     projects: [
-      "TG-bPASS PMU (2020–2025)",
-      "HMDA IT services",
-      "AI Integrated Command & Control Centre",
-      "GIS Hub PMU",
-      "Websites for new municipalities",
+      "PMU for TG-bPASS, 2020–2025 (₹20 Cr)",
+      "IT PMU services to DTCP / HMDA",
+      "Websites for new municipalities (₹69 L proposed)",
+      "PMU for GIS HUB operations (₹80 L proposed)",
     ],
     stats: [
-      { value: "₹166 Cr", label: "AI-ICCC capex" },
-      { value: "23", label: "AI-ICCC ULBs" },
+      { value: "₹20 Cr", label: "TG-bPASS PMU" },
+      { value: "5 yrs", label: "Continuous run" },
     ],
   },
   {
     icon: FileCheck2,
-    title: "Procurement & Advisory",
+    title: "Procurement & Consultancy",
     image: procurementImg,
     tagline: "Independent eyes on flagship missions",
     blurb:
-      "Independent engineer, QA/QC and PMU support across flagship missions — AMRUT 2.0, CITIIS 2.0, SASCI.",
+      "Independent engineer, QA/QC and procurement advisory across GIS Hub, HMWSSB and state election services.",
     description:
-      "NIUM acts as the independent engineer and PMU for missions where quality and pace both matter. We run third-party QA/QC for AMRUT 2.0 works, PMU support for CITIIS 2.0 climate projects, and technical audits for HMWSSB's private STP network — protecting public investment and unblocking delivery.",
+      "NIUM acts as the independent engineer and procurement partner for missions where quality and pace both matter. We provide PMU of infrastructure and manpower for the GIS Hub, run third-party performance audits for HMWSSB's private STPs, and structure RFPs for state election webcasting.",
+    impact:
+      "Set up the PMU of infrastructure and manpower for the Telangana GIS Hub and lead annual performance audits of HMWSSB's private STP network — protecting public assets worth tens of crores.",
     projects: [
-      "IE Cum PMC for CDMA",
-      "Third-party QA/QC – AMRUT 2.0",
-      "PMU for CITIIS 2.0",
-      "HMWSSB private STP audits",
+      "PMU of Infra & Manpower for GIS Hub (₹8.7 L)",
+      "Annual Private STP Performance Audit – HMWSSB (₹25–30 L)",
+      "RFP for Webcasting of Ordinary Elections 2026 – TG (₹4 L)",
+      "Independent Engineer cum PMC advisory",
     ],
     stats: [
-      { value: "₹1,200 Cr", label: "Works supervised" },
-      { value: "60+", label: "Audits" },
+      { value: "₹40 L+", label: "Active mandates" },
+      { value: "6", label: "Live engagements" },
     ],
   },
 ];
@@ -240,6 +251,19 @@ export function Verticals() {
                   <p className="text-base text-foreground/85 leading-relaxed">
                     {activeItem.description}
                   </p>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 }}
+                    className="mt-5 rounded-2xl border-l-4 border-accent bg-accent/5 p-4"
+                  >
+                    <div className="text-[10px] uppercase tracking-[0.22em] text-accent font-bold">
+                      Major Impact
+                    </div>
+                    <p className="mt-1 text-sm text-foreground/90 leading-relaxed">
+                      {activeItem.impact}
+                    </p>
+                  </motion.div>
                   <div className="mt-6">
                     <h4 className="text-xs uppercase tracking-[0.2em] text-accent font-semibold">
                       Flagship projects
