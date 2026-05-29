@@ -1,7 +1,42 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
 import heroCity from "@/assets/hero-city.jpg";
 import tgLogo from "@/assets/tg-rising-logo.png";
+
+const impacts = [
+  {
+    vertical: "Heritage",
+    stat: "8 sites",
+    headline: "Revived the Heritage of Musi",
+    detail: "Heritage Partner Scheme PMU + ASI site plans for Charminar & Warangal Fort.",
+  },
+  {
+    vertical: "Urban Planning",
+    stat: "100%",
+    headline: "Mapped urban health of Hyderabad",
+    detail: "Reorganised ASHA / ANM / UPHC service areas across the district for UNICEF.",
+  },
+  {
+    vertical: "Capacity Building",
+    stat: "324+",
+    headline: "Municipal officers trained",
+    detail: "23 MCs, 49 Grade-II MCs, 252 Accounts Officers + Nepal NIRDI cohorts.",
+  },
+  {
+    vertical: "IT Consultancy",
+    stat: "₹20 Cr",
+    headline: "TG-bPASS PMU, 2020–2025",
+    detail: "End-to-end Build Now, LUC and self-certified permits across Telangana.",
+  },
+  {
+    vertical: "Procurement",
+    stat: "₹40 L+",
+    headline: "GIS Hub PMU + HMWSSB STP audits",
+    detail: "Independent engineer protecting public assets across flagship missions.",
+  },
+];
+
 
 const partners = [
   "MoHUA",
