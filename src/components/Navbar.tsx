@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import tgLogo from "@/assets/tg-rising-logo.png";
 
 const links = [
   { id: "gallery", label: "Gallery" },
@@ -61,6 +62,19 @@ export function Navbar() {
             </div>
             <div className={`text-[10px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
+            </div>
+          </div>
+          <div className={`hidden sm:flex items-center gap-2 pl-3 ml-1 border-l ${scrolled ? "border-border" : "border-white/20"}`}>
+            <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/95"}`}>
+              <img src={tgLogo} alt="Telangana Rising" className="h-9 w-auto" />
+            </div>
+            <div className="leading-tight">
+              <div className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${scrolled ? "text-foreground" : "text-white"}`}>
+                Government of Telangana
+              </div>
+              <div className={`text-[9px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/65"}`}>
+                Telangana Rising
+              </div>
             </div>
           </div>
         </a>
