@@ -98,6 +98,19 @@ export function Navbar() {
           >
             Get in touch
           </a>
+          <div className={`ml-3 pl-3 border-l flex items-center gap-2 ${scrolled ? "border-border" : "border-white/20"}`}>
+            <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/95"}`}>
+              <img src={tgLogo} alt="Telangana Rising" className="h-9 w-auto" />
+            </div>
+            <div className="leading-tight">
+              <div className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${scrolled ? "text-foreground" : "text-white"}`}>
+                Telangana
+              </div>
+              <div className={`text-[9px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/65"}`}>
+                Rising
+              </div>
+            </div>
+          </div>
         </nav>
 
         <button
