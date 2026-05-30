@@ -51,7 +51,12 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-6 py-5 flex flex-col sm:flex-row gap-3 justify-between text-xs text-white/45">
           <div>© {new Date().getFullYear()} National Institute of Urban Management. All rights reserved.</div>
-          <div>An initiative under MAUD, Government of Telangana.</div>
+          <div className="flex flex-col sm:items-end gap-1">
+            <span>An initiative under MAUD, Government of Telangana.</span>
+            <span className="text-white/60">
+              Designed &amp; developed by <span className="font-semibold text-accent">NIUM-IT</span>
+            </span>
+          </div>
         </div>
       </div>
     </footer>
