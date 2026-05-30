@@ -49,34 +49,36 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
-        <a href="#hero" className="flex items-center gap-3 group">
-          <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/95"} shadow-[var(--shadow-card)]`}>
-            <img src={tgEmblem} alt="Government of Telangana" className="h-11 w-11 object-contain" />
-          </div>
+      <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-4">
+        <a href="#hero" className="flex items-center gap-3 group min-w-0">
+          <img
+            src={tgEmblem}
+            alt="Government of Telangana"
+            className="h-12 w-12 object-contain drop-shadow-md shrink-0"
+          />
           <div className={`hidden sm:block h-10 w-px ${scrolled ? "bg-border" : "bg-white/20"}`} />
-          <div className="relative">
+          <div className="relative shrink-0">
             <div className="h-11 w-11 rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
               <span className="font-display font-bold text-primary-foreground text-lg tracking-tight">N</span>
             </div>
             <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-accent border-2 border-background" />
           </div>
-          <div className="leading-tight">
+          <div className="leading-tight min-w-0">
             <div className={`font-display font-bold text-lg ${scrolled ? "text-foreground" : "text-white"}`}>
               NIUM
             </div>
-            <div className={`text-[10px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+            <div className={`hidden md:block text-[10px] uppercase tracking-[0.18em] truncate ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
           </div>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-1 shrink-0">
           {links.map((l) => (
             <a
               key={l.id}
               href={`#${l.id}`}
-              className={`relative px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+              className={`relative px-3 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
                     ? "text-primary"
@@ -88,28 +90,23 @@ export function Navbar() {
             >
               {l.label}
               {active === l.id && (
-                <span className="absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full bg-accent" />
+                <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full bg-accent" />
               )}
             </a>
           ))}
           <a
             href="#contact"
-            className="ml-3 inline-flex items-center rounded-full bg-accent px-5 py-2 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-card)] hover:brightness-95 transition"
+            className="ml-2 inline-flex items-center whitespace-nowrap rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-card)] hover:brightness-95 transition"
           >
             Get in touch
           </a>
-          <div className={`ml-3 pl-3 border-l flex items-center gap-2 ${scrolled ? "border-border" : "border-white/20"}`}>
-            <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/95"}`}>
-              <img src={tgLogo} alt="Telangana Rising" className="h-9 w-auto" />
-            </div>
-            <div className="leading-tight">
-              <div className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${scrolled ? "text-foreground" : "text-white"}`}>
-                Telangana
-              </div>
-              <div className={`text-[9px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/65"}`}>
-                Rising
-              </div>
-            </div>
+          <div className={`ml-3 pl-3 border-l flex flex-col leading-tight ${scrolled ? "border-border" : "border-white/20"}`}>
+            <span className={`text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent`}>
+              Telangana
+            </span>
+            <span className={`text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent`}>
+              Rising
+            </span>
           </div>
         </nav>
 
