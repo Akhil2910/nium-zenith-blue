@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import tgLogo from "@/assets/tg-rising-logo.png";
 
 const links = [
   { id: "gallery", label: "Gallery" },
