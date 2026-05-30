@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import tgLogo from "@/assets/tg-rising-logo.png";
+import tgEmblem from "@/assets/tg-emblem.png";
 
 const links = [
   { id: "gallery", label: "Gallery" },
@@ -50,6 +51,10 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
         <a href="#hero" className="flex items-center gap-3 group">
+          <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/95"} shadow-[var(--shadow-card)]`}>
+            <img src={tgEmblem} alt="Government of Telangana" className="h-11 w-11 object-contain" />
+          </div>
+          <div className={`hidden sm:block h-10 w-px ${scrolled ? "bg-border" : "bg-white/20"}`} />
           <div className="relative">
             <div className="h-11 w-11 rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
               <span className="font-display font-bold text-primary-foreground text-lg tracking-tight">N</span>
@@ -62,19 +67,6 @@ export function Navbar() {
             </div>
             <div className={`text-[10px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
-            </div>
-          </div>
-          <div className={`hidden sm:flex items-center gap-2 pl-3 ml-1 border-l ${scrolled ? "border-border" : "border-white/20"}`}>
-            <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/95"}`}>
-              <img src={tgLogo} alt="Telangana Rising" className="h-9 w-auto" />
-            </div>
-            <div className="leading-tight">
-              <div className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${scrolled ? "text-foreground" : "text-white"}`}>
-                Government of Telangana
-              </div>
-              <div className={`text-[9px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/65"}`}>
-                Telangana Rising
-              </div>
             </div>
           </div>
         </a>
@@ -106,6 +98,19 @@ export function Navbar() {
           >
             Get in touch
           </a>
+          <div className={`ml-3 pl-3 border-l flex items-center gap-2 ${scrolled ? "border-border" : "border-white/20"}`}>
+            <div className={`rounded-md p-1 ${scrolled ? "bg-transparent" : "bg-white/95"}`}>
+              <img src={tgLogo} alt="Telangana Rising" className="h-9 w-auto" />
+            </div>
+            <div className="leading-tight">
+              <div className={`text-[10px] font-semibold uppercase tracking-[0.16em] ${scrolled ? "text-foreground" : "text-white"}`}>
+                Telangana
+              </div>
+              <div className={`text-[9px] uppercase tracking-[0.18em] ${scrolled ? "text-muted-foreground" : "text-white/65"}`}>
+                Rising
+              </div>
+            </div>
+          </div>
         </nav>
 
         <button
