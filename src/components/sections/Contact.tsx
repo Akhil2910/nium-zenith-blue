@@ -1,50 +1,63 @@
 import { useState } from "react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
-import logo from "@/assets/telangana-logo.jpg";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section id="contact" className="relative py-28 bg-background">
+    <section id="contact" className="relative py-28 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid lg:grid-cols-12 gap-10">
-          <div className="lg:col-span-5">
-            <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">
-              Contact
-            </span>
-            <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
-              Let's build the next Indian city, together.
-            </h2>
-            <p className="mt-6 text-muted-foreground leading-relaxed">
-              For partnerships, training requests, CSR engagement or technology
-              collaboration — reach out to the NIUM team.
-            </p>
+        <div className="max-w-2xl mb-14">
+          <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">
+            Contact Us
+          </span>
+          <h2 className="mt-4 text-4xl md:text-5xl font-bold leading-tight">
+            Let's build the next Indian city, together.
+          </h2>
+        </div>
 
-            <div className="mt-10 flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]">
-              <img src={logo} alt="Government of Telangana emblem" className="h-16 w-16 object-contain" />
-              <div>
-                <div className="font-display font-bold text-foreground">Government of Telangana</div>
-                <div className="text-sm text-muted-foreground">
-                  Commissioner & Director of Municipal Administration (CDMA)
-                </div>
+        <div className="grid lg:grid-cols-12 gap-8">
+          <div className="lg:col-span-5 space-y-6">
+            <div className="rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-card)]">
+              <div className="text-xs uppercase tracking-[0.22em] text-accent font-bold">
+                AC Guards Office
               </div>
+              <div className="mt-3 flex items-start gap-3">
+                <span className="h-10 w-10 shrink-0 rounded-lg bg-secondary text-primary flex items-center justify-center">
+                  <MapPin size={18} />
+                </span>
+                <p className="text-sm text-foreground leading-relaxed">
+                  3rd Floor, ENC (PH) Building,<br />
+                  MA&amp;UD Campus, Kashana Building Complex,<br />
+                  Opp: PTI Building, AC Guards, Masabtank,<br />
+                  Hyderabad – 500004
+                </p>
+              </div>
+              <ul className="mt-5 space-y-3">
+                <li className="flex items-center gap-3 text-sm text-foreground">
+                  <span className="h-10 w-10 rounded-lg bg-secondary text-primary flex items-center justify-center">
+                    <Mail size={16} />
+                  </span>
+                  info@nium.org.in
+                </li>
+                <li className="flex items-center gap-3 text-sm text-foreground">
+                  <span className="h-10 w-10 rounded-lg bg-secondary text-primary flex items-center justify-center">
+                    <Phone size={16} />
+                  </span>
+                  +91 40 0000 0000
+                </li>
+              </ul>
             </div>
 
-            <ul className="mt-8 space-y-4">
-              {[
-                { icon: MapPin, text: "CDMA Office, Hyderabad, Telangana — 500004" },
-                { icon: Mail, text: "info@nium.org.in" },
-                { icon: Phone, text: "+91 40 0000 0000" },
-              ].map((i) => (
-                <li key={i.text} className="flex items-center gap-4 text-foreground">
-                  <span className="h-10 w-10 rounded-lg bg-secondary text-primary flex items-center justify-center">
-                    <i.icon size={18} />
-                  </span>
-                  {i.text}
-                </li>
-              ))}
-            </ul>
+            <div className="rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] h-72">
+              <iframe
+                title="NIUM AC Guards Office Map"
+                src="https://www.google.com/maps?q=AC+Guards,+Masabtank,+Hyderabad+500004&output=embed"
+                className="w-full h-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
 
           <form
@@ -66,7 +79,7 @@ export function Contact() {
               </label>
               <textarea
                 required
-                rows={5}
+                rows={6}
                 placeholder="Tell us a little about what you're working on…"
                 className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
               />
