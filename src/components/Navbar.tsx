@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import tgLogo from "@/assets/tg-rising-logo.png";
 import tgEmblem from "@/assets/tg-emblem.png";
 
 const links = [
-  { id: "gallery", label: "Gallery" },
-  { id: "leadership", label: "Leadership" },
   { id: "about", label: "About" },
-  { id: "verticals", label: "Verticals" },
-  { id: "aiccc", label: "AI-ICCC" },
+  { id: "focus-areas", label: "Focus Areas" },
+  { id: "programs", label: "Programs" },
   { id: "partnerships", label: "Partnerships" },
-  { id: "contact", label: "Contact" },
+  { id: "publications", label: "Publications" },
+  { id: "events", label: "Events" },
+  { id: "career", label: "Career" },
+  { id: "contact", label: "Contact Us" },
 ];
 
 export function Navbar() {
@@ -67,18 +67,18 @@ export function Navbar() {
             <div className={`font-display font-bold text-lg ${scrolled ? "text-foreground" : "text-white"}`}>
               NIUM
             </div>
-            <div className={`hidden md:block text-[10px] uppercase tracking-[0.18em] truncate ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+            <div className={`hidden xl:block text-[10px] uppercase tracking-[0.18em] truncate ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
           </div>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-1 shrink-0">
+        <nav className="hidden lg:flex items-center gap-0.5 shrink-0">
           {links.map((l) => (
             <a
               key={l.id}
               href={`#${l.id}`}
-              className={`relative px-3 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
+              className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
                     ? "text-primary"
@@ -90,21 +90,15 @@ export function Navbar() {
             >
               {l.label}
               {active === l.id && (
-                <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full bg-accent" />
+                <span className="absolute left-2.5 right-2.5 -bottom-0.5 h-0.5 rounded-full bg-accent" />
               )}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="ml-2 inline-flex items-center whitespace-nowrap rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-card)] hover:brightness-95 transition"
-          >
-            Get in touch
-          </a>
-          <div className={`ml-3 pl-3 border-l flex flex-col leading-tight ${scrolled ? "border-border" : "border-white/20"}`}>
-            <span className={`text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent`}>
+          <div className={`ml-2 pl-3 border-l flex flex-col leading-tight ${scrolled ? "border-border" : "border-white/20"}`}>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
               Telangana
             </span>
-            <span className={`text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent`}>
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
               Rising
             </span>
           </div>

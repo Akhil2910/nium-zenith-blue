@@ -4,9 +4,13 @@ import { Hero } from "@/components/sections/Hero";
 import { Gallery } from "@/components/sections/Gallery";
 import { Leadership } from "@/components/sections/Leadership";
 import { About } from "@/components/sections/About";
-import { Verticals } from "@/components/sections/Verticals";
+import { FocusAreas } from "@/components/sections/FocusAreas";
+import { Programs } from "@/components/sections/Programs";
 import { Aiccc } from "@/components/sections/Aiccc";
 import { Partnerships } from "@/components/sections/Partnerships";
+import { Publications } from "@/components/sections/Publications";
+import { Events } from "@/components/sections/Events";
+import { Career } from "@/components/sections/Career";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
 
@@ -40,9 +44,13 @@ function Index() {
         <Gallery />
         <Leadership />
         <About />
-        <Verticals />
+        <FocusAreas />
+        <Programs />
         <Aiccc />
         <Partnerships />
+        <Publications />
+        <Events />
+        <Career />
         <Contact />
       </main>
       <Footer />

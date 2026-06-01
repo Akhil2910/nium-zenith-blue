@@ -25,10 +25,13 @@ export function Footer() {
           <ul className="mt-4 space-y-2 text-sm">
             {[
               ["About", "about"],
-              ["Verticals", "verticals"],
-              ["NIUM-IT", "nium-it"],
+              ["Focus Areas", "focus-areas"],
+              ["Programs", "programs"],
               ["Partnerships", "partnerships"],
-              ["Contact", "contact"],
+              ["Publications", "publications"],
+              ["Events", "events"],
+              ["Career", "career"],
+              ["Contact Us", "contact"],
             ].map(([l, id]) => (
               <li key={id}>
                 <a href={`#${id}`} className="hover:text-accent transition">
