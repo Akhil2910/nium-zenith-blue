@@ -1,6 +1,13 @@
 import { motion } from "framer-motion";
-import { Target, Compass } from "lucide-react";
+import { Target, Compass, Crown, Users, UserCheck, UsersRound } from "lucide-react";
 import eventImg from "@/assets/event-policy.jpg";
+
+const team = [
+  { icon: Crown, role: "Director General", desc: "Strategic leadership and institutional direction across all NIUM verticals." },
+  { icon: Users, role: "Board", desc: "Governing body of senior officials and domain experts overseeing NIUM's mandate." },
+  { icon: UserCheck, role: "Advisors", desc: "Subject-matter advisors guiding research, policy and technology programmes." },
+  { icon: UsersRound, role: "Staff", desc: "Multidisciplinary team of urbanists, engineers, technologists and trainers." },
+];
 
 export function About() {
   return (
