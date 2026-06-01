@@ -89,7 +89,37 @@ export function About() {
             </div>
           </div>
         </div>
+
+        {/* Team */}
+        <div className="mt-24">
+          <div className="max-w-2xl mb-10">
+            <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">Our Team</span>
+            <h3 className="mt-3 text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              The people behind NIUM.
+            </h3>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {team.map((t, i) => (
+              <motion.div
+                key={t.role}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                whileHover={{ y: -4 }}
+                className="group rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition"
+              >
+                <div className="h-12 w-12 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center shadow-lg">
+                  <t.icon size={22} />
+                </div>
+                <h4 className="mt-5 text-base font-bold text-foreground">{t.role}</h4>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+
