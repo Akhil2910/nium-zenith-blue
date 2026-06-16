@@ -117,14 +117,14 @@ export function Hero() {
               National Institute of Urban Management
             </div>
 
-            <h1 className="mt-6 font-display font-bold leading-[0.95] tracking-tight text-[clamp(2.75rem,8vw,7.5rem)]">
+            <h1 className="mt-6 font-display font-bold leading-[1.05] tracking-tight text-[clamp(2.2rem,6vw,5.2rem)]">
               <motion.span
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="block"
               >
-                Building
+                Spearheading urban innovation
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 40 }}
@@ -132,7 +132,7 @@ export function Hero() {
                 transition={{ duration: 0.8, delay: 0.25 }}
                 className="block"
               >
-                the cities
+                and driving transformative change
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 40 }}
@@ -141,7 +141,7 @@ export function Hero() {
                 className="block font-serif italic font-normal bg-gradient-to-r from-[var(--gold)] via-[var(--cyan-brand)] to-white bg-clip-text text-transparent pr-2"
                 style={{ fontFamily: "var(--font-serif)" }}
               >
-                Telangana deserves.
+                for Telangana and across India.
               </motion.span>
             </h1>
 
