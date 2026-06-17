@@ -117,31 +117,46 @@ export function Hero() {
               National Institute of Urban Management
             </div>
 
-            <h1 className="mt-6 font-display font-bold leading-[1.05] tracking-tight text-[clamp(2.2rem,6vw,5.2rem)]">
+            <h1 className="mt-6 font-display font-bold leading-[1.08] tracking-tight text-[clamp(1.9rem,5vw,4.2rem)]">
               <motion.span
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.1 }}
                 className="block"
               >
-                Spearheading urban innovation
+                This revitalized NIUM will be an
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.25 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
                 className="block"
               >
-                and driving transformative change
+                indispensable partner in progress,
               </motion.span>
               <motion.span
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, delay: 0.4 }}
-                className="block font-serif italic font-normal bg-gradient-to-r from-[var(--gold)] via-[var(--cyan-brand)] to-white bg-clip-text text-transparent pr-2"
-                style={{ fontFamily: "var(--font-serif)" }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                className="block"
               >
-                for Telangana and across India.
+                spearheading urban innovation and
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="block"
+              >
+                driving transformative change to achieve
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, delay: 0.5 }}
+                className="block text-[var(--gold)]"
+              >
+                urban excellence, for Telangana and across India.
               </motion.span>
             </h1>
 
