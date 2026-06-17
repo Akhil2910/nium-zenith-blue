@@ -70,8 +70,6 @@ export function Hero() {
             Government of Telangana · Telangana Rising
           </span>
           <span className="hidden md:flex items-center gap-6">
-            <span>Est. 2024</span>
-            <span className="h-3 w-px bg-white/20" />
             <span>Hyderabad, India</span>
           </span>
         </div>
