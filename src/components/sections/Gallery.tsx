@@ -53,7 +53,7 @@ export function Gallery() {
                 src={it.src}
                 alt={it.caption}
                 loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition duration-700"
+                className="absolute inset-0 h-full w-full object-cover object-top group-hover:scale-105 transition duration-700"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--navy)]/85 via-[var(--navy)]/30 to-transparent p-4">
                 <figcaption className="text-white text-xs md:text-sm font-medium">
