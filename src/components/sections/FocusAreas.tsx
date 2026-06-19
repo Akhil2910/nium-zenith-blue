@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Cpu,
-  Droplets,
+  Microscope,
+  GraduationCap,
+  Lightbulb,
+  MonitorCog,
+  ClipboardList,
   Landmark,
-  Network,
-  Building2,
-  HeartHandshake,
-  HardHat,
-  Leaf,
+  Handshake,
+  Megaphone,
 } from "lucide-react";
 import itImg from "@/assets/vertical-it.jpg";
 import heritageImg from "@/assets/vertical-heritage.jpg";
@@ -18,60 +18,60 @@ import procurementImg from "@/assets/vertical-procurement.jpg";
 
 const areas = [
   {
-    icon: Cpu,
-    title: "Information Technology",
-    image: itImg,
-    blurb:
-      "Digital public infrastructure for Telangana — TG-bPASS, DTCP/HMDA platforms and the proposed GIS HUB.",
-  },
-  {
-    icon: Droplets,
-    title: "Water & Sanitation",
+    icon: Microscope,
+    title: "Research & Development",
     image: planningImg,
     blurb:
-      "Sustainable water supply, sewerage and sanitation programmes for resilient, healthy cities.",
+      "Conducting policy-relevant research to generate actionable insights and innovative solutions for urban challenges.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Training & Capacity",
+    image: capacityImg,
+    blurb:
+      "Designing comprehensive training for municipal functionaries, elected representatives, and urban professionals.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Urban Innovation & Incubation",
+    image: itImg,
+    blurb:
+      "Incubating new ideas, pilots and partnerships that translate urban innovation into delivery on the ground.",
+  },
+  {
+    icon: MonitorCog,
+    title: "Urban Informatics",
+    image: itImg,
+    blurb:
+      "Leveraging cutting-edge technology and data analytics, including GIS and smart city applications, for governance.",
+  },
+  {
+    icon: ClipboardList,
+    title: "Project Management",
+    image: procurementImg,
+    blurb:
+      "Establishing Project Management Units (PMUs) to ensure effective implementation and oversight of urban projects.",
   },
   {
     icon: Landmark,
-    title: "Heritage",
+    title: "Heritage and Conservation",
     image: heritageImg,
     blurb:
       "Conservation, adaptive reuse and site management for India's living heritage — from Charminar to Warangal.",
   },
   {
-    icon: Network,
-    title: "E-Governance",
-    image: itImg,
-    blurb:
-      "End-to-end digital governance platforms enabling transparent, citizen-centric municipal services.",
-  },
-  {
-    icon: Building2,
-    title: "UICC",
+    icon: Handshake,
+    title: "Transaction Advisory",
     image: procurementImg,
     blurb:
-      "Urban Infrastructure & Capital Coordination — structuring and delivering flagship city projects.",
+      "Providing expert advisory on financial structuring, public-private partnerships, and strategic project guidance.",
   },
   {
-    icon: HeartHandshake,
-    title: "Poverty Alleviation",
-    image: capacityImg,
-    blurb:
-      "Livelihoods, urban poor and inclusive welfare programmes embedded into city governance.",
-  },
-  {
-    icon: HardHat,
-    title: "Urban Engineering",
-    image: planningImg,
-    blurb:
-      "Roads, drains, bridges and municipal infrastructure delivered with independent engineer rigour.",
-  },
-  {
-    icon: Leaf,
-    title: "Environment & Climate Change",
+    icon: Megaphone,
+    title: "Communication & Outreach",
     image: heritageImg,
     blurb:
-      "Climate resilience, urban greening and low-carbon city plans grounded in evidence and data.",
+      "Ensuring effective dissemination of NIUM's work, managing stakeholder relations, and promoting urban discourse.",
   },
 ];
 
