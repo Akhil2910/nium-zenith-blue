@@ -4,6 +4,10 @@ import g2 from "@/assets/gallery-hudco.jpeg";
 import g3 from "@/assets/event-training.jpg";
 import g4 from "@/assets/event-conclave.jpg";
 import g5 from "@/assets/event-policy.jpg";
+import m1 from "@/assets/gallery-meeting-1.jpeg";
+import m2 from "@/assets/gallery-meeting-2.jpeg";
+import m3 from "@/assets/gallery-meeting-3.jpeg";
+import m4 from "@/assets/gallery-meeting-4.jpeg";
 
 const items = [
   { src: g1, caption: "Field visit — urban green spaces", span: "md:col-span-2 md:row-span-2" },
@@ -11,6 +15,10 @@ const items = [
   { src: g3, caption: "Capacity-building cohort", span: "" },
   { src: g4, caption: "Hyderabad Policy Conclave", span: "md:col-span-2" },
   { src: g5, caption: "Policy roundtable", span: "" },
+  { src: m3, caption: "International delegation roundtable", span: "md:col-span-2 md:row-span-2" },
+  { src: m1, caption: "Bilateral discussion with international partners", span: "" },
+  { src: m2, caption: "Strategic consultation session", span: "" },
+  { src: m4, caption: "Cross-sector working group convening", span: "md:col-span-2" },
 ];
 
 export function Gallery() {
