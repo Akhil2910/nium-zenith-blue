@@ -77,6 +77,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "NIUM" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "NIUM — National Institute of Urban Management" },
+      { name: "twitter:title", content: "NIUM — National Institute of Urban Management" },
+      { property: "og:description", content: "An execution-ready institutional platform under the Government of Telangana." },
+      { name: "twitter:description", content: "An execution-ready institutional platform under the Government of Telangana." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1LsWgUNfSGcBeIokOvCoO5IxbSy2/social-images/social-1781851863940-NIUM-Telangana-Rising.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/1LsWgUNfSGcBeIokOvCoO5IxbSy2/social-images/social-1781851863940-NIUM-Telangana-Rising.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
