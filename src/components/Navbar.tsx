@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import tgEmblem from "@/assets/tg-emblem.png";
 
@@ -51,26 +52,44 @@ export function Navbar() {
     >
       <div className="mx-auto max-w-7xl px-6 h-24 flex items-center justify-between gap-4">
         <a href="#hero" className="flex items-center gap-3 group min-w-0">
-          <img
+          <motion.img
+            initial={{ opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             src={tgEmblem}
             alt="Government of Telangana"
             className="h-16 w-16 md:h-[68px] md:w-[68px] object-contain drop-shadow-md shrink-0"
           />
-          <div className={`hidden sm:block h-12 w-px ${scrolled ? "bg-border" : "bg-white/20"}`} />
-          <div className="relative shrink-0">
+          <motion.div
+            initial={{ opacity: 0, scaleY: 0 }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className={`hidden sm:block h-12 w-px origin-center ${scrolled ? "bg-border" : "bg-white/20"}`}
+          />
+          <motion.div
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
+            className="relative shrink-0"
+          >
             <div className="h-16 w-16 md:h-[68px] md:w-[68px] rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
               <span className="font-display font-bold text-primary-foreground text-2xl tracking-tight">N</span>
             </div>
             <span className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full bg-accent border-2 border-background" />
-          </div>
-          <div className="leading-tight min-w-0">
-            <div className={`font-display font-bold text-lg ${scrolled ? "text-foreground" : "text-white"}`}>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
+            className="leading-tight min-w-0 overflow-hidden"
+          >
+            <div className={`font-display font-bold text-2xl md:text-3xl tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}>
               NIUM
             </div>
             <div className={`hidden xl:block text-[10px] uppercase tracking-[0.18em] truncate ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
-          </div>
+          </motion.div>
         </a>
 
         <nav className="hidden lg:flex items-center gap-0.5 shrink-0">
@@ -94,15 +113,21 @@ export function Navbar() {
               )}
             </a>
           ))}
-          <div className={`ml-2 pl-3 border-l flex flex-col leading-tight ${scrolled ? "border-border" : "border-white/20"}`}>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
-              Telangana
-            </span>
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
-              Rising
-            </span>
-          </div>
         </nav>
+
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.75, ease: "easeOut" }}
+          className={`hidden lg:flex flex-col leading-tight pl-4 border-l shrink-0 ${scrolled ? "border-border" : "border-white/20"}`}
+        >
+          <span className="text-xs font-bold uppercase tracking-[0.22em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
+            Telangana
+          </span>
+          <span className="text-xs font-bold uppercase tracking-[0.22em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
+            Rising
+          </span>
+        </motion.div>
 
         <button
           aria-label="Menu"
