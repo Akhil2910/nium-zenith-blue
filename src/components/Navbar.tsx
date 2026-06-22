@@ -70,9 +70,10 @@ export function Navbar() {
             initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
-            className="relative shrink-0"
+            className="relative shrink-0 group"
+            whileHover={{ scale: 1.12, rotate: 8 }}
           >
-            <div className="h-16 w-16 md:h-[68px] md:w-[68px] rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
+            <div className="h-16 w-16 md:h-[68px] md:w-[68px] rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)] transition-transform duration-300 group-hover:shadow-lg">
               <span className="font-display font-bold text-primary-foreground text-2xl tracking-tight">N</span>
             </div>
             <span className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full bg-accent border-2 border-background" />
@@ -81,12 +82,12 @@ export function Navbar() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
-            className="leading-tight min-w-0 overflow-hidden"
+            className="leading-tight min-w-0"
           >
             <div className={`font-display font-bold text-2xl md:text-3xl tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}>
               NIUM
             </div>
-            <div className={`hidden xl:block text-[10px] uppercase tracking-[0.18em] truncate ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+            <div className={`hidden lg:block text-[11px] uppercase tracking-[0.16em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
           </motion.div>
