@@ -25,7 +25,7 @@ export function About() {
               About NIUM
             </span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold text-foreground leading-tight">
-              Not a think tank — an execution-ready institution.
+              Not just a think tank — an execution-ready institution.
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               The National Institute of Urban Management (NIUM) works alongside the
