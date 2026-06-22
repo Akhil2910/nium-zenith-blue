@@ -49,19 +49,19 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-4">
+      <div className="mx-auto max-w-7xl px-6 h-24 flex items-center justify-between gap-4">
         <a href="#hero" className="flex items-center gap-3 group min-w-0">
           <img
             src={tgEmblem}
             alt="Government of Telangana"
-            className="h-12 w-12 object-contain drop-shadow-md shrink-0"
+            className="h-16 w-16 md:h-[68px] md:w-[68px] object-contain drop-shadow-md shrink-0"
           />
-          <div className={`hidden sm:block h-10 w-px ${scrolled ? "bg-border" : "bg-white/20"}`} />
+          <div className={`hidden sm:block h-12 w-px ${scrolled ? "bg-border" : "bg-white/20"}`} />
           <div className="relative shrink-0">
-            <div className="h-11 w-11 rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
-              <span className="font-display font-bold text-primary-foreground text-lg tracking-tight">N</span>
+            <div className="h-16 w-16 md:h-[68px] md:w-[68px] rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
+              <span className="font-display font-bold text-primary-foreground text-2xl tracking-tight">N</span>
             </div>
-            <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-accent border-2 border-background" />
+            <span className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full bg-accent border-2 border-background" />
           </div>
           <div className="leading-tight min-w-0">
             <div className={`font-display font-bold text-lg ${scrolled ? "text-foreground" : "text-white"}`}>

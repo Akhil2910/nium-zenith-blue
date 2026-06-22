@@ -25,7 +25,7 @@ export function About() {
               About NIUM
             </span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold text-foreground leading-tight">
-              Not a think tank — an execution-ready institution.
+              Not just a think tank — an execution-ready institution.
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               The National Institute of Urban Management (NIUM) works alongside the
@@ -87,6 +87,75 @@ export function About() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Vision & Strategic Repositioning */}
+        <div className="mt-24">
+          <div className="max-w-3xl mb-10">
+            <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">
+              Vision and Strategic Repositioning
+            </span>
+            <h3 className="mt-3 text-3xl md:text-4xl font-bold text-foreground leading-tight">
+              Empowering municipal bodies for sustainable urban environments.
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                tag: "Strategic Repositioning",
+                items: [
+                  {
+                    title: "Amplifying Impact",
+                    text: "NIUM is undergoing a strategic shift to enhance its influence on municipal administration and urban development frameworks across India.",
+                  },
+                  {
+                    title: "Addressing Urban Complexity",
+                    text: "Navigating the challenges of rapid urbanization by providing innovative systemic support to cities and towns.",
+                  },
+                ],
+              },
+              {
+                tag: "NIUM's Vision",
+                items: [
+                  {
+                    title: "Dynamic Hub",
+                    text: "Evolving into a center of excellence for research, targeted capacity development, and robust project execution.",
+                  },
+                  {
+                    title: "Citizen-Centric Focus",
+                    text: "Developing resilient urban environments that prioritize the needs and well-being of every citizen.",
+                  },
+                ],
+              },
+            ].map((col, i) => (
+              <motion.div
+                key={col.tag}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.55, delay: i * 0.1 }}
+                className="rounded-2xl bg-card border border-border p-8 shadow-[var(--shadow-card)]"
+              >
+                <h4 className="font-display text-2xl font-bold text-foreground">{col.tag}</h4>
+                <div className="mt-6 space-y-6">
+                  {col.items.map((it) => (
+                    <div key={it.title}>
+                      <div className="text-base font-semibold text-accent">{it.title}</div>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.text}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-2xl p-6 text-white shadow-[var(--shadow-card)]" style={{ background: "var(--gradient-band)" }}>
+            <span className="text-xs uppercase tracking-[0.22em] font-semibold text-white/80">Core Objective</span>
+            <p className="mt-2 text-base md:text-lg font-medium">
+              Empowering urban authorities with the knowledge and solutions for sustainable development.
+            </p>
           </div>
         </div>
 

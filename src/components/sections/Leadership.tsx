@@ -12,7 +12,7 @@ const leaders = [
   },
   {
     img: secImg,
-    name: "Dr. T.K. Sreedevi, IAS",
+    name: "Dr. T.K. Sreedevi IAS",
     role: "Secretary to Government",
     org: "Municipal Administration Department & Commissioner and Director of Municipal Administration",
     quote: "NIUM is our execution arm — turning policy intent into delivered outcomes on the ground.",
