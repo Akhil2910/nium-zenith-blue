@@ -38,16 +38,6 @@ const slides: Slide[] = [
     badge: "Live Project",
   },
   {
-    eyebrow: "Golden Jubilee · 1976 — 2026",
-    headline: "Celebrating 50 years of urban",
-    accent: "transformation",
-    tail: "in India.",
-    description:
-      "Marking five decades of urban research, policy, and practice — alongside NIUA and partners shaping the next century of Indian cities.",
-    cta: { label: "View celebrations", href: "#events" },
-    badge: "50 Years",
-  },
-  {
     eyebrow: "Heritage · Musi Riverfront",
     headline: "Reviving the heritage of the",
     accent: "Musi",
