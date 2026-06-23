@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Play } from "lucide-react";
-import heroCity from "@/assets/hero-city.jpg";
+import heroCityAsset from "@/assets/hero-city-hyderabad.jpg.asset.json";
 import tgLogo from "@/assets/tg-rising-logo.png";
+
+const heroCity = heroCityAsset.url;
 
 const impacts = [
   {
