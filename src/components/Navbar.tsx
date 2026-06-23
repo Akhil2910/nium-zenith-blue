@@ -84,10 +84,34 @@ export function Navbar() {
             transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
             className="leading-tight min-w-0"
           >
-            <div className={`font-display font-bold text-2xl md:text-3xl tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}>
-              NIUM
+            <div className="relative inline-block">
+              <motion.div
+                initial={{ scale: 0.6, rotate: -12, opacity: 0 }}
+                animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                transition={{ duration: 0.9, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ scale: 1.06, rotate: -2 }}
+                className={`font-display font-bold text-2xl md:text-3xl tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}
+              >
+                NIUM
+              </motion.div>
+              <motion.svg
+                viewBox="0 0 120 28"
+                className="absolute -bottom-2 left-0 w-[110%] h-4 pointer-events-none"
+                fill="none"
+                aria-hidden
+              >
+                <motion.path
+                  d="M2 18 C 22 6, 60 6, 96 14 C 108 17, 110 22, 100 24 C 88 26, 70 22, 60 20"
+                  stroke="var(--gold)"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{ duration: 1.6, delay: 1.1, ease: "easeInOut" }}
+                />
+              </motion.svg>
             </div>
-            <div className={`hidden lg:block text-[11px] uppercase tracking-[0.16em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+            <div className={`hidden lg:block mt-1 text-[11px] uppercase tracking-[0.16em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
           </motion.div>
