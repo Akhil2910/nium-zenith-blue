@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import heroCityAsset from "@/assets/hero-city-hyderabad.jpg.asset.json";
 import tgLogo from "@/assets/tg-rising-logo.png";
+import { MiniEventsCalendar } from "./MiniEventsCalendar";
 
 const heroCity = heroCityAsset.url;
 
@@ -199,8 +200,11 @@ export function Hero() {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-3 rounded-2xl bg-white/95 backdrop-blur px-3 py-2 shadow-[var(--shadow-elevated)]">
-            <img src={tgLogo} alt="Telangana Rising" className="h-10 w-auto" />
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-3 rounded-2xl bg-white/95 backdrop-blur px-3 py-2 shadow-[var(--shadow-elevated)]">
+              <img src={tgLogo} alt="Telangana Rising" className="h-10 w-auto" />
+            </div>
+            <MiniEventsCalendar />
           </div>
         </div>
       </div>
