@@ -42,6 +42,7 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
+        <EventsCalendar />
         <Gallery />
         <Leadership />
         <About />
