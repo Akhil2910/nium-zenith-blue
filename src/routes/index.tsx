@@ -10,6 +10,7 @@ import { Aiccc } from "@/components/sections/Aiccc";
 import { Partnerships } from "@/components/sections/Partnerships";
 import { Publications } from "@/components/sections/Publications";
 import { Events } from "@/components/sections/Events";
+import { EventsCalendar } from "@/components/sections/EventsCalendar";
 import { Career } from "@/components/sections/Career";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/sections/Footer";
@@ -41,6 +42,7 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
+        <EventsCalendar />
         <Gallery />
         <Leadership />
         <About />
