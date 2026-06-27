@@ -5,7 +5,7 @@ import { Gallery } from "@/components/sections/Gallery";
 import { Leadership } from "@/components/sections/Leadership";
 import { About } from "@/components/sections/About";
 import { FocusAreas } from "@/components/sections/FocusAreas";
-import { Programs } from "@/components/sections/Programs";
+
 import { Aiccc } from "@/components/sections/Aiccc";
 import { Partnerships } from "@/components/sections/Partnerships";
 import { Publications } from "@/components/sections/Publications";
@@ -46,7 +46,7 @@ function Index() {
         <Leadership />
         <About />
         <FocusAreas />
-        <Programs />
+        
         <Aiccc />
         <Partnerships />
         <Publications />
