@@ -42,11 +42,10 @@ function Index() {
       <Navbar />
       <main>
         <Hero />
-        <Gallery />
         <Leadership />
         <About />
         <FocusAreas />
-        
+        <Gallery />
         <Aiccc />
         <Partnerships />
         <Publications />
