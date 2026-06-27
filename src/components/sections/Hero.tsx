@@ -49,7 +49,18 @@ const slides: Slide[] = [
     badge: "Active PMU",
   },
   {
+    eyebrow: "Training & Capacity Building",
+    headline: "Building capacity for India's",
+    accent: "urban leaders",
+    tail: "— mayors, municipalities & missions.",
+    description:
+      "Flagship programmes for Mayors & Chairpersons, SBM 2.0 SPIU capacity building & IEC, ToT on City Sanitation Plans, and Municipal Bonds & Urban Infrastructure Financing.",
+    cta: { label: "Explore programmes", href: "#focus-areas" },
+    badge: "Capacity Building",
+  },
+  {
     eyebrow: "Heritage · Shaikpet Sarai",
+
     headline: "Adaptive reuse of the 17th-century",
     accent: "Qutb Shahi",
     tail: "resthouse at Shaikpet.",
