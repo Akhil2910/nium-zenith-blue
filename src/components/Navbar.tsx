@@ -97,7 +97,7 @@ export function Navbar() {
             >
               NIUM
             </motion.div>
-            <div className={`hidden xl:block mt-1 text-[11px] uppercase tracking-[0.16em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+            <div className={`hidden 2xl:block mt-1 text-[11px] uppercase tracking-[0.16em] whitespace-nowrap ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
           </motion.div>
