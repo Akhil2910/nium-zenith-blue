@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, CalendarDays } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import tgEmblem from "@/assets/tg-emblem.png";
 
 const links = [
   { id: "about", label: "About" },
   { id: "focus-areas", label: "Focus Areas" },
-  { id: "programs", label: "Programs" },
   { id: "partnerships", label: "Partnerships" },
   { id: "publications", label: "Publications" },
   { id: "events", label: "Events" },
