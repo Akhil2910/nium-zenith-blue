@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, CalendarDays } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import tgEmblem from "@/assets/tg-emblem.png";
 
 const links = [
   { id: "about", label: "About" },
   { id: "focus-areas", label: "Focus Areas" },
-  { id: "programs", label: "Programs" },
   { id: "partnerships", label: "Partnerships" },
   { id: "publications", label: "Publications" },
   { id: "events", label: "Events" },
@@ -107,7 +107,7 @@ export function Navbar() {
           {links.map((l) => (
             <a
               key={l.id}
-              href={`#${l.id}`}
+              href={`/#${l.id}`}
               className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
@@ -124,6 +124,16 @@ export function Navbar() {
               )}
             </a>
           ))}
+          <Link
+            to="/calendar"
+            className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition ${
+              scrolled
+                ? "bg-[var(--navy)] text-white hover:opacity-90"
+                : "bg-accent text-accent-foreground hover:brightness-95"
+            }`}
+          >
+            <CalendarDays size={13} /> Annual Calendar
+          </Link>
         </nav>
 
         <motion.div
@@ -155,13 +165,20 @@ export function Navbar() {
             {links.map((l) => (
               <a
                 key={l.id}
-                href={`#${l.id}`}
+                href={`/#${l.id}`}
                 onClick={() => setOpen(false)}
                 className="py-3 text-sm font-medium text-foreground border-b border-border last:border-0"
               >
                 {l.label}
               </a>
             ))}
+            <Link
+              to="/calendar"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center gap-2 rounded-full bg-[var(--navy)] text-white px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.16em]"
+            >
+              <CalendarDays size={14} /> Annual Calendar
+            </Link>
           </div>
         </div>
       )}
