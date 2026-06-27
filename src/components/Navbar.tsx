@@ -97,7 +97,7 @@ export function Navbar() {
             >
               NIUM
             </motion.div>
-            <div className={`hidden lg:block mt-1 text-[11px] uppercase tracking-[0.16em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+            <div className={`hidden xl:block mt-1 text-[11px] uppercase tracking-[0.16em] ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
           </motion.div>
@@ -140,7 +140,7 @@ export function Navbar() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7, delay: 0.75, ease: "easeOut" }}
-          className={`hidden lg:flex flex-col leading-tight pl-4 border-l shrink-0 ${scrolled ? "border-border" : "border-white/20"}`}
+          className={`hidden xl:flex flex-col leading-tight pl-4 border-l shrink-0 ${scrolled ? "border-border" : "border-white/20"}`}
         >
           <span className="text-xs font-bold uppercase tracking-[0.22em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
             Telangana

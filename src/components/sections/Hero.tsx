@@ -39,12 +39,22 @@ const slides: Slide[] = [
     badge: "Live Project",
   },
   {
-    eyebrow: "Heritage · Musi Riverfront",
-    headline: "Reviving the heritage of the",
-    accent: "Musi",
-    tail: "and Charminar precincts.",
+    eyebrow: "Public Health · Hyderabad District",
+    headline: "Reorganising coverage areas for",
+    accent: "ASHAs & ANMs",
+    tail: "in UPHCs of Hyderabad.",
     description:
-      "Heritage Partner Scheme PMU with ASI conservation plans for Charminar, Warangal Fort and 8 protected sites.",
+      "Creating spatial data for the coverage areas of ASHAs and ANMs across Hyderabad district's UPHCs — ensuring net-zero left-out areas in last-mile public health delivery.",
+    cta: { label: "Explore focus areas", href: "#focus-areas" },
+    badge: "Active PMU",
+  },
+  {
+    eyebrow: "Heritage · Shaikpet Sarai",
+    headline: "Adaptive reuse of the 17th-century",
+    accent: "Qutb Shahi",
+    tail: "resthouse at Shaikpet.",
+    description:
+      "Consultancy for adaptive reuse and site development — protecting and culturally reactivating a 17th-century Qutb Shahi sarai once used by visitors to the Golconda Fort.",
     cta: { label: "Heritage portfolio", href: "#focus-areas" },
     badge: "Heritage",
   },
