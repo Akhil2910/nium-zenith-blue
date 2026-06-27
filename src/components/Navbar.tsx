@@ -107,7 +107,7 @@ export function Navbar() {
           {links.map((l) => (
             <a
               key={l.id}
-              href={`#${l.id}`}
+              href={`/#${l.id}`}
               className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
@@ -124,6 +124,16 @@ export function Navbar() {
               )}
             </a>
           ))}
+          <Link
+            to="/calendar"
+            className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition ${
+              scrolled
+                ? "bg-[var(--navy)] text-white hover:opacity-90"
+                : "bg-accent text-accent-foreground hover:brightness-95"
+            }`}
+          >
+            <CalendarDays size={13} /> Annual Calendar
+          </Link>
         </nav>
 
         <motion.div
