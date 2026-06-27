@@ -165,13 +165,20 @@ export function Navbar() {
             {links.map((l) => (
               <a
                 key={l.id}
-                href={`#${l.id}`}
+                href={`/#${l.id}`}
                 onClick={() => setOpen(false)}
                 className="py-3 text-sm font-medium text-foreground border-b border-border last:border-0"
               >
                 {l.label}
               </a>
             ))}
+            <Link
+              to="/calendar"
+              onClick={() => setOpen(false)}
+              className="mt-2 inline-flex items-center gap-2 rounded-full bg-[var(--navy)] text-white px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.16em]"
+            >
+              <CalendarDays size={14} /> Annual Calendar
+            </Link>
           </div>
         </div>
       )}
