@@ -114,7 +114,7 @@ function CalendarPage() {
                 <Sparkles size={14} /> Annual Calendar · FY 2026
               </div>
               <h1 className="mt-4 font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
-                NIUM's calendar of <span className="text-[var(--gold)]">urban capacity</span>.
+                NIUM's calendar of <span className="text-[var(--gold)]">training and capacity building</span>.
               </h1>
               <p className="mt-5 text-base md:text-lg text-white/70 max-w-xl">
                 Every training programme, workshop and convening hosted by NIUM and MCR-HRD — across the year, in one place. Browse, plan and register.
