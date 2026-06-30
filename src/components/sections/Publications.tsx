@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, BookOpen, X, Loader2 } from "lucide-react";
+import { ArrowUpRight, BookOpen, X } from "lucide-react";
 
 import vol1Pdf from "@/assets/newsletters/vol1.pdf.asset.json";
 import vol2Pdf from "@/assets/newsletters/vol2.pdf.asset.json";
