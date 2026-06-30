@@ -160,16 +160,9 @@ export function Publications() {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/30 to-transparent" />
-              <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-accent/95 text-accent-foreground px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
-                Latest issue
-              </div>
               <div className="absolute bottom-0 left-0 right-0 p-7 text-primary-foreground">
                 <div className="text-xs uppercase tracking-[0.25em] opacity-80">Volume {featured.vol}</div>
                 <h3 className="mt-2 text-3xl font-bold leading-tight">Telangana Urban Bytes</h3>
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold">
-                  Read issue
-                  <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </div>
               </div>
             </div>
           </motion.button>
