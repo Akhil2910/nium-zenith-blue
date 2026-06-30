@@ -1,3 +1,11 @@
+import { Instagram, Linkedin, Twitter } from "lucide-react";
+
+const socials = [
+  { label: "Instagram", href: "https://www.instagram.com/nium_hyderabad/", Icon: Instagram },
+  { label: "X (Twitter)", href: "https://x.com/NIUM_Hyd", Icon: Twitter },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/niumhyd/posts/?feedView=all", Icon: Linkedin },
+];
+
 export function Footer() {
   return (
     <footer className="relative bg-[var(--navy)] text-white/80">
@@ -18,6 +26,20 @@ export function Footer() {
             An execution-ready institutional platform helping States plan better, deliver
             faster and govern smarter.
           </p>
+          <div className="mt-6 flex items-center gap-3">
+            {socials.map(({ label, href, Icon }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="group h-10 w-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white/75 hover:text-[var(--navy)] hover:bg-accent hover:border-accent transition-all"
+              >
+                <Icon size={16} className="transition-transform group-hover:scale-110" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div className="md:col-span-4">
