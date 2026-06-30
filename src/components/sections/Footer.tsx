@@ -67,9 +67,10 @@ export function Footer() {
         <div className="md:col-span-3">
           <div className="text-xs uppercase tracking-wider text-white/50 font-semibold">Office</div>
           <p className="mt-4 text-sm text-white/65 leading-relaxed">
-            CDMA Office,<br />
-            Government of Telangana,<br />
-            Hyderabad — 500004
+            NIUM, 3rd Floor, ENC (PH) Building,<br />
+            MA&amp;UD Campus, Kashana Building Complex,<br />
+            Opp: PTI Building, AC Guards,<br />
+            Masabtank, Hyderabad – 500004
           </p>
         </div>
       </div>
