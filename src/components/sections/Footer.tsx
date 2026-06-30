@@ -31,8 +31,8 @@ export function Footer() {
               <a
                 key={label}
                 href={href}
-                target="_top"
-                rel="noopener"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 title={label}
                 className="group h-10 w-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white/75 hover:text-[var(--navy)] hover:bg-accent hover:border-accent transition-all"
