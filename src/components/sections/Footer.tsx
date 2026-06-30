@@ -34,6 +34,11 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
+                onClick={(e) => {
+                  // Ensure link opens even inside sandboxed preview iframes
+                  e.preventDefault();
+                  window.open(href, "_blank", "noopener,noreferrer");
+                }}
                 className="group h-10 w-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white/75 hover:text-[var(--navy)] hover:bg-accent hover:border-accent transition-all"
               >
                 <Icon size={16} className="transition-transform group-hover:scale-110" />
