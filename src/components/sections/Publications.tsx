@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Download, ArrowUpRight, BookOpen } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, BookOpen, X, Loader2 } from "lucide-react";
 
 import vol1Pdf from "@/assets/newsletters/vol1.pdf.asset.json";
 import vol2Pdf from "@/assets/newsletters/vol2.pdf.asset.json";
@@ -23,7 +24,9 @@ import vol11Cover from "@/assets/newsletters/covers/vol11-1.jpg.asset.json";
 import vol12Cover from "@/assets/newsletters/covers/vol12-1.jpg.asset.json";
 import vol13Cover from "@/assets/newsletters/covers/vol13-1.jpg.asset.json";
 
-const newsletters = [
+type Newsletter = { vol: number; cover: string; pdf: string };
+
+const newsletters: Newsletter[] = [
   { vol: 13, cover: vol13Cover.url, pdf: vol13Pdf.url },
   { vol: 12, cover: vol12Cover.url, pdf: vol12Pdf.url },
   { vol: 11, cover: vol11Cover.url, pdf: vol11Pdf.url },
@@ -36,7 +39,88 @@ const newsletters = [
   { vol: 1, cover: vol1Cover.url, pdf: vol1Pdf.url },
 ];
 
+function PdfViewer({ item, onClose }: { item: Newsletter; onClose: () => void }) {
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    let revoked = false;
+    let createdUrl: string | null = null;
+    (async () => {
+      try {
+        const res = await fetch(item.pdf);
+        const blob = await res.blob();
+        const pdfBlob = blob.type === "application/pdf" ? blob : new Blob([blob], { type: "application/pdf" });
+        createdUrl = URL.createObjectURL(pdfBlob);
+        if (!revoked) setBlobUrl(createdUrl);
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", onKey);
+    return () => {
+      revoked = true;
+      if (createdUrl) URL.revokeObjectURL(createdUrl);
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [item.pdf, onClose]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-md flex items-center justify-center p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.96, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.96, opacity: 0 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-5xl h-[92vh] rounded-2xl overflow-hidden bg-card border border-border shadow-[var(--shadow-elevated)] flex flex-col"
+      >
+        <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-card">
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.22em] text-accent font-bold">
+              Telangana Urban Bytes
+            </div>
+            <div className="text-sm font-semibold text-foreground">Volume {item.vol}</div>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="h-9 w-9 rounded-full border border-border bg-background hover:bg-muted text-foreground flex items-center justify-center transition"
+          >
+            <X size={16} />
+          </button>
+        </div>
+        <div className="flex-1 bg-muted relative">
+          {!blobUrl && (
+            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
+              <Loader2 className="animate-spin" size={28} />
+            </div>
+          )}
+          {blobUrl && (
+            <iframe
+              src={blobUrl}
+              title={`Urban Bytes Volume ${item.vol}`}
+              className="absolute inset-0 h-full w-full"
+            />
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export function Publications() {
+  const [open, setOpen] = useState<Newsletter | null>(null);
   const [featured, ...rest] = newsletters;
 
   return (
@@ -58,18 +142,15 @@ export function Publications() {
           </div>
         </div>
 
-        {/* Featured + grid */}
         <div className="grid lg:grid-cols-12 gap-6">
-          {/* Featured latest */}
-          <motion.a
-            href={featured.pdf}
-            target="_blank"
-            rel="noreferrer"
+          <motion.button
+            type="button"
+            onClick={() => setOpen(featured)}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55 }}
-            className="group relative lg:col-span-5 rounded-3xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition"
+            className="group relative lg:col-span-5 rounded-3xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition text-left"
           >
             <div className="relative aspect-[3/4] overflow-hidden bg-muted">
               <img
@@ -91,22 +172,20 @@ export function Publications() {
                 </div>
               </div>
             </div>
-          </motion.a>
+          </motion.button>
 
-          {/* Grid of others */}
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-5 content-start">
             {rest.map((n, i) => (
-              <motion.a
+              <motion.button
                 key={n.vol}
-                href={n.pdf}
-                target="_blank"
-                rel="noreferrer"
+                type="button"
+                onClick={() => setOpen(n)}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.4, delay: i * 0.04 }}
                 whileHover={{ y: -4 }}
-                className="group relative rounded-2xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition"
+                className="group relative rounded-2xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition text-left"
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                   <img
@@ -124,15 +203,17 @@ export function Publications() {
                       Urban Bytes
                     </div>
                     <div className="h-8 w-8 rounded-full bg-accent text-accent-foreground flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                      <Download size={14} />
+                      <ArrowUpRight size={14} />
                     </div>
                   </div>
                 </div>
-              </motion.a>
+              </motion.button>
             ))}
           </div>
         </div>
       </div>
+
+      {open && <PdfViewer item={open} onClose={() => setOpen(null)} />}
     </section>
   );
 }
