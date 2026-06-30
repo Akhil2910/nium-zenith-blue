@@ -40,33 +40,20 @@ const newsletters: Newsletter[] = [
 ];
 
 function PdfViewer({ item, onClose }: { item: Newsletter; onClose: () => void }) {
-  const [blobUrl, setBlobUrl] = useState<string | null>(null);
-
   useEffect(() => {
-    let revoked = false;
-    let createdUrl: string | null = null;
-    (async () => {
-      try {
-        const res = await fetch(item.pdf);
-        const blob = await res.blob();
-        const pdfBlob = blob.type === "application/pdf" ? blob : new Blob([blob], { type: "application/pdf" });
-        createdUrl = URL.createObjectURL(pdfBlob);
-        if (!revoked) setBlobUrl(createdUrl);
-      } catch (e) {
-        console.error(e);
-      }
-    })();
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
     return () => {
-      revoked = true;
-      if (createdUrl) URL.revokeObjectURL(createdUrl);
       document.body.style.overflow = prevOverflow;
       window.removeEventListener("keydown", onKey);
     };
-  }, [item.pdf, onClose]);
+  }, [onClose]);
+
+  const viewerSrc = `https://docs.google.com/gview?url=${encodeURIComponent(
+    window.location.origin + item.pdf
+  )}&embedded=true`;
 
   return (
     <motion.div
@@ -101,23 +88,17 @@ function PdfViewer({ item, onClose }: { item: Newsletter; onClose: () => void })
           </button>
         </div>
         <div className="flex-1 bg-muted relative">
-          {!blobUrl && (
-            <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-              <Loader2 className="animate-spin" size={28} />
-            </div>
-          )}
-          {blobUrl && (
-            <iframe
-              src={blobUrl}
-              title={`Urban Bytes Volume ${item.vol}`}
-              className="absolute inset-0 h-full w-full"
-            />
-          )}
+          <iframe
+            src={viewerSrc}
+            title={`Urban Bytes Volume ${item.vol}`}
+            className="absolute inset-0 h-full w-full"
+          />
         </div>
       </motion.div>
     </motion.div>
   );
 }
+
 
 export function Publications() {
   const [open, setOpen] = useState<Newsletter | null>(null);
