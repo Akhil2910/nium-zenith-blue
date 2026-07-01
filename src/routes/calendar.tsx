@@ -266,9 +266,13 @@ function EventDialog({ event, onClose }: { event: EventRow; onClose: () => void 
     e.preventDefault();
     setSubmitting(true);
     const { data: ud } = await supabase.auth.getUser();
+    if (!ud.user) {
+      setSubmitting(false);
+      return toast.error("Please sign in to register for events.");
+    }
     const { error } = await supabase.from("registrations").insert({
       event_id: event.id,
-      user_id: ud.user?.id ?? null,
+      user_id: ud.user.id,
       ...form,
     });
     setSubmitting(false);
