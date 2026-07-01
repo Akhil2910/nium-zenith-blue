@@ -124,7 +124,7 @@ export function Publications() {
         <div className="grid lg:grid-cols-12 gap-6">
           <motion.button
             type="button"
-            onClick={() => setOpen(featured)}
+            onClick={() => window.open(featured.pdf, "_blank", "noopener,noreferrer")}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -151,7 +151,7 @@ export function Publications() {
               <motion.button
                 key={n.vol}
                 type="button"
-                onClick={() => setOpen(n)}
+                onClick={() => window.open(n.pdf, "_blank", "noopener,noreferrer")}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
