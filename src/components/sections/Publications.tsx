@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import { ArrowUpRight, BookOpen, X } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 
 import vol1Pdf from "@/assets/newsletters/vol1.pdf.asset.json";
 import vol2Pdf from "@/assets/newsletters/vol2.pdf.asset.json";
@@ -39,67 +38,7 @@ const newsletters: Newsletter[] = [
   { vol: 1, cover: vol1Cover.url, pdf: vol1Pdf.url },
 ];
 
-function PdfViewer({ item, onClose }: { item: Newsletter; onClose: () => void }) {
-  useEffect(() => {
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [onClose]);
-
-  const viewerSrc = `${item.pdf}#toolbar=1&navpanes=0`;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-[100] bg-background/80 backdrop-blur-md flex items-center justify-center p-4"
-      onClick={onClose}
-    >
-      <motion.div
-        initial={{ scale: 0.96, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.96, opacity: 0 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-        onClick={(e) => e.stopPropagation()}
-        className="relative w-full max-w-5xl h-[92vh] rounded-2xl overflow-hidden bg-card border border-border shadow-[var(--shadow-elevated)] flex flex-col"
-      >
-        <div className="flex items-center justify-between px-5 py-3 border-b border-border bg-card">
-          <div>
-            <div className="text-[10px] uppercase tracking-[0.22em] text-accent font-bold">
-              Telangana Urban Bytes
-            </div>
-            <div className="text-sm font-semibold text-foreground">Volume {item.vol}</div>
-          </div>
-          <button
-            onClick={onClose}
-            aria-label="Close"
-            className="h-9 w-9 rounded-full border border-border bg-background hover:bg-muted text-foreground flex items-center justify-center transition"
-          >
-            <X size={16} />
-          </button>
-        </div>
-        <div className="flex-1 bg-muted relative">
-          <iframe
-            src={viewerSrc}
-            title={`Urban Bytes Volume ${item.vol}`}
-            className="absolute inset-0 h-full w-full"
-          />
-        </div>
-      </motion.div>
-    </motion.div>
-  );
-}
-
-
 export function Publications() {
-  const [open, setOpen] = useState<Newsletter | null>(null);
   const [featured, ...rest] = newsletters;
 
   return (
@@ -122,9 +61,10 @@ export function Publications() {
         </div>
 
         <div className="grid lg:grid-cols-12 gap-6">
-          <motion.button
-            type="button"
-            onClick={() => window.open(featured.pdf, "_blank", "noopener,noreferrer")}
+          <motion.a
+            href={featured.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -144,14 +84,15 @@ export function Publications() {
                 <h3 className="mt-2 text-3xl font-bold leading-tight">Telangana Urban Bytes</h3>
               </div>
             </div>
-          </motion.button>
+          </motion.a>
 
           <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-5 content-start">
             {rest.map((n, i) => (
-              <motion.button
+              <motion.a
                 key={n.vol}
-                type="button"
-                onClick={() => window.open(n.pdf, "_blank", "noopener,noreferrer")}
+                href={n.pdf}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
@@ -179,13 +120,11 @@ export function Publications() {
                     </div>
                   </div>
                 </div>
-              </motion.button>
+              </motion.a>
             ))}
           </div>
         </div>
       </div>
-
-      {open && <PdfViewer item={open} onClose={() => setOpen(null)} />}
     </section>
   );
 }
