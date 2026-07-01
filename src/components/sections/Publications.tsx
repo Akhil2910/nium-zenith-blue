@@ -51,9 +51,7 @@ function PdfViewer({ item, onClose }: { item: Newsletter; onClose: () => void })
     };
   }, [onClose]);
 
-  const viewerSrc = `https://docs.google.com/gview?url=${encodeURIComponent(
-    window.location.origin + item.pdf
-  )}&embedded=true`;
+  const viewerSrc = `${item.pdf}#toolbar=1&navpanes=0`;
 
   return (
     <motion.div
