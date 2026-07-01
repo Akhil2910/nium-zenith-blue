@@ -63,8 +63,7 @@ export function Publications() {
         <div className="grid lg:grid-cols-12 gap-6">
           <motion.a
             href={featured.pdf}
-            target="_blank"
-            rel="noopener noreferrer"
+            download={`telangana-urban-bytes-vol-${featured.vol}.pdf`}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
@@ -91,8 +90,7 @@ export function Publications() {
               <motion.a
                 key={n.vol}
                 href={n.pdf}
-                target="_blank"
-                rel="noopener noreferrer"
+                download={`telangana-urban-bytes-vol-${n.vol}.pdf`}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
