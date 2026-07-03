@@ -1,73 +1,9 @@
 import { motion } from "framer-motion";
-import { Target, Compass, Crown, UserCheck } from "lucide-react";
+import { Target, Compass, Crown, UserCheck, ArrowRight } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import eventImg from "@/assets/event-policy.jpg";
 import secImg from "@/assets/secretary-sridevi.webp";
 
-const directors = [
-  { name: "J Srinivasa Rao", role: "Executive Director" },
-  { name: "Lawanya Gotety", role: "Director – Urban Governance" },
-  { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
-  { name: "V Prashanthi", role: "Executive Head, UIIC" },
-];
-
-const kmTeam = [
-  { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
-  { name: "Maddiboina Phani Gopal", role: "Programme Head" },
-  { name: "Konduri Ravalee", role: "Programme Head" },
-  { name: "P Yashwanth", role: "Senior Knowledge Manager" },
-  { name: "Venugopal V", role: "Programme Head (SBM)" },
-  { name: "G. Laxmi Narayana", role: "Administrative Officer" },
-  { name: "Nitya Khendry", role: "Lead – Heritage" },
-  { name: "Kiran Kumar Bingi", role: "Executive Manager (Programmes & Administration)" },
-  { name: "G. Sowmya", role: "Research Associate" },
-  { name: "D. Sindhu Priya Reddy", role: "Knowledge Manager" },
-  { name: "Manem Jahnavi", role: "Knowledge Manager" },
-  { name: "Suresh Bodiga", role: "Manager (Operations)" },
-  { name: "R Prajwala Sam", role: "Research Associate" },
-  { name: "Nadigoti Vennela Rani", role: "HR Executive" },
-  { name: "Shaik Naseema Banu", role: "Research Associate" },
-  { name: "G Venkatesham", role: "Research Associate" },
-  { name: "K Vamshi Krishna Guptha", role: "Knowledge Manager" },
-];
-
-const itTeam = [
-  { name: "V Akhil Babu", role: "Software Engineer" },
-  { name: "Jayaram Rathod", role: "Senior Developer" },
-  { name: "Vikash Pilli", role: "Functional Expert" },
-  { name: "Jaipal Pola", role: "Software Developer" },
-];
-
-function initials(name: string) {
-  return name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((n) => n[0])
-    .join("")
-    .toUpperCase();
-}
-
-function PersonCard({ name, role }: { name: string; role: string }) {
-  return (
-    <a
-      href="#"
-      className="group block rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] hover:border-accent/40 transition"
-    >
-      <div className="flex items-start gap-3">
-        <div className="h-11 w-11 shrink-0 rounded-full bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display font-bold text-sm">
-          {initials(name)}
-        </div>
-        <div className="min-w-0">
-          <div className="font-semibold text-foreground text-sm leading-tight">{name}</div>
-          <div className="mt-1 text-xs text-muted-foreground leading-snug">{role}</div>
-          <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
-            Profile →
-          </div>
-        </div>
-      </div>
-    </a>
-  );
-}
 
 
 export function About() {
