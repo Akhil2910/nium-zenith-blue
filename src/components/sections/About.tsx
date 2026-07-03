@@ -212,45 +212,14 @@ export function About() {
             </a>
           </div>
 
-          {/* Directors */}
-          <div className="mb-12">
-            <div className="flex items-baseline justify-between mb-5">
-              <h4 className="font-display text-xl font-bold text-foreground">Directors</h4>
-              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Leadership team</span>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {directors.map((p) => (
-                <PersonCard key={p.name} name={p.name} role={p.role} />
-              ))}
-            </div>
-          </div>
-
-          {/* Knowledge Management & Research */}
-          <div className="mb-12">
-            <div className="flex items-baseline justify-between mb-5">
-              <h4 className="font-display text-xl font-bold text-foreground">
-                Knowledge Management & Research
-              </h4>
-              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Programmes team</span>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {kmTeam.map((p) => (
-                <PersonCard key={p.name} name={p.name} role={p.role} />
-              ))}
-            </div>
-          </div>
-
-          {/* IT Team */}
           <div>
-            <div className="flex items-baseline justify-between mb-5">
-              <h4 className="font-display text-xl font-bold text-foreground">IT Team</h4>
-              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">NIUM-IT</span>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {itTeam.map((p) => (
-                <PersonCard key={p.name} name={p.name} role={p.role} />
-              ))}
-            </div>
+            <Link
+              to="/team"
+              className="group inline-flex items-center gap-2 rounded-full bg-[var(--navy)] px-6 py-3 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] hover:brightness-110 transition"
+            >
+              Meet the full team
+              <ArrowRight size={16} className="transition group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </div>
