@@ -14,6 +14,7 @@ type Slide = {
   tail: string;
   description: string;
   cta: { label: string; href: string };
+  cta2: { label: string; href: string };
   badge: string;
 };
 
@@ -26,6 +27,7 @@ const slides: Slide[] = [
     description:
       "Telangana's premier institute for urban management — training the leaders, shaping the policies and engineering the digital systems that build tomorrow's cities.",
     cta: { label: "Explore programs", href: "#focus-areas" },
+    cta2: { label: "About NIUM", href: "#about" },
     badge: "Flagship Mandate",
   },
   {
@@ -36,7 +38,8 @@ const slides: Slide[] = [
     description:
       "A live, AI-driven nerve centre integrating traffic, utilities, safety and citizen services across Telangana's urban clusters.",
     cta: { label: "Inside AI-ICCC", href: "#aiccc" },
-    badge: "Live Project",
+    cta2: { label: "Watch AI-ICCC story", href: "#aiccc" },
+    badge: "Live Projects",
   },
   {
     eyebrow: "Public Health · Hyderabad District",
@@ -46,6 +49,7 @@ const slides: Slide[] = [
     description:
       "Creating spatial data for the coverage areas of ASHAs and ANMs across Hyderabad district's UPHCs — ensuring net-zero left-out areas in last-mile public health delivery.",
     cta: { label: "Explore focus areas", href: "#focus-areas" },
+    cta2: { label: "Public Health vertical", href: "#focus-areas" },
     badge: "Active PMU",
   },
   {
@@ -56,6 +60,7 @@ const slides: Slide[] = [
     description:
       "Flagship programmes for Mayors & Chairpersons, SBM 2.0 SPIU capacity building & IEC, ToT on City Sanitation Plans, and Municipal Bonds & Urban Infrastructure Financing.",
     cta: { label: "Explore programmes", href: "#focus-areas" },
+    cta2: { label: "Capacity Building vertical", href: "#focus-areas" },
     badge: "Capacity Building",
   },
   {
@@ -67,6 +72,7 @@ const slides: Slide[] = [
     description:
       "Consultancy for adaptive reuse and site development — protecting and culturally reactivating a 17th-century Qutb Shahi sarai once used by visitors to the Golconda Fort.",
     cta: { label: "Heritage portfolio", href: "#focus-areas" },
+    cta2: { label: "Heritage vertical", href: "#focus-areas" },
     badge: "Heritage",
   },
 ];
@@ -161,13 +167,13 @@ export function Hero() {
                 <ArrowRight size={16} className="transition group-hover:translate-x-1" />
               </a>
               <a
-                href="#aiccc"
+                href={cur.cta2.href}
                 className="group inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/5 backdrop-blur px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
               >
                 <span className="h-7 w-7 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition">
                   <Play size={12} className="ml-0.5" />
                 </span>
-                Watch AI-ICCC story
+                {cur.cta2.label}
               </a>
             </div>
           </motion.div>
