@@ -1,18 +1,28 @@
 import { motion } from "framer-motion";
 import trainingImg from "@/assets/event-training.jpg";
 import conclaveImg from "@/assets/event-conclave.jpg";
+import niuaLogo from "@/assets/partners/niua.png.asset.json";
+import tissLogo from "@/assets/partners/tiss.png.asset.json";
+import hudcoLogo from "@/assets/partners/hudco.png.asset.json";
+import nitcLogo from "@/assets/partners/nitc.png.asset.json";
+import unicefLogo from "@/assets/partners/unicef.png.asset.json";
+import bordeauxLogo from "@/assets/partners/bordeaux.jpg.asset.json";
+import wmfLogo from "@/assets/partners/wmf.png.asset.json";
+import aktcLogo from "@/assets/partners/aktc.jpg.asset.json";
+import asiLogo from "@/assets/partners/asi.jpg.asset.json";
 
-const partners = [
-  "NIUA, New Delhi",
-  "TISS",
-  "RCUES Hyderabad",
-  "HUDCO",
-  "NIT Calicut",
-  "UNICEF",
-  "WMF · Bordeaux Metropole",
-  "AKTC",
-  "ASI",
-  "QQSUDA",
+const partners: { name: string; logo?: string; bg?: string }[] = [
+  { name: "NIUA, New Delhi", logo: niuaLogo.url, bg: "bg-[var(--navy)]" },
+  { name: "TISS", logo: tissLogo.url },
+  { name: "RCUES Hyderabad" },
+  { name: "HUDCO", logo: hudcoLogo.url },
+  { name: "NIT Calicut", logo: nitcLogo.url },
+  { name: "UNICEF", logo: unicefLogo.url },
+  { name: "WMF · Bordeaux Metropole", logo: bordeauxLogo.url },
+  { name: "World Monuments Fund", logo: wmfLogo.url },
+  { name: "AKTC", logo: aktcLogo.url },
+  { name: "ASI", logo: asiLogo.url },
+  { name: "QQSUDA" },
 ];
 
 export function Partnerships() {
@@ -43,17 +53,21 @@ export function Partnerships() {
             <div className="grid sm:grid-cols-2 gap-3">
               {partners.map((p, i) => (
                 <motion.div
-                  key={p}
+                  key={p.name}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: (i % 4) * 0.05 }}
-                  className="group flex items-center gap-4 rounded-xl border border-border bg-card px-5 py-5 hover:border-accent/50 hover:shadow-[var(--shadow-card)] transition"
+                  className="group flex items-center gap-4 rounded-xl border border-border bg-card px-5 py-4 hover:border-accent/50 hover:shadow-[var(--shadow-card)] transition"
                 >
-                  <div className="h-11 w-11 rounded-lg bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display font-bold text-sm">
-                    {p.split(/[\s,]/)[0].slice(0, 2).toUpperCase()}
+                  <div className={`h-14 w-14 shrink-0 rounded-lg flex items-center justify-center overflow-hidden ${p.logo ? (p.bg ?? "bg-white border border-border") : "bg-[var(--gradient-band)] text-primary-foreground font-display font-bold text-sm"}`}>
+                    {p.logo ? (
+                      <img src={p.logo} alt={p.name} className="max-h-11 max-w-11 object-contain" loading="lazy" />
+                    ) : (
+                      p.name.split(/[\s,]/)[0].slice(0, 2).toUpperCase()
+                    )}
                   </div>
-                  <div className="font-medium text-foreground text-sm leading-tight">{p}</div>
+                  <div className="font-medium text-foreground text-sm leading-tight">{p.name}</div>
                 </motion.div>
               ))}
             </div>
