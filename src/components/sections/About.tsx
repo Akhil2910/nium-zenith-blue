@@ -220,7 +220,7 @@ export function About() {
           </div>
         </div>
 
-        {/* Team */}
+        {/* Leadership row: DG + Advisor */}
         <div className="mt-24">
           <div className="max-w-2xl mb-10">
             <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">Our Team</span>
@@ -228,24 +228,93 @@ export function About() {
               The people behind NIUM.
             </h3>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {team.map((t, i) => (
-              <motion.div
-                key={t.role}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                whileHover={{ y: -4 }}
-                className="group rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition"
-              >
-                <div className="h-12 w-12 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center shadow-lg">
-                  <t.icon size={22} />
+
+          <div className="grid md:grid-cols-2 gap-5 mb-14">
+            <a
+              href="#"
+              className="group flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition"
+            >
+              <img
+                src={secImg}
+                alt="Director General"
+                className="h-24 w-24 rounded-xl object-cover object-top border border-border"
+                loading="lazy"
+              />
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
+                  <Crown size={14} /> Director General
                 </div>
-                <h4 className="mt-5 text-base font-bold text-foreground">{t.role}</h4>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t.desc}</p>
-              </motion.div>
-            ))}
+                <div className="mt-2 font-display text-lg font-bold text-foreground">Dr. T.K. Sreedevi IAS</div>
+                <div className="mt-1 text-sm text-muted-foreground leading-snug">
+                  Director General, NIUM · Strategic leadership across all verticals.
+                </div>
+                <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
+                  Profile →
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="#"
+              className="group flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition"
+            >
+              <div className="h-24 w-24 shrink-0 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center">
+                <UserCheck size={32} />
+              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
+                  <UserCheck size={14} /> Honorary Advisor
+                </div>
+                <div className="mt-2 font-display text-lg font-bold text-foreground">Dr. P.K. Mohanty, IAS (Retd.)</div>
+                <div className="mt-1 text-sm text-muted-foreground leading-snug">
+                  Executive Chair – Research and Programmes.
+                </div>
+                <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
+                  Profile →
+                </div>
+              </div>
+            </a>
+          </div>
+
+          {/* Directors */}
+          <div className="mb-12">
+            <div className="flex items-baseline justify-between mb-5">
+              <h4 className="font-display text-xl font-bold text-foreground">Directors</h4>
+              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Leadership team</span>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {directors.map((p) => (
+                <PersonCard key={p.name} name={p.name} role={p.role} />
+              ))}
+            </div>
+          </div>
+
+          {/* Knowledge Management & Research */}
+          <div className="mb-12">
+            <div className="flex items-baseline justify-between mb-5">
+              <h4 className="font-display text-xl font-bold text-foreground">
+                Knowledge Management & Research
+              </h4>
+              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Programmes team</span>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              {kmTeam.map((p) => (
+                <PersonCard key={p.name} name={p.name} role={p.role} />
+              ))}
+            </div>
+          </div>
+
+          {/* IT Team */}
+          <div>
+            <div className="flex items-baseline justify-between mb-5">
+              <h4 className="font-display text-xl font-bold text-foreground">IT Team</h4>
+              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">NIUM-IT</span>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {itTeam.map((p) => (
+                <PersonCard key={p.name} name={p.name} role={p.role} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
