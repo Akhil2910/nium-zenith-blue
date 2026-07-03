@@ -14,6 +14,8 @@ const links = [
   { id: "contact", label: "Contact Us" },
 ];
 
+const routeLinks = [{ to: "/team", label: "Team" }];
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("hero");
@@ -124,6 +126,17 @@ export function Navbar() {
               )}
             </a>
           ))}
+          {routeLinks.map((r) => (
+            <Link
+              key={r.to}
+              to={r.to}
+              className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
+                scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/75 hover:text-white"
+              }`}
+            >
+              {r.label}
+            </Link>
+          ))}
           <Link
             to="/calendar"
             className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition ${
@@ -171,6 +184,16 @@ export function Navbar() {
               >
                 {l.label}
               </a>
+            ))}
+            {routeLinks.map((r) => (
+              <Link
+                key={r.to}
+                to={r.to}
+                onClick={() => setOpen(false)}
+                className="py-3 text-sm font-medium text-foreground border-b border-border"
+              >
+                {r.label}
+              </Link>
             ))}
             <Link
               to="/calendar"

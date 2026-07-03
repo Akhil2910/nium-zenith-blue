@@ -42,14 +42,14 @@ const slides: Slide[] = [
     badge: "Live Projects",
   },
   {
-    eyebrow: "Public Health · Hyderabad District",
+    eyebrow: "Project Management · Hyderabad District",
     headline: "Reorganising coverage areas for",
     accent: "ASHAs & ANMs",
     tail: "in UPHCs of Hyderabad.",
     description:
       "Creating spatial data for the coverage areas of ASHAs and ANMs across Hyderabad district's UPHCs — ensuring net-zero left-out areas in last-mile public health delivery.",
     cta: { label: "Explore focus areas", href: "#focus-areas" },
-    cta2: { label: "Public Health vertical", href: "#focus-areas" },
+    cta2: { label: "Project Management vertical", href: "#focus-areas" },
     badge: "Active PMU",
   },
   {
