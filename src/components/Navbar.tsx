@@ -14,6 +14,8 @@ const links = [
   { id: "contact", label: "Contact Us" },
 ];
 
+const routeLinks = [{ to: "/team", label: "Team" }];
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("hero");

@@ -10,6 +10,7 @@ import bordeauxLogo from "@/assets/partners/bordeaux.jpg.asset.json";
 import wmfLogo from "@/assets/partners/wmf.png.asset.json";
 import aktcLogo from "@/assets/partners/aktc.jpg.asset.json";
 import asiLogo from "@/assets/partners/asi.jpg.asset.json";
+import qqsudaLogo from "@/assets/partners/qqsuda.jpg.asset.json";
 
 const partners: { name: string; logo?: string; bg?: string }[] = [
   { name: "NIUA, New Delhi", logo: niuaLogo.url, bg: "bg-[var(--navy)]" },
@@ -22,7 +23,7 @@ const partners: { name: string; logo?: string; bg?: string }[] = [
   { name: "World Monuments Fund", logo: wmfLogo.url },
   { name: "AKTC", logo: aktcLogo.url },
   { name: "ASI", logo: asiLogo.url },
-  { name: "QQSUDA" },
+  { name: "QQSUDA", logo: qqsudaLogo.url },
 ];
 
 export function Partnerships() {
