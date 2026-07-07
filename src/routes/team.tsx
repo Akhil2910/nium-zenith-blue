@@ -19,22 +19,22 @@ export const Route = createFileRoute("/team")({
 });
 
 const directors = [
-  { name: "J Srinivasa Rao", role: "Executive Director" },
-  { name: "Lawanya Gotety", role: "Director – Urban Governance" },
   { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
+  { name: "J Srinivasa Rao", role: "Executive Director" },
   { name: "V Prashanthi", role: "Executive Head, UIIC" },
+  { name: "Lawanya Gotety", role: "Director – Urban Governance" },
 ];
 
 const itTeam = [
-  { name: "V Akhil Babu", role: "Software Engineer" },
-  { name: "Jayaram Rathod", role: "Senior Developer" },
+  { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
+  { name: "Maddiboina Phani Gopal", role: "Programme Head" },
   { name: "Vikash Pilli", role: "Functional Expert" },
+  { name: "Jayaram Rathod", role: "Senior Developer" },
   { name: "Jaipal Pola", role: "Software Developer" },
+  { name: "V Akhil Babu", role: "Software Engineer" },
 ];
 
 const otherTeam = [
-  { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
-  { name: "Maddiboina Phani Gopal", role: "Programme Head" },
   { name: "Konduri Ravalee", role: "Programme Head" },
   { name: "P Yashwanth", role: "Senior Knowledge Manager" },
   { name: "Venugopal V", role: "Programme Head (SBM)" },
