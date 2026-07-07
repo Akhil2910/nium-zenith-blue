@@ -145,9 +145,12 @@ function TeamPage() {
               href="#"
               className="group flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition max-w-2xl"
             >
-              <div className="h-24 w-24 shrink-0 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center">
-                <UserCheck size={32} />
-              </div>
+              <img
+                src={pkmAsset.url}
+                alt="Dr. P.K. Mohanty"
+                className="h-24 w-24 rounded-xl object-cover object-top border border-border"
+                loading="lazy"
+              />
               <div className="min-w-0">
                 <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
                   <UserCheck size={14} /> Honorary Advisor
