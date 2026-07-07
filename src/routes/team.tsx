@@ -4,6 +4,7 @@ import { Crown, UserCheck } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import secImg from "@/assets/secretary-sridevi.webp";
+import pkmAsset from "@/assets/pk-mohanty.jpg.asset.json";
 
 export const Route = createFileRoute("/team")({
   component: TeamPage,
