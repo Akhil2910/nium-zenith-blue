@@ -3,6 +3,7 @@ import { Target, Compass, Crown, UserCheck, ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import eventImg from "@/assets/event-policy.jpg";
 import secImg from "@/assets/secretary-sridevi.webp";
+import pkmAsset from "@/assets/pk-mohanty.jpg.asset.json";
 
 
 
