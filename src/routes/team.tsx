@@ -4,6 +4,7 @@ import { Crown, UserCheck } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import secImg from "@/assets/secretary-sridevi.webp";
+import pkmAsset from "@/assets/pk-mohanty.jpg.asset.json";
 
 export const Route = createFileRoute("/team")({
   component: TeamPage,
@@ -18,22 +19,22 @@ export const Route = createFileRoute("/team")({
 });
 
 const directors = [
-  { name: "J Srinivasa Rao", role: "Executive Director" },
-  { name: "Lawanya Gotety", role: "Director – Urban Governance" },
   { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
+  { name: "J Srinivasa Rao", role: "Executive Director" },
   { name: "V Prashanthi", role: "Executive Head, UIIC" },
+  { name: "Lawanya Gotety", role: "Director – Urban Governance" },
 ];
 
 const itTeam = [
-  { name: "V Akhil Babu", role: "Software Engineer" },
-  { name: "Jayaram Rathod", role: "Senior Developer" },
+  { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
+  { name: "Maddiboina Phani Gopal", role: "Programme Head" },
   { name: "Vikash Pilli", role: "Functional Expert" },
+  { name: "Jayaram Rathod", role: "Senior Developer" },
   { name: "Jaipal Pola", role: "Software Developer" },
+  { name: "V Akhil Babu", role: "Software Engineer" },
 ];
 
 const otherTeam = [
-  { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
-  { name: "Maddiboina Phani Gopal", role: "Programme Head" },
   { name: "Konduri Ravalee", role: "Programme Head" },
   { name: "P Yashwanth", role: "Senior Knowledge Manager" },
   { name: "Venugopal V", role: "Programme Head (SBM)" },
@@ -144,9 +145,12 @@ function TeamPage() {
               href="#"
               className="group flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition max-w-2xl"
             >
-              <div className="h-24 w-24 shrink-0 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center">
-                <UserCheck size={32} />
-              </div>
+              <img
+                src={pkmAsset.url}
+                alt="Dr. P.K. Mohanty"
+                className="h-24 w-24 rounded-xl object-cover object-top border border-border"
+                loading="lazy"
+              />
               <div className="min-w-0">
                 <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
                   <UserCheck size={14} /> Honorary Advisor
