@@ -19,11 +19,12 @@ export const Route = createFileRoute("/team")({
 });
 
 const directors = [
-  { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
   { name: "J Srinivasa Rao", role: "Executive Director" },
+  { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
   { name: "V Prashanthi", role: "Executive Head, UIIC" },
   { name: "Lawanya Gotety", role: "Director – Urban Governance" },
 ];
+
 
 const itTeam = [
   { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
