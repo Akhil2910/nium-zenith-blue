@@ -79,6 +79,8 @@
 @layer base {
   * { border-color: var(--color-border); }
   html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  html.fs-lg { font-size: 112.5%; }
+  html.fs-xl { font-size: 125%; }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -87,6 +89,7 @@
   }
   h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
 }
+
 
 @keyframes marquee {
   from { transform: translateX(0); }
