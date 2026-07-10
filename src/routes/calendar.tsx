@@ -42,6 +42,21 @@ function CalendarPage() {
   const today = new Date();
   const [cursor, setCursor] = useState(new Date(today.getFullYear() >= 2026 ? today.getFullYear() : 2026, today.getMonth(), 1));
   const [selected, setSelected] = useState<EventRow | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  function downloadCSV(rows: EventRow[], filename: string) {
+    const header = ["Title","Start","End","Source","Theme","Sub-theme","Participants","Coordinator","Department"];
+    const esc = (v: string | null | undefined) => `"${(v ?? "").replace(/"/g, '""')}"`;
+    const lines = [header.join(","), ...rows.map((r) =>
+      [r.title, r.start_date, r.end_date, r.source, r.theme, r.subtheme, r.participants, r.coordinator, r.department].map(esc).join(",")
+    )];
+    const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename; a.click();
+    URL.revokeObjectURL(url);
+  }
+
 
   useEffect(() => {
     (async () => {
