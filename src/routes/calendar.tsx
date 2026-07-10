@@ -205,7 +205,7 @@ function CalendarPage() {
             >
               <div className="grid grid-cols-7 border-b border-border bg-surface">
                 {["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map((d) => (
-                  <div key={d} className="px-3 py-2.5 text-[10px] uppercase tracking-[0.22em] text-muted-foreground font-semibold text-center">{d}</div>
+                  <div key={d} className="px-3 py-2.5 text-[11px] uppercase tracking-[0.22em] text-foreground font-bold text-center">{d}</div>
                 ))}
               </div>
               <div className="grid grid-cols-7">
@@ -213,7 +213,7 @@ function CalendarPage() {
                   <div key={i} className={`min-h-[110px] border-r border-b border-border last:border-r-0 p-2 ${cell.day === null ? "bg-surface/40" : ""}`}>
                     {cell.day && (
                       <>
-                        <div className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold ${isToday(cell.day) ? "bg-accent text-accent-foreground" : "text-foreground"}`}>
+                        <div className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold ${isToday(cell.day) ? "bg-accent text-accent-foreground" : "text-foreground"}`}>
                           {cell.day}
                         </div>
                         <div className="mt-1.5 space-y-1">
@@ -222,17 +222,20 @@ function CalendarPage() {
                               key={ev.id}
                               onClick={() => setSelected(ev)}
                               title={ev.title}
-                              className={`block w-full text-left text-[10px] leading-tight font-medium truncate rounded px-1.5 py-1 transition hover:brightness-95 ${
-                                ev.source === "MCR-HRD" ? "bg-[var(--cyan-brand)]/15 text-[var(--cyan-brand)]" : "bg-accent/15 text-[color:var(--gold)]"
+                              className={`block w-full text-left text-[11px] leading-tight font-semibold truncate rounded px-1.5 py-1 transition hover:brightness-95 ${
+                                ev.source === "MCR-HRD"
+                                  ? "bg-[var(--cyan-brand)]/20 text-[var(--navy)]"
+                                  : "bg-accent/25 text-[var(--navy)]"
                               }`}
                             >
                               {ev.title}
                             </button>
                           ))}
                           {cell.events.length > 3 && (
-                            <div className="text-[10px] text-muted-foreground px-1.5">+{cell.events.length - 3} more</div>
+                            <div className="text-[11px] text-foreground font-semibold px-1.5">+{cell.events.length - 3} more</div>
                           )}
                         </div>
+
                       </>
                     )}
                   </div>
