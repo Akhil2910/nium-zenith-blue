@@ -167,11 +167,12 @@ function TeamPage() {
             </a>
           </Section>
 
-          <Section title="Directors" subtitle="Leadership team">
+          <Section title="Executive Directors" subtitle="Leadership team">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {directors.map((p) => <PersonCard key={p.name} {...p} />)}
             </div>
           </Section>
+
 
           <Section title="IT Team" subtitle="NIUM-IT">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
