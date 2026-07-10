@@ -135,12 +135,25 @@ function CalendarPage() {
                 Every training programme, workshop and convening hosted by NIUM and MCR-HRD — across the year, in one place. Browse, plan and register.
               </p>
             </div>
-            <div className="flex items-center gap-3 rounded-full border border-white/15 bg-white/5 backdrop-blur px-5 py-3">
-              <span className="text-3xl font-display font-bold text-[var(--gold)]">{events.length}</span>
-              <div className="text-xs uppercase tracking-[0.2em] text-white/70 leading-tight">
-                Events<br />on calendar
-              </div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowAll(true)}
+                className="flex items-center gap-3 rounded-full border border-white/15 bg-white/5 backdrop-blur px-5 py-3 hover:bg-white/10 transition"
+              >
+                <span className="text-3xl font-display font-bold text-[var(--gold)]">{events.length}</span>
+                <div className="text-xs uppercase tracking-[0.2em] text-white/80 leading-tight text-left">
+                  Events<br />on calendar
+                </div>
+              </button>
+              <button
+                onClick={() => downloadCSV(events, `nium-calendar-all-${events.length}-events.csv`)}
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] text-[var(--navy)] px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] hover:brightness-95 transition"
+                title="Download all events as CSV"
+              >
+                <Download size={14} /> Download all
+              </button>
             </div>
+
           </div>
         </div>
       </section>
