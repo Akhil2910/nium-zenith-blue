@@ -159,7 +159,7 @@ export function Navbar() {
             <a
               key={l.id}
               href={`/#${l.id}`}
-              className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
+              className={`relative px-2.5 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
                     ? "text-primary"
@@ -179,7 +179,7 @@ export function Navbar() {
             <Link
               key={r.to}
               to={r.to}
-              className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
+              className={`relative px-2.5 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
                 scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/75 hover:text-white"
               }`}
             >
@@ -188,7 +188,7 @@ export function Navbar() {
           ))}
           <Link
             to="/calendar"
-            className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.16em] transition ${
+            className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] transition ${
               scrolled
                 ? "bg-[var(--navy)] text-white hover:opacity-90"
                 : "bg-accent text-accent-foreground hover:brightness-95"
@@ -196,6 +196,7 @@ export function Navbar() {
           >
             <CalendarDays size={13} /> Annual Calendar
           </Link>
+
           <FontSizeToggle scrolled={scrolled} />
         </nav>
 
