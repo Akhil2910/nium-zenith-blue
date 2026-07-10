@@ -281,7 +281,16 @@ function CalendarPage() {
 
       <AnimatePresence>
         {selected && <EventDialog event={selected} onClose={() => setSelected(null)} />}
+        {showAll && (
+          <AllEventsDialog
+            events={events}
+            onClose={() => setShowAll(false)}
+            onDownload={() => downloadCSV(events, `nium-calendar-all-${events.length}-events.csv`)}
+            onSelect={(ev) => { setShowAll(false); setSelected(ev); }}
+          />
+        )}
       </AnimatePresence>
+
 
       <Footer />
     </div>
