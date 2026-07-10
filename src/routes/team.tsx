@@ -19,11 +19,12 @@ export const Route = createFileRoute("/team")({
 });
 
 const directors = [
-  { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
   { name: "J Srinivasa Rao", role: "Executive Director" },
+  { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
   { name: "V Prashanthi", role: "Executive Head, UIIC" },
   { name: "Lawanya Gotety", role: "Director – Urban Governance" },
 ];
+
 
 const itTeam = [
   { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
@@ -166,11 +167,12 @@ function TeamPage() {
             </a>
           </Section>
 
-          <Section title="Directors" subtitle="Leadership team">
+          <Section title="Executive Directors" subtitle="Leadership team">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {directors.map((p) => <PersonCard key={p.name} {...p} />)}
             </div>
           </Section>
+
 
           <Section title="IT Team" subtitle="NIUM-IT">
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

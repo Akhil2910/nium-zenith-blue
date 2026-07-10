@@ -4,6 +4,59 @@ import { Menu, X, CalendarDays } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import tgEmblem from "@/assets/tg-emblem.png";
 
+const FS_KEY = "nium-fs";
+type FSLevel = "" | "fs-lg" | "fs-xl";
+function applyFS(level: FSLevel) {
+  const html = document.documentElement;
+  html.classList.remove("fs-lg", "fs-xl");
+  if (level) html.classList.add(level);
+  try { localStorage.setItem(FS_KEY, level); } catch {}
+}
+
+function FontSizeToggle({ scrolled }: { scrolled: boolean }) {
+  const [level, setLevel] = useState<FSLevel>("");
+  useEffect(() => {
+    try {
+      const v = (localStorage.getItem(FS_KEY) as FSLevel) || "";
+      setLevel(v);
+      applyFS(v);
+    } catch {}
+  }, []);
+  const set = (v: FSLevel) => { setLevel(v); applyFS(v); };
+  const opts: { v: FSLevel; label: string; size: string }[] = [
+    { v: "", label: "A", size: "text-[13px]" },
+    { v: "fs-lg", label: "A+", size: "text-[15px]" },
+    { v: "fs-xl", label: "A++", size: "text-[17px]" },
+  ];
+  return (
+    <div
+      aria-label="Text size"
+      className={`hidden md:inline-flex items-center gap-0.5 rounded-full border p-0.5 ${
+        scrolled ? "border-border bg-white" : "border-white/25 bg-white/10 backdrop-blur"
+      }`}
+    >
+      {opts.map((o) => (
+        <button
+          key={o.label}
+          onClick={() => set(o.v)}
+          aria-pressed={level === o.v}
+          title={`Text size ${o.label}`}
+          className={`${o.size} h-7 min-w-[28px] px-2 rounded-full font-bold leading-none transition ${
+            level === o.v
+              ? "bg-[var(--navy)] text-white"
+              : scrolled
+              ? "text-foreground hover:bg-surface"
+              : "text-white hover:bg-white/15"
+          }`}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+
 const links = [
   { id: "about", label: "About" },
   { id: "focus-areas", label: "Focus Areas" },
@@ -147,7 +200,9 @@ export function Navbar() {
           >
             <CalendarDays size={13} /> Annual Calendar
           </Link>
+          <FontSizeToggle scrolled={scrolled} />
         </nav>
+
 
         <motion.div
           initial={{ opacity: 0, x: 20 }}

@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
-import { Calendar as CalIcon, ChevronLeft, ChevronRight, MapPin, Users, X, Sparkles, Filter, LogIn, Loader2, CheckCircle2 } from "lucide-react";
+import { Calendar as CalIcon, ChevronLeft, ChevronRight, MapPin, Users, X, Sparkles, Filter, LogIn, Loader2, CheckCircle2, Download } from "lucide-react";
 import { toast } from "sonner";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
@@ -42,6 +42,21 @@ function CalendarPage() {
   const today = new Date();
   const [cursor, setCursor] = useState(new Date(today.getFullYear() >= 2026 ? today.getFullYear() : 2026, today.getMonth(), 1));
   const [selected, setSelected] = useState<EventRow | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  function downloadCSV(rows: EventRow[], filename: string) {
+    const header = ["Title","Start","End","Source","Theme","Sub-theme","Participants","Coordinator","Department"];
+    const esc = (v: string | null | undefined) => `"${(v ?? "").replace(/"/g, '""')}"`;
+    const lines = [header.join(","), ...rows.map((r) =>
+      [r.title, r.start_date, r.end_date, r.source, r.theme, r.subtheme, r.participants, r.coordinator, r.department].map(esc).join(",")
+    )];
+    const blob = new Blob([lines.join("\n")], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = filename; a.click();
+    URL.revokeObjectURL(url);
+  }
+
 
   useEffect(() => {
     (async () => {
@@ -120,12 +135,25 @@ function CalendarPage() {
                 Every training programme, workshop and convening hosted by NIUM and MCR-HRD — across the year, in one place. Browse, plan and register.
               </p>
             </div>
-            <div className="flex items-center gap-3 rounded-full border border-white/15 bg-white/5 backdrop-blur px-5 py-3">
-              <span className="text-3xl font-display font-bold text-[var(--gold)]">{events.length}</span>
-              <div className="text-xs uppercase tracking-[0.2em] text-white/70 leading-tight">
-                Events<br />on calendar
-              </div>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowAll(true)}
+                className="flex items-center gap-3 rounded-full border border-white/15 bg-white/5 backdrop-blur px-5 py-3 hover:bg-white/10 transition"
+              >
+                <span className="text-3xl font-display font-bold text-[var(--gold)]">{events.length}</span>
+                <div className="text-xs uppercase tracking-[0.2em] text-white/80 leading-tight text-left">
+                  Events<br />on calendar
+                </div>
+              </button>
+              <button
+                onClick={() => downloadCSV(events, `nium-calendar-all-${events.length}-events.csv`)}
+                className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] text-[var(--navy)] px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] hover:brightness-95 transition"
+                title="Download all events as CSV"
+              >
+                <Download size={14} /> Download all
+              </button>
             </div>
+
           </div>
         </div>
       </section>
@@ -177,7 +205,7 @@ function CalendarPage() {
             >
               <div className="grid grid-cols-7 border-b border-border bg-surface">
                 {["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map((d) => (
-                  <div key={d} className="px-3 py-2.5 text-[10px] uppercase tracking-[0.22em] text-muted-foreground font-semibold text-center">{d}</div>
+                  <div key={d} className="px-3 py-2.5 text-[11px] uppercase tracking-[0.22em] text-foreground font-bold text-center">{d}</div>
                 ))}
               </div>
               <div className="grid grid-cols-7">
@@ -185,7 +213,7 @@ function CalendarPage() {
                   <div key={i} className={`min-h-[110px] border-r border-b border-border last:border-r-0 p-2 ${cell.day === null ? "bg-surface/40" : ""}`}>
                     {cell.day && (
                       <>
-                        <div className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[11px] font-semibold ${isToday(cell.day) ? "bg-accent text-accent-foreground" : "text-foreground"}`}>
+                        <div className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold ${isToday(cell.day) ? "bg-accent text-accent-foreground" : "text-foreground"}`}>
                           {cell.day}
                         </div>
                         <div className="mt-1.5 space-y-1">
@@ -194,17 +222,20 @@ function CalendarPage() {
                               key={ev.id}
                               onClick={() => setSelected(ev)}
                               title={ev.title}
-                              className={`block w-full text-left text-[10px] leading-tight font-medium truncate rounded px-1.5 py-1 transition hover:brightness-95 ${
-                                ev.source === "MCR-HRD" ? "bg-[var(--cyan-brand)]/15 text-[var(--cyan-brand)]" : "bg-accent/15 text-[color:var(--gold)]"
+                              className={`block w-full text-left text-[11px] leading-tight font-semibold truncate rounded px-1.5 py-1 transition hover:brightness-95 ${
+                                ev.source === "MCR-HRD"
+                                  ? "bg-[var(--cyan-brand)]/20 text-[var(--navy)]"
+                                  : "bg-accent/25 text-[var(--navy)]"
                               }`}
                             >
                               {ev.title}
                             </button>
                           ))}
                           {cell.events.length > 3 && (
-                            <div className="text-[10px] text-muted-foreground px-1.5">+{cell.events.length - 3} more</div>
+                            <div className="text-[11px] text-foreground font-semibold px-1.5">+{cell.events.length - 3} more</div>
                           )}
                         </div>
+
                       </>
                     )}
                   </div>
@@ -250,7 +281,16 @@ function CalendarPage() {
 
       <AnimatePresence>
         {selected && <EventDialog event={selected} onClose={() => setSelected(null)} />}
+        {showAll && (
+          <AllEventsDialog
+            events={events}
+            onClose={() => setShowAll(false)}
+            onDownload={() => downloadCSV(events, `nium-calendar-all-${events.length}-events.csv`)}
+            onSelect={(ev) => { setShowAll(false); setSelected(ev); }}
+          />
+        )}
       </AnimatePresence>
+
 
       <Footer />
     </div>
@@ -343,6 +383,95 @@ function EventDialog({ event, onClose }: { event: EventRow; onClose: () => void 
     </motion.div>
   );
 }
+
+function AllEventsDialog({
+  events,
+  onClose,
+  onDownload,
+  onSelect,
+}: {
+  events: EventRow[];
+  onClose: () => void;
+  onDownload: () => void;
+  onSelect: (ev: EventRow) => void;
+}) {
+  const grouped = useMemo(() => {
+    const map = new Map<string, EventRow[]>();
+    for (const e of events) {
+      const d = new Date(e.start_date);
+      const key = `${d.getFullYear()}-${String(d.getMonth()).padStart(2, "0")}`;
+      if (!map.has(key)) map.set(key, []);
+      map.get(key)!.push(e);
+    }
+    return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b));
+  }, [events]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end md:items-center justify-center p-4"
+    >
+      <motion.div
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 30, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-3xl rounded-2xl bg-white shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+      >
+        <div className="flex items-center justify-between gap-4 p-6 border-b border-border bg-[var(--navy)] text-white">
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.22em] font-semibold opacity-80">All events on calendar</div>
+            <h2 className="mt-1 font-display text-2xl font-bold">{events.length} events · FY 2026</h2>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onDownload}
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] text-[var(--navy)] px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] hover:brightness-95"
+            >
+              <Download size={14} /> CSV
+            </button>
+            <button onClick={onClose} className="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+              <X size={16} />
+            </button>
+          </div>
+        </div>
+        <div className="overflow-auto p-6 space-y-6">
+          {grouped.map(([key, rows]) => {
+            const [y, m] = key.split("-").map(Number);
+            return (
+              <div key={key}>
+                <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground font-bold mb-2">
+                  {MONTHS[m]} {y} · {rows.length}
+                </div>
+                <div className="divide-y divide-border rounded-xl border border-border">
+                  {rows.map((ev) => (
+                    <button
+                      key={ev.id}
+                      onClick={() => onSelect(ev)}
+                      className="w-full text-left px-4 py-3 flex items-start gap-3 hover:bg-surface transition"
+                    >
+                      <div className={`shrink-0 rounded-md px-2 py-1 text-[10px] font-bold uppercase tracking-[0.14em] ${ev.source === "MCR-HRD" ? "bg-[var(--cyan-brand)]/15 text-[var(--navy)]" : "bg-accent/20 text-[var(--navy)]"}`}>
+                        {new Date(ev.start_date).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-foreground">{ev.title}</div>
+                        <div className="text-[11px] text-muted-foreground mt-0.5">{ev.source}{ev.theme && ` · ${ev.theme}`}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
