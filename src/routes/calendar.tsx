@@ -384,6 +384,95 @@ function EventDialog({ event, onClose }: { event: EventRow; onClose: () => void 
   );
 }
 
+function AllEventsDialog({
+  events,
+  onClose,
+  onDownload,
+  onSelect,
+}: {
+  events: EventRow[];
+  onClose: () => void;
+  onDownload: () => void;
+  onSelect: (ev: EventRow) => void;
+}) {
+  const grouped = useMemo(() => {
+    const map = new Map<string, EventRow[]>();
+    for (const e of events) {
+      const d = new Date(e.start_date);
+      const key = `${d.getFullYear()}-${String(d.getMonth()).padStart(2, "0")}`;
+      if (!map.has(key)) map.set(key, []);
+      map.get(key)!.push(e);
+    }
+    return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b));
+  }, [events]);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      onClick={onClose}
+      className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-end md:items-center justify-center p-4"
+    >
+      <motion.div
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 30, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-3xl rounded-2xl bg-white shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+      >
+        <div className="flex items-center justify-between gap-4 p-6 border-b border-border bg-[var(--navy)] text-white">
+          <div>
+            <div className="text-[10px] uppercase tracking-[0.22em] font-semibold opacity-80">All events on calendar</div>
+            <h2 className="mt-1 font-display text-2xl font-bold">{events.length} events · FY 2026</h2>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onDownload}
+              className="inline-flex items-center gap-2 rounded-full bg-[var(--gold)] text-[var(--navy)] px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] hover:brightness-95"
+            >
+              <Download size={14} /> CSV
+            </button>
+            <button onClick={onClose} className="h-9 w-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center">
+              <X size={16} />
+            </button>
+          </div>
+        </div>
+        <div className="overflow-auto p-6 space-y-6">
+          {grouped.map(([key, rows]) => {
+            const [y, m] = key.split("-").map(Number);
+            return (
+              <div key={key}>
+                <div className="text-xs uppercase tracking-[0.22em] text-muted-foreground font-bold mb-2">
+                  {MONTHS[m]} {y} · {rows.length}
+                </div>
+                <div className="divide-y divide-border rounded-xl border border-border">
+                  {rows.map((ev) => (
+                    <button
+                      key={ev.id}
+                      onClick={() => onSelect(ev)}
+                      className="w-full text-left px-4 py-3 flex items-start gap-3 hover:bg-surface transition"
+                    >
+                      <div className={`shrink-0 rounded-md px-2 py-1 text-[10px] font-bold uppercase tracking-[0.14em] ${ev.source === "MCR-HRD" ? "bg-[var(--cyan-brand)]/15 text-[var(--navy)]" : "bg-accent/20 text-[var(--navy)]"}`}>
+                        {new Date(ev.start_date).toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-foreground">{ev.title}</div>
+                        <div className="text-[11px] text-muted-foreground mt-0.5">{ev.source}{ev.theme && ` · ${ev.theme}`}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+
 function Section({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
