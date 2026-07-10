@@ -200,7 +200,9 @@ export function Navbar() {
           >
             <CalendarDays size={13} /> Annual Calendar
           </Link>
+          <FontSizeToggle scrolled={scrolled} />
         </nav>
+
 
         <motion.div
           initial={{ opacity: 0, x: 20 }}
