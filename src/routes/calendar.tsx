@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
-import { Calendar as CalIcon, ChevronLeft, ChevronRight, MapPin, Users, X, Sparkles, Filter, LogIn, Loader2, CheckCircle2 } from "lucide-react";
+import { Calendar as CalIcon, ChevronLeft, ChevronRight, MapPin, Users, X, Sparkles, Filter, LogIn, Loader2, CheckCircle2, Download } from "lucide-react";
 import { toast } from "sonner";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
