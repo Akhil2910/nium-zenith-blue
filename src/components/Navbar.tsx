@@ -140,18 +140,14 @@ export function Navbar() {
             className="leading-tight min-w-0"
           >
             <motion.div
-              initial={{ scale: 18, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{
-                scale: { duration: 1.8, ease: [0.22, 1, 0.36, 1], times: [0, 1] },
-                opacity: { duration: 0.4, ease: "easeOut" },
-                delay: 0.2,
-              }}
-              style={{ transformOrigin: "left center" }}
-              className={`font-display font-bold text-2xl md:text-3xl tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+              className={`font-display font-bold text-xl md:text-2xl tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}
             >
               NIUM
             </motion.div>
+
             <div className={`hidden 2xl:block mt-1 text-[11px] uppercase tracking-[0.16em] whitespace-nowrap ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
