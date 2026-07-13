@@ -143,7 +143,7 @@ export function Navbar() {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className={`font-display font-bold text-xl md:text-2xl tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}
+              className={`font-display font-bold text-[20px] md:text-[24px] tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}
             >
               NIUM
             </motion.div>
