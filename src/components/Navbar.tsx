@@ -221,7 +221,7 @@ export function Navbar() {
                 key={l.id}
                 href={`/#${l.id}`}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm font-medium text-foreground border-b border-border last:border-0"
+                className="py-3.5 text-base font-bold text-foreground border-b border-border last:border-0"
               >
                 {l.label}
               </a>
@@ -231,7 +231,7 @@ export function Navbar() {
                 key={r.to}
                 to={r.to}
                 onClick={() => setOpen(false)}
-                className="py-3 text-sm font-medium text-foreground border-b border-border"
+                className="py-3.5 text-base font-bold text-foreground border-b border-border"
               >
                 {r.label}
               </Link>
@@ -239,7 +239,7 @@ export function Navbar() {
             <Link
               to="/calendar"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center gap-2 rounded-full bg-[var(--navy)] text-white px-4 py-2.5 text-sm font-semibold uppercase tracking-[0.16em]"
+              className="mt-2 inline-flex items-center gap-2 rounded-full bg-[var(--navy)] text-white px-4 py-2.5 text-sm font-bold uppercase tracking-[0.16em]"
             >
               <CalendarDays size={14} /> Annual Calendar
             </Link>
