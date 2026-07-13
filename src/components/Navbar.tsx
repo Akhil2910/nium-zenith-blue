@@ -177,24 +177,24 @@ export function Navbar() {
 
       {/* Nav row */}
       <nav className={`hidden lg:block border-t ${scrolled ? "border-border/60" : "border-white/10"}`}>
-        <div className="mx-auto max-w-7xl px-6 h-12 flex items-center justify-center gap-1">
+        <div className="mx-auto max-w-7xl px-6 h-14 flex items-center justify-center gap-1">
           {links.map((l) => (
             <a
               key={l.id}
               href={`/#${l.id}`}
-              className={`relative px-3 py-2 text-[15px] font-semibold rounded-md transition-colors whitespace-nowrap ${
+              className={`relative px-4 py-2.5 text-[17px] font-bold rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
                     ? "text-primary"
-                    : "text-foreground/80 hover:text-foreground"
+                    : "text-foreground/90 hover:text-foreground"
                   : active === l.id
                   ? "text-white"
-                  : "text-white/85 hover:text-white"
+                  : "text-white/90 hover:text-white"
               }`}
             >
               {l.label}
               {active === l.id && (
-                <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full bg-accent" />
+                <span className="absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full bg-accent" />
               )}
             </a>
           ))}
@@ -202,8 +202,8 @@ export function Navbar() {
             <Link
               key={r.to}
               to={r.to}
-              className={`relative px-3 py-2 text-[15px] font-semibold rounded-md transition-colors whitespace-nowrap ${
-                scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/85 hover:text-white"
+              className={`relative px-4 py-2.5 text-[17px] font-bold rounded-md transition-colors whitespace-nowrap ${
+                scrolled ? "text-foreground/90 hover:text-foreground" : "text-white/90 hover:text-white"
               }`}
             >
               {r.label}
