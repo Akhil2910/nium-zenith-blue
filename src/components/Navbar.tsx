@@ -159,7 +159,7 @@ export function Navbar() {
             <a
               key={l.id}
               href={`/#${l.id}`}
-              className={`relative px-2.5 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
+              className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
                     ? "text-primary"
