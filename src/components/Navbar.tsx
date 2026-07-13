@@ -105,7 +105,8 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 h-24 flex items-center justify-between gap-4">
+      {/* Top strip: brand + utilities */}
+      <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-4">
         <a href="#hero" className="flex items-center gap-3 group min-w-0">
           <motion.img
             initial={{ opacity: 0, x: -16 }}
@@ -113,82 +114,49 @@ export function Navbar() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             src={tgEmblem}
             alt="Government of Telangana"
-            className="h-16 w-16 md:h-[68px] md:w-[68px] object-contain drop-shadow-md shrink-0"
+            className="h-14 w-14 md:h-[60px] md:w-[60px] object-contain drop-shadow-md shrink-0"
           />
           <motion.div
             initial={{ opacity: 0, scaleY: 0 }}
             animate={{ opacity: 1, scaleY: 1 }}
             transition={{ duration: 0.5, delay: 0.35 }}
-            className={`hidden sm:block h-12 w-px origin-center ${scrolled ? "bg-border" : "bg-white/20"}`}
+            className={`hidden sm:block h-10 w-px origin-center ${scrolled ? "bg-border" : "bg-white/20"}`}
           />
           <motion.div
             initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
-            className="relative shrink-0 group"
-            whileHover={{ scale: 1.12, rotate: 8 }}
+            className="relative shrink-0"
+            whileHover={{ scale: 1.08 }}
           >
-            <div className="h-16 w-16 md:h-[68px] md:w-[68px] rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)] transition-transform duration-300 group-hover:shadow-lg">
+            <div className="h-14 w-14 md:h-[60px] md:w-[60px] rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
               <span className="font-display font-bold text-primary-foreground text-2xl tracking-tight">N</span>
             </div>
-            <span className="absolute -bottom-1 -right-1 h-3.5 w-3.5 rounded-full bg-accent border-2 border-background" />
+            <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-accent border-2 border-background" />
           </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.6, ease: "easeOut" }}
-            className="leading-tight min-w-0"
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className={`font-display font-bold text-[20px] md:text-[24px] tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}
-            >
+          <div className="leading-tight min-w-0 shrink-0">
+            <div className={`font-display font-bold text-[22px] md:text-[26px] tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}>
               NIUM
-            </motion.div>
-
-            <div className={`hidden 2xl:block mt-1 text-[11px] uppercase tracking-[0.16em] whitespace-nowrap ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
+            </div>
+            <div className={`hidden md:block mt-0.5 text-[10px] uppercase tracking-[0.16em] whitespace-nowrap ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
               National Institute of Urban Management
             </div>
-          </motion.div>
+          </div>
         </a>
 
-        <nav className="hidden lg:flex items-center gap-0.5 shrink-0">
-          {links.map((l) => (
-            <a
-              key={l.id}
-              href={`/#${l.id}`}
-              className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
-                scrolled
-                  ? active === l.id
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                  : active === l.id
-                  ? "text-white"
-                  : "text-white/75 hover:text-white"
-              }`}
-            >
-              {l.label}
-              {active === l.id && (
-                <span className="absolute left-2.5 right-2.5 -bottom-0.5 h-0.5 rounded-full bg-accent" />
-              )}
-            </a>
-          ))}
-          {routeLinks.map((r) => (
-            <Link
-              key={r.to}
-              to={r.to}
-              className={`relative px-2.5 py-2 text-[13px] font-medium rounded-md transition-colors whitespace-nowrap ${
-                scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/75 hover:text-white"
-              }`}
-            >
-              {r.label}
-            </Link>
-          ))}
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
+          <div className={`hidden xl:flex flex-col leading-tight pr-3 border-r ${scrolled ? "border-border" : "border-white/20"}`}>
+            <span className="text-[11px] font-bold uppercase tracking-[0.22em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
+              Telangana
+            </span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.22em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
+              Rising
+            </span>
+          </div>
+          <FontSizeToggle scrolled={scrolled} />
           <Link
             to="/calendar"
-            className={`ml-2 inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
+            className={`inline-flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] transition ${
               scrolled
                 ? "bg-[var(--navy)] text-white hover:opacity-90"
                 : "bg-accent text-accent-foreground hover:brightness-95"
@@ -196,24 +164,7 @@ export function Navbar() {
           >
             <CalendarDays size={13} /> Annual Calendar
           </Link>
-
-          <FontSizeToggle scrolled={scrolled} />
-        </nav>
-
-
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.75, ease: "easeOut" }}
-          className={`hidden xl:flex flex-col leading-tight pl-4 border-l shrink-0 ${scrolled ? "border-border" : "border-white/20"}`}
-        >
-          <span className="text-xs font-bold uppercase tracking-[0.22em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
-            Telangana
-          </span>
-          <span className="text-xs font-bold uppercase tracking-[0.22em] bg-gradient-to-r from-[var(--gold)] to-[var(--cyan-brand)] bg-clip-text text-transparent">
-            Rising
-          </span>
-        </motion.div>
+        </div>
 
         <button
           aria-label="Menu"
@@ -223,6 +174,44 @@ export function Navbar() {
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
+
+      {/* Nav row */}
+      <nav className={`hidden lg:block border-t ${scrolled ? "border-border/60" : "border-white/10"}`}>
+        <div className="mx-auto max-w-7xl px-6 h-12 flex items-center justify-center gap-1">
+          {links.map((l) => (
+            <a
+              key={l.id}
+              href={`/#${l.id}`}
+              className={`relative px-3 py-2 text-[15px] font-semibold rounded-md transition-colors whitespace-nowrap ${
+                scrolled
+                  ? active === l.id
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-foreground"
+                  : active === l.id
+                  ? "text-white"
+                  : "text-white/85 hover:text-white"
+              }`}
+            >
+              {l.label}
+              {active === l.id && (
+                <span className="absolute left-3 right-3 -bottom-0.5 h-0.5 rounded-full bg-accent" />
+              )}
+            </a>
+          ))}
+          {routeLinks.map((r) => (
+            <Link
+              key={r.to}
+              to={r.to}
+              className={`relative px-3 py-2 text-[15px] font-semibold rounded-md transition-colors whitespace-nowrap ${
+                scrolled ? "text-foreground/80 hover:text-foreground" : "text-white/85 hover:text-white"
+              }`}
+            >
+              {r.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
+
 
       {open && (
         <div className="lg:hidden bg-background border-t border-border">
