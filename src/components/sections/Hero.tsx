@@ -94,19 +94,6 @@ export function Hero() {
 
   return (
     <section id="hero" className="relative min-h-screen overflow-hidden bg-[var(--navy)] text-white">
-      {/* Government strip */}
-      <div className="absolute top-20 inset-x-0 z-20 border-y border-white/10 bg-black/20 backdrop-blur-sm">
-        <div className="mx-auto max-w-7xl px-6 py-2.5 flex items-center justify-between text-[10px] md:text-xs uppercase tracking-[0.22em] text-white/70">
-          <span className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-            Government of Telangana · Telangana Rising
-          </span>
-          <span className="hidden md:flex items-center gap-6">
-            <span>Hyderabad, India</span>
-          </span>
-        </div>
-      </div>
-
       {/* Background */}
       <div className="absolute inset-0">
         <img
