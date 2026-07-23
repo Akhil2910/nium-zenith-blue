@@ -14,6 +14,7 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const TeamRoute = TeamRouteImport.update({
@@ -40,6 +41,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
+  id: '/projects/completed',
+  path: '/projects/completed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/calendar': typeof CalendarRoute
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/calendar': typeof CalendarRoute
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -68,12 +76,19 @@ export interface FileRoutesById {
   '/calendar': typeof CalendarRoute
   '/team': typeof TeamRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/projects/completed': typeof ProjectsCompletedRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/calendar' | '/team' | '/admin'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/calendar'
+    | '/team'
+    | '/admin'
+    | '/projects/completed'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/calendar' | '/team' | '/admin'
+  to: '/' | '/auth' | '/calendar' | '/team' | '/admin' | '/projects/completed'
   id:
     | '__root__'
     | '/'
@@ -82,6 +97,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/team'
     | '/_authenticated/admin'
+    | '/projects/completed'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -90,6 +106,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CalendarRoute: typeof CalendarRoute
   TeamRoute: typeof TeamRoute
+  ProjectsCompletedRoute: typeof ProjectsCompletedRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -129,6 +146,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/completed': {
+      id: '/projects/completed'
+      path: '/projects/completed'
+      fullPath: '/projects/completed'
+      preLoaderRoute: typeof ProjectsCompletedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -156,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CalendarRoute: CalendarRoute,
   TeamRoute: TeamRoute,
+  ProjectsCompletedRoute: ProjectsCompletedRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Microscope,
@@ -12,7 +13,18 @@ import {
   X,
   ChevronRight,
   ArrowLeft,
+  History,
 } from "lucide-react";
+
+const completedSlugByTitle: Record<string, string> = {
+  "Research & Development": "research",
+  "Training & Capacity": "training",
+  "Urban Informatics": "informatics",
+  "Project Management": "project-management",
+  "Heritage and Conservation": "heritage",
+  "Transaction Advisory": "sanitation",
+  "Communication & Outreach": "communication",
+};
 import itImg from "@/assets/vertical-it.jpg";
 import heritageImg from "@/assets/vertical-heritage.jpg";
 import planningImg from "@/assets/vertical-planning.jpg";
