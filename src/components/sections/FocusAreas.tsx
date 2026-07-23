@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Microscope,
@@ -12,7 +13,18 @@ import {
   X,
   ChevronRight,
   ArrowLeft,
+  History,
 } from "lucide-react";
+
+const completedSlugByTitle: Record<string, string> = {
+  "Research & Development": "research",
+  "Training & Capacity": "training",
+  "Urban Informatics": "informatics",
+  "Project Management": "project-management",
+  "Heritage and Conservation": "heritage",
+  "Transaction Advisory": "sanitation",
+  "Communication & Outreach": "communication",
+};
 import itImg from "@/assets/vertical-it.jpg";
 import heritageImg from "@/assets/vertical-heritage.jpg";
 import planningImg from "@/assets/vertical-planning.jpg";
@@ -409,14 +421,37 @@ export function FocusAreas() {
               <div className="p-8">
                 {!openProject ? (
                   openArea.projects.length === 0 ? (
-                    <p className="text-foreground/80 leading-relaxed">
-                      Project details for this vertical are being curated and will be published soon.
-                    </p>
+                    <div>
+                      <p className="text-foreground/80 leading-relaxed">
+                        Ongoing project details for this vertical are being curated and
+                        will be published soon.
+                      </p>
+                      {completedSlugByTitle[openArea.title] && (
+                        <Link
+                          to="/projects/completed"
+                          hash={completedSlugByTitle[openArea.title]}
+                          className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/5 hover:bg-accent/10 text-accent px-4 py-2 text-xs font-bold uppercase tracking-wider transition"
+                        >
+                          <History size={14} /> View completed projects
+                        </Link>
+                      )}
+                    </div>
                   ) : (
                     <>
-                      <h4 className="text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-                        Projects in this vertical
-                      </h4>
+                      <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+                        <h4 className="text-xs uppercase tracking-[0.2em] text-accent font-semibold">
+                          Projects in this vertical
+                        </h4>
+                        {completedSlugByTitle[openArea.title] && (
+                          <Link
+                            to="/projects/completed"
+                            hash={completedSlugByTitle[openArea.title]}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/5 hover:bg-accent/10 text-accent px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
+                          >
+                            <History size={12} /> View completed projects
+                          </Link>
+                        )}
+                      </div>
                       <ul className="grid sm:grid-cols-2 gap-3">
                         {openArea.projects.map((p, i) => (
                           <li key={p.name}>
