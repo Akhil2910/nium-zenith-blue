@@ -426,9 +426,20 @@ export function FocusAreas() {
                     </p>
                   ) : (
                     <>
-                      <h4 className="text-xs uppercase tracking-[0.2em] text-accent font-semibold mb-4">
-                        Projects in this vertical
-                      </h4>
+                      <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
+                        <h4 className="text-xs uppercase tracking-[0.2em] text-accent font-semibold">
+                          Projects in this vertical
+                        </h4>
+                        {completedSlugByTitle[openArea.title] && (
+                          <Link
+                            to="/projects/completed"
+                            hash={completedSlugByTitle[openArea.title]}
+                            className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/5 hover:bg-accent/10 text-accent px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider transition"
+                          >
+                            <History size={12} /> View completed projects
+                          </Link>
+                        )}
+                      </div>
                       <ul className="grid sm:grid-cols-2 gap-3">
                         {openArea.projects.map((p, i) => (
                           <li key={p.name}>
