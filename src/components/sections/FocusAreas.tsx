@@ -421,9 +421,21 @@ export function FocusAreas() {
               <div className="p-8">
                 {!openProject ? (
                   openArea.projects.length === 0 ? (
-                    <p className="text-foreground/80 leading-relaxed">
-                      Project details for this vertical are being curated and will be published soon.
-                    </p>
+                    <div>
+                      <p className="text-foreground/80 leading-relaxed">
+                        Ongoing project details for this vertical are being curated and
+                        will be published soon.
+                      </p>
+                      {completedSlugByTitle[openArea.title] && (
+                        <Link
+                          to="/projects/completed"
+                          hash={completedSlugByTitle[openArea.title]}
+                          className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/5 hover:bg-accent/10 text-accent px-4 py-2 text-xs font-bold uppercase tracking-wider transition"
+                        >
+                          <History size={14} /> View completed projects
+                        </Link>
+                      )}
+                    </div>
                   ) : (
                     <>
                       <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
