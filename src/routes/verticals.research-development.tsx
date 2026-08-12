@@ -156,7 +156,10 @@ function ResearchDevelopmentPage() {
       <Navbar />
       <main className="pt-24">
         {/* Hero */}
-        <section className="relative bg-[var(--gradient-band)] text-primary-foreground py-20 overflow-hidden">
+        <section
+          className="relative text-primary-foreground py-20 overflow-hidden"
+          style={{ backgroundImage: "var(--gradient-band)" }}
+        >
           <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />
           <div className="relative mx-auto max-w-6xl px-6">
             <Link
