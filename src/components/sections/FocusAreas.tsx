@@ -350,10 +350,8 @@ export function FocusAreas() {
           {areas.map((a, i) => (
             <button
               key={a.title}
-              onClick={() => {
-                setOpenIdx(i);
-                setProjectIdx(null);
-              }}
+              onClick={() => handleOpen(i)}
+
               className="relative h-48 rounded-2xl overflow-hidden border border-border text-left"
             >
               <img src={a.image} alt={a.title} className="absolute inset-0 h-full w-full object-cover" />
