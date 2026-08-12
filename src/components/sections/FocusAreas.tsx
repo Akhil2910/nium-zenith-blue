@@ -220,13 +220,25 @@ const areas: Area[] = [
 ];
 
 export function FocusAreas() {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [projectIdx, setProjectIdx] = useState<number | null>(null);
 
+  const handleOpen = (i: number) => {
+    const route = routeByTitle[areas[i].title];
+    if (route) {
+      navigate({ to: route });
+      return;
+    }
+    setOpenIdx(i);
+    setProjectIdx(null);
+  };
+
   const openArea = openIdx !== null ? areas[openIdx] : null;
   const openProject =
     openArea && projectIdx !== null ? openArea.projects[projectIdx] : null;
+
 
   return (
     <section id="focus-areas" className="relative py-28 bg-background">
