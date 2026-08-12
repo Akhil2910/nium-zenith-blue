@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Microscope,
@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 
 const completedSlugByTitle: Record<string, string> = {
-  "Research & Development": "research",
   "Training & Capacity": "training",
   "Urban Informatics": "informatics",
   "Project Management": "project-management",
@@ -25,6 +24,12 @@ const completedSlugByTitle: Record<string, string> = {
   "Transaction Advisory": "sanitation",
   "Communication & Outreach": "communication",
 };
+
+// Verticals that have their own dedicated page
+const routeByTitle: Record<string, string> = {
+  "Research & Development": "/verticals/research-development",
+};
+
 import itImg from "@/assets/vertical-it.jpg";
 import heritageImg from "@/assets/vertical-heritage.jpg";
 import planningImg from "@/assets/vertical-planning.jpg";
@@ -215,13 +220,25 @@ const areas: Area[] = [
 ];
 
 export function FocusAreas() {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [projectIdx, setProjectIdx] = useState<number | null>(null);
 
+  const handleOpen = (i: number) => {
+    const route = routeByTitle[areas[i].title];
+    if (route) {
+      navigate({ to: route });
+      return;
+    }
+    setOpenIdx(i);
+    setProjectIdx(null);
+  };
+
   const openArea = openIdx !== null ? areas[openIdx] : null;
   const openProject =
     openArea && projectIdx !== null ? openArea.projects[projectIdx] : null;
+
 
   return (
     <section id="focus-areas" className="relative py-28 bg-background">
@@ -253,18 +270,15 @@ export function FocusAreas() {
                 key={a.title}
                 onMouseEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
-                onClick={() => {
-                  setOpenIdx(i);
-                  setProjectIdx(null);
-                }}
+                onClick={() => handleOpen(i)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    setOpenIdx(i);
-                    setProjectIdx(null);
+                    handleOpen(i);
                   }
+
                 }}
                 animate={{ flexGrow: isActive ? 6 : 1 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
@@ -336,10 +350,8 @@ export function FocusAreas() {
           {areas.map((a, i) => (
             <button
               key={a.title}
-              onClick={() => {
-                setOpenIdx(i);
-                setProjectIdx(null);
-              }}
+              onClick={() => handleOpen(i)}
+
               className="relative h-48 rounded-2xl overflow-hidden border border-border text-left"
             >
               <img src={a.image} alt={a.title} className="absolute inset-0 h-full w-full object-cover" />
