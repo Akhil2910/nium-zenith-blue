@@ -98,11 +98,17 @@ function ProjectBlock({
       <div className="flex items-start gap-4">
         <div
           className={`h-11 w-11 shrink-0 rounded-xl flex items-center justify-center ${
-            completed ? "bg-accent/10 text-accent" : "bg-[var(--gradient-band)] text-primary-foreground"
+            completed ? "bg-accent/10 text-accent" : "text-primary-foreground"
           }`}
+          style={completed ? undefined : { backgroundImage: "var(--gradient-band)" }}
         >
-          {completed ? <CheckCircle2 size={20} /> : <span className="font-bold text-sm">{String(index + 1).padStart(2, "0")}</span>}
+          {completed ? (
+            <CheckCircle2 size={20} />
+          ) : (
+            <span className="font-bold text-sm">{String(index + 1).padStart(2, "0")}</span>
+          )}
         </div>
+
         <div className="min-w-0">
           <h3 className="text-xl md:text-2xl font-display font-bold text-foreground leading-snug">
             {project.title}
