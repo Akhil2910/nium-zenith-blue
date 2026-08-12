@@ -270,18 +270,15 @@ export function FocusAreas() {
                 key={a.title}
                 onMouseEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
-                onClick={() => {
-                  setOpenIdx(i);
-                  setProjectIdx(null);
-                }}
+                onClick={() => handleOpen(i)}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    setOpenIdx(i);
-                    setProjectIdx(null);
+                    handleOpen(i);
                   }
+
                 }}
                 animate={{ flexGrow: isActive ? 6 : 1 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
