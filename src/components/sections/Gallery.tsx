@@ -8,42 +8,10 @@ import m1 from "@/assets/gallery-meeting-1.jpeg";
 import m2 from "@/assets/gallery-meeting-2.jpeg";
 import m3 from "@/assets/gallery-meeting-3.jpeg";
 import m4 from "@/assets/gallery-meeting-4.jpeg";
-import happySundays from "@/assets/events/happy-sundays.png.asset.json";
-import womenLeaders from "@/assets/events/women-leaders.png.asset.json";
-import marammat from "@/assets/events/marammat.jpg.asset.json";
-import aicccPrebid from "@/assets/events/aiccc-prebid.png.asset.json";
 
 type Item = { src: string; caption: string; date?: string; span: string; fit?: "cover" | "contain" };
 
 const items: Item[] = [
-  {
-    src: happySundays.url,
-    caption: "Happy Sundays — Achampet, Kothur & Manuguru",
-    date: "17 May 2026",
-    span: "md:col-span-2 md:row-span-2",
-    fit: "contain",
-  },
-  {
-    src: womenLeaders.url,
-    caption: "Empowering Women Leaders for Transformative Urban Governance",
-    date: "30 Apr – 1 May 2026",
-    span: "md:row-span-2",
-    fit: "contain",
-  },
-  {
-    src: marammat.url,
-    caption: "Marammat: Caring for Our City — repair café & roundtable",
-    date: "13–14 Jul 2026",
-    span: "md:row-span-2",
-    fit: "contain",
-  },
-  {
-    src: aicccPrebid.url,
-    caption: "Pre-bid meeting — selection of agency for AI-ICCC",
-    date: "17 Jul 2026",
-    span: "md:row-span-2",
-    fit: "contain",
-  },
   { src: g1, caption: "Field visit — urban green spaces", span: "md:col-span-2 md:row-span-2" },
   { src: g2, caption: "HUDCO 56th Foundation Day recognition", span: "" },
   { src: g3, caption: "Capacity-building cohort", span: "" },
