@@ -44,10 +44,11 @@ function Index() {
       <main>
         <Hero />
         <Leadership />
+        <Gallery />
         <About />
         <FocusAreas />
         <Events />
-        <Gallery />
+
         <Aiccc />
         <Partnerships />
         <Publications />
