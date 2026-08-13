@@ -49,7 +49,7 @@ function Index() {
         <Aiccc />
         <Partnerships />
         <Publications />
-        <Events />
+        
         <Career />
         <Contact />
       </main>
