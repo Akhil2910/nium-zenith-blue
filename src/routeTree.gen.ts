@@ -14,6 +14,7 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VerticalsTrainingCapacityRouteImport } from './routes/verticals.training-capacity'
 import { Route as VerticalsResearchDevelopmentRouteImport } from './routes/verticals.research-development'
 import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -42,6 +43,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VerticalsTrainingCapacityRoute =
+  VerticalsTrainingCapacityRouteImport.update({
+    id: '/verticals/training-capacity',
+    path: '/verticals/training-capacity',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const VerticalsResearchDevelopmentRoute =
   VerticalsResearchDevelopmentRouteImport.update({
     id: '/verticals/research-development',
@@ -67,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
+  '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -76,6 +84,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
+  '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,6 +96,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
+  '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/projects/completed'
     | '/verticals/research-development'
+    | '/verticals/training-capacity'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/projects/completed'
     | '/verticals/research-development'
+    | '/verticals/training-capacity'
   id:
     | '__root__'
     | '/'
@@ -117,6 +129,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/projects/completed'
     | '/verticals/research-development'
+    | '/verticals/training-capacity'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -127,6 +140,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   ProjectsCompletedRoute: typeof ProjectsCompletedRoute
   VerticalsResearchDevelopmentRoute: typeof VerticalsResearchDevelopmentRoute
+  VerticalsTrainingCapacityRoute: typeof VerticalsTrainingCapacityRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -164,6 +178,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/training-capacity': {
+      id: '/verticals/training-capacity'
+      path: '/verticals/training-capacity'
+      fullPath: '/verticals/training-capacity'
+      preLoaderRoute: typeof VerticalsTrainingCapacityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/verticals/research-development': {
@@ -209,6 +230,7 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   ProjectsCompletedRoute: ProjectsCompletedRoute,
   VerticalsResearchDevelopmentRoute: VerticalsResearchDevelopmentRoute,
+  VerticalsTrainingCapacityRoute: VerticalsTrainingCapacityRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
