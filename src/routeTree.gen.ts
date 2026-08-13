@@ -19,6 +19,7 @@ import { Route as VerticalsTrainingCapacityRouteImport } from './routes/vertical
 import { Route as VerticalsResearchDevelopmentRouteImport } from './routes/verticals.research-development'
 import { Route as VerticalsProjectManagementRouteImport } from './routes/verticals.project-management'
 import { Route as VerticalsHeritageConservationRouteImport } from './routes/verticals.heritage-conservation'
+import { Route as VerticalsCommunicationOutreachRouteImport } from './routes/verticals.communication-outreach'
 import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
@@ -76,6 +77,12 @@ const VerticalsHeritageConservationRoute =
     path: '/verticals/heritage-conservation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const VerticalsCommunicationOutreachRoute =
+  VerticalsCommunicationOutreachRouteImport.update({
+    id: '/verticals/communication-outreach',
+    path: '/verticals/communication-outreach',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
   id: '/projects/completed',
   path: '/projects/completed',
@@ -94,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
+  '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
   '/verticals/project-management': typeof VerticalsProjectManagementRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
@@ -107,6 +115,7 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
+  '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
   '/verticals/project-management': typeof VerticalsProjectManagementRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
@@ -122,6 +131,7 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
+  '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
   '/verticals/project-management': typeof VerticalsProjectManagementRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
@@ -137,6 +147,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/admin'
     | '/projects/completed'
+    | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
     | '/verticals/project-management'
     | '/verticals/research-development'
@@ -150,6 +161,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/admin'
     | '/projects/completed'
+    | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
     | '/verticals/project-management'
     | '/verticals/research-development'
@@ -164,6 +176,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/_authenticated/admin'
     | '/projects/completed'
+    | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
     | '/verticals/project-management'
     | '/verticals/research-development'
@@ -178,6 +191,7 @@ export interface RootRouteChildren {
   CalendarRoute: typeof CalendarRoute
   TeamRoute: typeof TeamRoute
   ProjectsCompletedRoute: typeof ProjectsCompletedRoute
+  VerticalsCommunicationOutreachRoute: typeof VerticalsCommunicationOutreachRoute
   VerticalsHeritageConservationRoute: typeof VerticalsHeritageConservationRoute
   VerticalsProjectManagementRoute: typeof VerticalsProjectManagementRoute
   VerticalsResearchDevelopmentRoute: typeof VerticalsResearchDevelopmentRoute
@@ -257,6 +271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VerticalsHeritageConservationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/verticals/communication-outreach': {
+      id: '/verticals/communication-outreach'
+      path: '/verticals/communication-outreach'
+      fullPath: '/verticals/communication-outreach'
+      preLoaderRoute: typeof VerticalsCommunicationOutreachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects/completed': {
       id: '/projects/completed'
       path: '/projects/completed'
@@ -292,6 +313,7 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarRoute: CalendarRoute,
   TeamRoute: TeamRoute,
   ProjectsCompletedRoute: ProjectsCompletedRoute,
+  VerticalsCommunicationOutreachRoute: VerticalsCommunicationOutreachRoute,
   VerticalsHeritageConservationRoute: VerticalsHeritageConservationRoute,
   VerticalsProjectManagementRoute: VerticalsProjectManagementRoute,
   VerticalsResearchDevelopmentRoute: VerticalsResearchDevelopmentRoute,
