@@ -104,7 +104,7 @@ function TracingOutline() {
         height="calc(100% - 2px)"
         rx="10"
         fill="none"
-        stroke="hsl(var(--accent))"
+        stroke="var(--accent)"
         strokeWidth="2"
         strokeDasharray="120 880"
         className="animate-trace-outline"
