@@ -62,7 +62,7 @@ const links = [
   { id: "focus-areas", label: "Focus Areas" },
   { id: "partnerships", label: "Partnerships" },
   { id: "publications", label: "Publications" },
-  { id: "events", label: "Events" },
+  { id: "events", label: "Gallery of Events" },
   { id: "career", label: "Career" },
   { id: "contact", label: "Contact Us" },
 ];
