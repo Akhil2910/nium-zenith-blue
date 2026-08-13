@@ -18,7 +18,6 @@ import {
 
 const completedSlugByTitle: Record<string, string> = {
   "Transaction Advisory": "sanitation",
-  "Communication & Outreach": "communication",
 };
 
 // Verticals that have their own dedicated page
@@ -28,6 +27,7 @@ const routeByTitle: Record<string, string> = {
   "Urban Informatics": "/verticals/urban-informatics",
   "Project Management": "/verticals/project-management",
   "Heritage and Conservation": "/verticals/heritage-conservation",
+  "Communication & Outreach": "/verticals/communication-outreach",
 };
 
 
