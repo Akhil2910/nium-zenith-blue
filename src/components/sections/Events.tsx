@@ -13,6 +13,9 @@ import prajapalana from "@/assets/events/prajapalana.jpg.asset.json";
 import madam1 from "@/assets/events/madam_1.jpg.asset.json";
 import madam2 from "@/assets/events/madam_2.jpg.asset.json";
 import urbanX from "@/assets/events/urban_x_challenge.jpg.asset.json";
+import wardMembersVideo from "@/assets/events/ward-members-training.mp4.asset.json";
+import telanganaRisingVideo from "@/assets/events/telangana-rising-2047.mp4.asset.json";
+import niumIntroVideo from "@/assets/events/nium-intro-film.mp4.asset.json";
 
 type EventItem = {
   src: string;
@@ -23,6 +26,24 @@ type EventItem = {
 
 // Newest first
 const events: EventItem[] = [
+  {
+    src: wardMembersVideo.url,
+    title: "Training Programme for Ward Members of Municipalities & Municipal Corporations",
+    date: "23 Jul 2026",
+    kind: "video",
+  },
+  {
+    src: telanganaRisingVideo.url,
+    title: "Rapid urbanisation as a core focus area — Vision for Telangana Rising 2047",
+    date: "Jul 2026",
+    kind: "video",
+  },
+  {
+    src: niumIntroVideo.url,
+    title: "NIUM — Professionalising Urban Management",
+    date: "Jul 2026",
+    kind: "video",
+  },
   {
     src: aicccPrebid.url,
     title: "Pre-bid meeting — selection of agency for AI-ICCC",
