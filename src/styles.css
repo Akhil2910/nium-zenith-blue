@@ -102,3 +102,10 @@
   50% { opacity: 0.4; transform: scale(1.4); }
 }
 .animate-pulse-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+
+/* Traveling outline for event posters on hover */
+@keyframes trace-outline {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -1000; }
+}
+.animate-trace-outline { animation: trace-outline 4s linear infinite; }
