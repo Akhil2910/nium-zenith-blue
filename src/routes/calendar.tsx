@@ -129,7 +129,7 @@ function CalendarPage() {
                 <Sparkles size={14} /> Annual Calendar · FY 2026
               </div>
               <h1 className="mt-4 font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-[1.05]">
-                Calendar of <span className="text-[var(--gold)]">training and capacity building</span>.
+                <span className="text-[var(--gold)]">Training and capacity building</span>.
               </h1>
               <p className="mt-5 text-base md:text-lg text-white/70 max-w-xl">
                 Every training programme, workshop and convening hosted by NIUM and MCR-HRD — across the year, in one place. Browse, plan and register.
@@ -210,10 +210,10 @@ function CalendarPage() {
               </div>
               <div className="grid grid-cols-7">
                 {monthGrid.map((cell, i) => (
-                  <div key={i} className={`min-h-[110px] border-r border-b border-border last:border-r-0 p-2 ${cell.day === null ? "bg-surface/40" : ""}`}>
+                  <div key={i} className={`min-h-[130px] border-r border-b border-border last:border-r-0 p-2 ${cell.day === null ? "bg-surface/40" : ""}`}>
                     {cell.day && (
                       <>
-                        <div className={`inline-flex h-6 w-6 items-center justify-center rounded-full text-[12px] font-bold ${isToday(cell.day) ? "bg-accent text-accent-foreground" : "text-foreground"}`}>
+                        <div className={`inline-flex h-7 w-7 items-center justify-center rounded-full text-[15px] font-bold ${isToday(cell.day) ? "bg-accent text-accent-foreground" : "text-foreground"}`}>
                           {cell.day}
                         </div>
                         <div className="mt-1.5 space-y-1">
@@ -222,7 +222,7 @@ function CalendarPage() {
                               key={ev.id}
                               onClick={() => setSelected(ev)}
                               title={ev.title}
-                              className={`block w-full text-left text-[11px] leading-tight font-semibold truncate rounded px-1.5 py-1 transition hover:brightness-95 ${
+                              className={`block w-full text-left text-[13px] leading-snug font-semibold line-clamp-2 rounded px-1.5 py-1 transition hover:brightness-95 ${
                                 ev.source === "MCR-HRD"
                                   ? "bg-[var(--cyan-brand)]/20 text-[var(--navy)]"
                                   : "bg-accent/25 text-[var(--navy)]"
@@ -232,7 +232,7 @@ function CalendarPage() {
                             </button>
                           ))}
                           {cell.events.length > 3 && (
-                            <div className="text-[11px] text-foreground font-semibold px-1.5">+{cell.events.length - 3} more</div>
+                            <div className="text-[13px] text-foreground font-semibold px-1.5">+{cell.events.length - 3} more</div>
                           )}
                         </div>
 
