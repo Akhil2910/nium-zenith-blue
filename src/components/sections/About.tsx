@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Target, Compass, Crown, UserCheck, ArrowRight } from "lucide-react";
+import { Target, Crown, UserCheck, ArrowRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import eventImg from "@/assets/event-policy.jpg";
 import secImg from "@/assets/secretary-sridevi.webp";
@@ -39,11 +39,6 @@ export function About() {
 
           <div className="lg:col-span-7 space-y-6">
             {[
-              {
-                icon: Compass,
-                tag: "Vision",
-                text: "To be a globally recognised centre of excellence shaping resilient, inclusive, climate-smart and financially sustainable cities through leadership, research, innovation and capacity transformation.",
-              },
               {
                 icon: Target,
                 tag: "Mission",
@@ -155,7 +150,18 @@ export function About() {
               Empowering urban authorities with the knowledge and solutions for sustainable development.
             </p>
           </div>
+
+          <div className="mt-8">
+            <Link
+              to="/about/more"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition-shadow"
+            >
+              More about NIUM
+              <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
+
 
         {/* Leadership row: DG + Advisor */}
         <div className="mt-24">

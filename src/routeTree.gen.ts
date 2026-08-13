@@ -21,6 +21,7 @@ import { Route as VerticalsProjectManagementRouteImport } from './routes/vertica
 import { Route as VerticalsHeritageConservationRouteImport } from './routes/verticals.heritage-conservation'
 import { Route as VerticalsCommunicationOutreachRouteImport } from './routes/verticals.communication-outreach'
 import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
+import { Route as AboutMoreRouteImport } from './routes/about.more'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const TeamRoute = TeamRouteImport.update({
@@ -88,6 +89,11 @@ const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
   path: '/projects/completed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutMoreRoute = AboutMoreRouteImport.update({
+  id: '/about/more',
+  path: '/about/more',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/calendar': typeof CalendarRoute
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/about/more': typeof AboutMoreRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/calendar': typeof CalendarRoute
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
+  '/about/more': typeof AboutMoreRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/calendar': typeof CalendarRoute
   '/team': typeof TeamRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
+  '/about/more': typeof AboutMoreRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/team'
     | '/admin'
+    | '/about/more'
     | '/projects/completed'
     | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/team'
     | '/admin'
+    | '/about/more'
     | '/projects/completed'
     | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/calendar'
     | '/team'
     | '/_authenticated/admin'
+    | '/about/more'
     | '/projects/completed'
     | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
@@ -190,6 +202,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CalendarRoute: typeof CalendarRoute
   TeamRoute: typeof TeamRoute
+  AboutMoreRoute: typeof AboutMoreRoute
   ProjectsCompletedRoute: typeof ProjectsCompletedRoute
   VerticalsCommunicationOutreachRoute: typeof VerticalsCommunicationOutreachRoute
   VerticalsHeritageConservationRoute: typeof VerticalsHeritageConservationRoute
@@ -285,6 +298,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsCompletedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about/more': {
+      id: '/about/more'
+      path: '/about/more'
+      fullPath: '/about/more'
+      preLoaderRoute: typeof AboutMoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -312,6 +332,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CalendarRoute: CalendarRoute,
   TeamRoute: TeamRoute,
+  AboutMoreRoute: AboutMoreRoute,
   ProjectsCompletedRoute: ProjectsCompletedRoute,
   VerticalsCommunicationOutreachRoute: VerticalsCommunicationOutreachRoute,
   VerticalsHeritageConservationRoute: VerticalsHeritageConservationRoute,
