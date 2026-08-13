@@ -40,11 +40,6 @@ export function About() {
           <div className="lg:col-span-7 space-y-6">
             {[
               {
-                icon: Compass,
-                tag: "Vision",
-                text: "To be a globally recognised centre of excellence shaping resilient, inclusive, climate-smart and financially sustainable cities through leadership, research, innovation and capacity transformation.",
-              },
-              {
                 icon: Target,
                 tag: "Mission",
                 text: "To strengthen urban governance and municipal systems through capacity building, research, innovation, and financial empowerment — enabling cities to become resilient, inclusive, and globally competitive.",
