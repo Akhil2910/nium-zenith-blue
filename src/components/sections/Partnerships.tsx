@@ -69,7 +69,7 @@ export function Partnerships() {
                       p.name.split(/[\s,]/)[0].slice(0, 2).toUpperCase()
                     )}
                   </div>
-                  <div className="font-medium text-foreground text-sm leading-tight">{p.name}</div>
+                  <div className="font-semibold text-foreground text-lg md:text-xl leading-snug">{p.name}</div>
                 </motion.div>
               ))}
             </div>
