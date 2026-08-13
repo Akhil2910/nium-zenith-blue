@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 
 const completedSlugByTitle: Record<string, string> = {
-  "Heritage and Conservation": "heritage",
   "Transaction Advisory": "sanitation",
   "Communication & Outreach": "communication",
 };
@@ -28,7 +27,9 @@ const routeByTitle: Record<string, string> = {
   "Training & Capacity": "/verticals/training-capacity",
   "Urban Informatics": "/verticals/urban-informatics",
   "Project Management": "/verticals/project-management",
+  "Heritage and Conservation": "/verticals/heritage-conservation",
 };
+
 
 import itImg from "@/assets/vertical-it.jpg";
 import heritageImg from "@/assets/vertical-heritage.jpg";
