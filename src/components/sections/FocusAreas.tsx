@@ -17,7 +17,6 @@ import {
 } from "lucide-react";
 
 const completedSlugByTitle: Record<string, string> = {
-  "Training & Capacity": "training",
   "Urban Informatics": "informatics",
   "Project Management": "project-management",
   "Heritage and Conservation": "heritage",
@@ -28,6 +27,7 @@ const completedSlugByTitle: Record<string, string> = {
 // Verticals that have their own dedicated page
 const routeByTitle: Record<string, string> = {
   "Research & Development": "/verticals/research-development",
+  "Training & Capacity": "/verticals/training-capacity",
 };
 
 import itImg from "@/assets/vertical-it.jpg";
