@@ -9,7 +9,7 @@ import pkmAsset from "@/assets/pk-mohanty.jpg.asset.json";
 
 export function About() {
   return (
-    <section id="about" className="relative py-28 bg-surface">
+    <section id="about" className="relative py-14 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <motion.div
@@ -68,23 +68,11 @@ export function About() {
               </motion.div>
             ))}
 
-            <div className="grid sm:grid-cols-3 gap-4 pt-4">
-              {[
-                ["23", "Municipal Commissioners trained"],
-                ["252", "Accounts Officers trained"],
-                ["49", "Grade-II MCs trained"],
-              ].map(([n, l]) => (
-                <div key={l} className="rounded-xl bg-card border border-border p-6">
-                  <div className="font-display text-3xl font-bold text-primary">{n}</div>
-                  <div className="mt-2 text-sm text-muted-foreground">{l}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
         {/* Vision & Strategic Repositioning */}
-        <div className="mt-24">
+        <div className="mt-14">
           <div className="max-w-3xl mb-10">
             <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">
               Vision and Strategic Repositioning
@@ -164,7 +152,7 @@ export function About() {
 
 
         {/* Leadership row: DG + Advisor */}
-        <div className="mt-24">
+        <div className="mt-14">
           <div className="max-w-2xl mb-10">
             <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">Our Team</span>
             <h3 className="mt-3 text-3xl md:text-4xl font-bold text-foreground leading-tight">

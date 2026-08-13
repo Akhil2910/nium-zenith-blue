@@ -25,7 +25,7 @@ const items: Item[] = [
 
 export function Gallery() {
   return (
-    <section id="events" className="relative py-24 bg-background">
+    <section id="events" className="relative py-14 bg-background">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>

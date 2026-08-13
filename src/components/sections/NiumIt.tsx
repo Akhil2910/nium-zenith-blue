@@ -50,7 +50,7 @@ export function NiumIt() {
   return (
     <section
       id="nium-it"
-      className="relative py-28 overflow-hidden text-white"
+      className="relative py-14 overflow-hidden text-white"
       style={{ background: "var(--gradient-band)" }}
     >
       <div

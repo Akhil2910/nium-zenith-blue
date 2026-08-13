@@ -42,7 +42,7 @@ export function Publications() {
   const [featured, ...rest] = newsletters;
 
   return (
-    <section id="publications" className="relative py-28 bg-background overflow-hidden">
+    <section id="publications" className="relative py-14 bg-background overflow-hidden">
       <div className="absolute inset-0 -z-10 opacity-[0.04] [background-image:radial-gradient(var(--foreground)_1px,transparent_1px)] [background-size:24px_24px]" />
 
       <div className="mx-auto max-w-7xl px-6">

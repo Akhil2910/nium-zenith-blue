@@ -128,7 +128,7 @@ export function Verticals() {
   const activeItem = active !== null ? verticals[active] : null;
 
   return (
-    <section id="verticals" className="relative py-28 bg-background">
+    <section id="verticals" className="relative py-14 bg-background">
       <div className="mx-auto max-w-7xl px-6">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
           <div>
