@@ -72,7 +72,7 @@ export function About() {
         </div>
 
         {/* Vision & Strategic Repositioning */}
-        <div className="mt-24">
+        <div className="mt-14">
           <div className="max-w-3xl mb-10">
             <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">
               Vision and Strategic Repositioning
@@ -152,7 +152,7 @@ export function About() {
 
 
         {/* Leadership row: DG + Advisor */}
-        <div className="mt-24">
+        <div className="mt-14">
           <div className="max-w-2xl mb-10">
             <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">Our Team</span>
             <h3 className="mt-3 text-3xl md:text-4xl font-bold text-foreground leading-tight">

@@ -27,7 +27,7 @@ const programs = [
 
 export function Programs() {
   return (
-    <section id="programs" className="relative py-28 bg-surface">
+    <section id="programs" className="relative py-14 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl mb-14">
           <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">

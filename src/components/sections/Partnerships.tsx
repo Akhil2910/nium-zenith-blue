@@ -28,7 +28,7 @@ const partners: { name: string; logo?: string; bg?: string }[] = [
 
 export function Partnerships() {
   return (
-    <section id="partnerships" className="relative py-28 bg-surface">
+    <section id="partnerships" className="relative py-14 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-5">

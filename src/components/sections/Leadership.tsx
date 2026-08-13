@@ -21,7 +21,7 @@ const leaders = [
 
 export function Leadership() {
   return (
-    <section id="leadership" className="relative py-24 bg-surface">
+    <section id="leadership" className="relative py-14 bg-surface">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl mb-12">
           <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">

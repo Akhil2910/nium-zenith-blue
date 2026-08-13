@@ -20,7 +20,7 @@ const tiles = [
 
 export function Career() {
   return (
-    <section id="career" className="relative py-28 bg-background">
+    <section id="career" className="relative py-14 bg-background">
       <div className="mx-auto max-w-7xl px-6">
         <div className="max-w-2xl mb-14">
           <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">
