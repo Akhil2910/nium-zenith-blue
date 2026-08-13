@@ -150,7 +150,18 @@ export function About() {
               Empowering urban authorities with the knowledge and solutions for sustainable development.
             </p>
           </div>
+
+          <div className="mt-8">
+            <Link
+              to="/about/more"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-base font-semibold text-primary-foreground shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition-shadow"
+            >
+              More about NIUM
+              <ArrowRight size={18} />
+            </Link>
+          </div>
         </div>
+
 
         {/* Leadership row: DG + Advisor */}
         <div className="mt-24">
