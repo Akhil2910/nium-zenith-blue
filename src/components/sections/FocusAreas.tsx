@@ -17,8 +17,6 @@ import {
 } from "lucide-react";
 
 const completedSlugByTitle: Record<string, string> = {
-  "Urban Informatics": "informatics",
-  "Project Management": "project-management",
   "Heritage and Conservation": "heritage",
   "Transaction Advisory": "sanitation",
   "Communication & Outreach": "communication",
@@ -28,6 +26,8 @@ const completedSlugByTitle: Record<string, string> = {
 const routeByTitle: Record<string, string> = {
   "Research & Development": "/verticals/research-development",
   "Training & Capacity": "/verticals/training-capacity",
+  "Urban Informatics": "/verticals/urban-informatics",
+  "Project Management": "/verticals/project-management",
 };
 
 import itImg from "@/assets/vertical-it.jpg";

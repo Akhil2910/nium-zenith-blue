@@ -14,8 +14,10 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VerticalsUrbanInformaticsRouteImport } from './routes/verticals.urban-informatics'
 import { Route as VerticalsTrainingCapacityRouteImport } from './routes/verticals.training-capacity'
 import { Route as VerticalsResearchDevelopmentRouteImport } from './routes/verticals.research-development'
+import { Route as VerticalsProjectManagementRouteImport } from './routes/verticals.project-management'
 import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
@@ -43,6 +45,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VerticalsUrbanInformaticsRoute =
+  VerticalsUrbanInformaticsRouteImport.update({
+    id: '/verticals/urban-informatics',
+    path: '/verticals/urban-informatics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const VerticalsTrainingCapacityRoute =
   VerticalsTrainingCapacityRouteImport.update({
     id: '/verticals/training-capacity',
@@ -53,6 +61,12 @@ const VerticalsResearchDevelopmentRoute =
   VerticalsResearchDevelopmentRouteImport.update({
     id: '/verticals/research-development',
     path: '/verticals/research-development',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const VerticalsProjectManagementRoute =
+  VerticalsProjectManagementRouteImport.update({
+    id: '/verticals/project-management',
+    path: '/verticals/project-management',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
@@ -73,8 +87,10 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
+  '/verticals/project-management': typeof VerticalsProjectManagementRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
+  '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,8 +99,10 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
+  '/verticals/project-management': typeof VerticalsProjectManagementRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
+  '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -95,8 +113,10 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/projects/completed': typeof ProjectsCompletedRoute
+  '/verticals/project-management': typeof VerticalsProjectManagementRoute
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
+  '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -107,8 +127,10 @@ export interface FileRouteTypes {
     | '/team'
     | '/admin'
     | '/projects/completed'
+    | '/verticals/project-management'
     | '/verticals/research-development'
     | '/verticals/training-capacity'
+    | '/verticals/urban-informatics'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -117,8 +139,10 @@ export interface FileRouteTypes {
     | '/team'
     | '/admin'
     | '/projects/completed'
+    | '/verticals/project-management'
     | '/verticals/research-development'
     | '/verticals/training-capacity'
+    | '/verticals/urban-informatics'
   id:
     | '__root__'
     | '/'
@@ -128,8 +152,10 @@ export interface FileRouteTypes {
     | '/team'
     | '/_authenticated/admin'
     | '/projects/completed'
+    | '/verticals/project-management'
     | '/verticals/research-development'
     | '/verticals/training-capacity'
+    | '/verticals/urban-informatics'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -139,8 +165,10 @@ export interface RootRouteChildren {
   CalendarRoute: typeof CalendarRoute
   TeamRoute: typeof TeamRoute
   ProjectsCompletedRoute: typeof ProjectsCompletedRoute
+  VerticalsProjectManagementRoute: typeof VerticalsProjectManagementRoute
   VerticalsResearchDevelopmentRoute: typeof VerticalsResearchDevelopmentRoute
   VerticalsTrainingCapacityRoute: typeof VerticalsTrainingCapacityRoute
+  VerticalsUrbanInformaticsRoute: typeof VerticalsUrbanInformaticsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -180,6 +208,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/verticals/urban-informatics': {
+      id: '/verticals/urban-informatics'
+      path: '/verticals/urban-informatics'
+      fullPath: '/verticals/urban-informatics'
+      preLoaderRoute: typeof VerticalsUrbanInformaticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/verticals/training-capacity': {
       id: '/verticals/training-capacity'
       path: '/verticals/training-capacity'
@@ -192,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/verticals/research-development'
       fullPath: '/verticals/research-development'
       preLoaderRoute: typeof VerticalsResearchDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/project-management': {
+      id: '/verticals/project-management'
+      path: '/verticals/project-management'
+      fullPath: '/verticals/project-management'
+      preLoaderRoute: typeof VerticalsProjectManagementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects/completed': {
@@ -229,8 +271,10 @@ const rootRouteChildren: RootRouteChildren = {
   CalendarRoute: CalendarRoute,
   TeamRoute: TeamRoute,
   ProjectsCompletedRoute: ProjectsCompletedRoute,
+  VerticalsProjectManagementRoute: VerticalsProjectManagementRoute,
   VerticalsResearchDevelopmentRoute: VerticalsResearchDevelopmentRoute,
   VerticalsTrainingCapacityRoute: VerticalsTrainingCapacityRoute,
+  VerticalsUrbanInformaticsRoute: VerticalsUrbanInformaticsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
