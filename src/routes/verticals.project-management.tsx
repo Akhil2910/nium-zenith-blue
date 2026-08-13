@@ -209,7 +209,7 @@ function ProjectManagementPage() {
               Projects
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Live and recent engagements in capacity building, sanitation and IEC.
+              Programmes NIUM is currently managing across Telangana.
             </p>
           </div>
           <div className="space-y-8">

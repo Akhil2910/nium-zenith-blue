@@ -209,7 +209,7 @@ function UrbanInformaticsPage() {
               Projects
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Live and recent engagements in capacity building, sanitation and IEC.
+              Live technology engagements across Telangana ULBs.
             </p>
           </div>
           <div className="space-y-8">
