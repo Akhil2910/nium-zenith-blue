@@ -13,6 +13,9 @@ import prajapalana from "@/assets/events/prajapalana.jpg.asset.json";
 import madam1 from "@/assets/events/madam_1.jpg.asset.json";
 import madam2 from "@/assets/events/madam_2.jpg.asset.json";
 import urbanX from "@/assets/events/urban_x_challenge.jpg.asset.json";
+import wardMembersVideo from "@/assets/events/ward-members-training.mp4.asset.json";
+import telanganaRisingVideo from "@/assets/events/telangana-rising-2047.mp4.asset.json";
+import niumIntroVideo from "@/assets/events/nium-intro-film.mp4.asset.json";
 
 type EventItem = {
   src: string;
