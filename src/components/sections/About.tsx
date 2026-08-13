@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import eventImg from "@/assets/event-policy.jpg";
 import secImg from "@/assets/secretary-sridevi.webp";
 import pkmAsset from "@/assets/pk-mohanty.jpg.asset.json";
+import clientsAsset from "@/assets/nium-clients.png.asset.json";
 
 
 
@@ -68,6 +69,23 @@ export function About() {
               </motion.div>
             ))}
 
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.55 }}
+              className="rounded-2xl bg-card border border-border p-6 shadow-[var(--shadow-card)]"
+            >
+              <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">
+                Our Clients
+              </span>
+              <img
+                src={clientsAsset.url}
+                alt="NIUM clients including Government of Telangana, CDMA, HMDA, GHMC, HMWSSB, QQSUDA, GIZ and DTCP"
+                loading="lazy"
+                className="mt-4 w-full h-auto object-contain"
+              />
+            </motion.div>
           </div>
         </div>
 
