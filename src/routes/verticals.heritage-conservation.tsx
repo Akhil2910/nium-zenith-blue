@@ -1,28 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, MonitorCog, CheckCircle2, Dot } from "lucide-react";
+import { ArrowLeft, Landmark, CheckCircle2, Dot } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import type { RdImage, RdProject } from "@/data/research-development";
 import { ongoingProjects, completedProjects } from "@/data/heritage-conservation";
 
-export const Route = createFileRoute("/verticals/urban-informatics")({
-  component: UrbanInformaticsPage,
+export const Route = createFileRoute("/verticals/heritage-conservation")({
+  component: HeritageConservationPage,
   head: () => ({
     meta: [
-      { title: 'Urban Informatics — NIUM Vertical' },
+      { title: "Heritage and Conservation — NIUM Vertical" },
       {
         name: "description",
         content:
-          "NIUM's Urban Informatics vertical — the AI-based Integrated Command & Control Centre, TG-bPASS and the BuildNow portal, QQSUDA and ULB websites, and in-house application development.",
+          "NIUM's Heritage and Conservation vertical — Shaikpet Sarai, QQSUDA collaboration, Heritage Partner Scheme, Jaipur UNESCO plan, Alampur framework, Musi river heritage and stepwell restorations.",
       },
-      { property: "og:title", content: "Urban Informatics at NIUM" },
+      { property: "og:title", content: "Heritage and Conservation at NIUM" },
       {
         property: "og:description",
         content:
-          "Digital public infrastructure for Telangana — AI-ICCC, TG-bPASS, BuildNow, websites and applications.",
+          "Conservation, adaptive reuse and heritage management — from Qutb Shahi stepwells to a UNESCO World Heritage city plan.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
 });
@@ -146,7 +147,7 @@ function ProjectBlock({
   );
 }
 
-function UrbanInformaticsPage() {
+function HeritageConservationPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -167,19 +168,20 @@ function UrbanInformaticsPage() {
             </Link>
             <div className="mt-6 flex items-center gap-3">
               <div className="h-12 w-12 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center">
-                <MonitorCog size={22} />
+                <Landmark size={22} />
               </div>
               <span className="text-xs uppercase tracking-[0.22em] font-semibold opacity-80">
-                Vertical · Urban Informatics
+                Vertical · Heritage and Conservation
               </span>
             </div>
             <h1 className="mt-4 text-4xl md:text-6xl font-display font-bold leading-tight max-w-3xl">
-              Digital public infrastructure that changed how Telangana builds.
+              Reclaiming the Deccan’s living heritage, stone by stone.
             </h1>
             <p className="mt-5 max-w-2xl text-base md:text-lg opacity-90 leading-relaxed">
-              From TG-bPASS — India's first statewide self-certification building permission
-              system — to the AI-based Integrated Command & Control Centre, NIUM's
-              in-house technology team builds and runs live governance platforms.
+              From the Qutb Shahi resthouse at Shaikpet to lost stepwells rediscovered on
+              century-old survey maps, NIUM works with QQSUDA, HMDA, GHMC and the Aga Khan
+              Trust for Culture to conserve, adaptively reuse and sustainably manage
+              heritage — in Telangana and beyond.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -209,7 +211,7 @@ function UrbanInformaticsPage() {
               Projects
             </h2>
             <p className="mt-2 text-sm text-muted-foreground">
-              Live technology engagements across Telangana ULBs.
+              Live conservation, planning and outreach engagements.
             </p>
           </div>
           <div className="space-y-8">
@@ -230,7 +232,7 @@ function UrbanInformaticsPage() {
                 Completed Projects
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Training initiatives NIUM has already delivered.
+                Conservation, restoration and heritage outreach NIUM has already delivered.
               </p>
             </div>
             <div className="space-y-8">
