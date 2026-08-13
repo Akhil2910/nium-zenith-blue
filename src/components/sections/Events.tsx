@@ -27,6 +27,24 @@ type EventItem = {
 // Newest first
 const events: EventItem[] = [
   {
+    src: wardMembersVideo.url,
+    title: "Training Programme for Ward Members of Municipalities & Municipal Corporations",
+    date: "23 Jul 2026",
+    kind: "video",
+  },
+  {
+    src: telanganaRisingVideo.url,
+    title: "Rapid urbanisation as a core focus area — Vision for Telangana Rising 2047",
+    date: "Jul 2026",
+    kind: "video",
+  },
+  {
+    src: niumIntroVideo.url,
+    title: "NIUM — Professionalising Urban Management",
+    date: "Jul 2026",
+    kind: "video",
+  },
+  {
     src: aicccPrebid.url,
     title: "Pre-bid meeting — selection of agency for AI-ICCC",
     date: "17 Jul 2026",
