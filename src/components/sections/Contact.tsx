@@ -9,7 +9,8 @@ export function Contact() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const fd = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
     setSending(true);
     const { error } = await supabase.from("contact_messages").insert({
       name: String(fd.get("name") ?? ""),
@@ -25,7 +26,7 @@ export function Contact() {
     }
     toast.success("Thank you — your message has reached NIUM.");
     setSent(true);
-    e.currentTarget.reset();
+    form.reset();
   }
 
   return (
