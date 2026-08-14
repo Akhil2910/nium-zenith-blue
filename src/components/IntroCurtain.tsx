@@ -6,13 +6,21 @@ import tgEmblem from "@/assets/tg-emblem.png";
  * Full-screen intro: "NIUM" on the left door, the Telangana emblem on the
  * right. The doors slide apart to reveal the site.
  */
+// Module-level flag: resets on a full page reload, persists across client-side
+// navigation, so the doors only play once per page load.
+let hasPlayed = false;
+
 export function IntroCurtain() {
   const [opening, setOpening] = useState(false);
-  const [doorsGone, setDoorsGone] = useState(false);
+  const [doorsGone, setDoorsGone] = useState(hasPlayed);
 
   useEffect(() => {
+    if (hasPlayed) return;
     const t1 = setTimeout(() => setOpening(true), 900);
-    const t2 = setTimeout(() => setDoorsGone(true), 2400);
+    const t2 = setTimeout(() => {
+      hasPlayed = true;
+      setDoorsGone(true);
+    }, 2400);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);

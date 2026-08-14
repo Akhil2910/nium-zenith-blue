@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { completedVerticals } from "@/data/completed-projects";
+import { BackButton } from "@/components/BackButton";
 
 export const Route = createFileRoute("/projects/completed")({
   component: CompletedProjectsPage,
@@ -45,6 +46,9 @@ function CompletedProjectsPage() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24">
+        <div className="mx-auto max-w-7xl px-6 pt-4">
+          <BackButton label="Back" to="/" />
+        </div>
         {/* Hero */}
         <section className="relative bg-[var(--gradient-band)] text-primary-foreground py-20 overflow-hidden">
           <div className="absolute inset-0 opacity-10 [background-image:radial-gradient(circle_at_1px_1px,white_1px,transparent_0)] [background-size:24px_24px]" />

@@ -107,7 +107,7 @@ export function Navbar() {
     >
       {/* Top strip: brand + utilities */}
       <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between gap-4">
-        <a href="#hero" className="flex items-center gap-3 group min-w-0">
+        <Link to="/" hash="hero" className="flex items-center gap-3 group min-w-0">
           <motion.img
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
@@ -142,7 +142,7 @@ export function Navbar() {
               National Institute of Urban Management
             </div>
           </div>
-        </a>
+        </Link>
 
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <div className={`hidden xl:flex flex-col leading-tight pr-3 border-r ${scrolled ? "border-border" : "border-white/20"}`}>
@@ -179,9 +179,10 @@ export function Navbar() {
       <nav className={`hidden lg:block border-t ${scrolled ? "border-border/60" : "border-white/10"}`}>
         <div className="mx-auto max-w-7xl px-6 h-14 flex items-center justify-center gap-1">
           {links.map((l) => (
-            <a
+            <Link
               key={l.id}
-              href={`/#${l.id}`}
+              to="/"
+              hash={l.id}
               className={`relative px-4 py-2.5 text-[17px] font-bold rounded-md transition-colors whitespace-nowrap ${
                 scrolled
                   ? active === l.id
@@ -196,7 +197,7 @@ export function Navbar() {
               {active === l.id && (
                 <span className="absolute left-4 right-4 -bottom-0.5 h-0.5 rounded-full bg-accent" />
               )}
-            </a>
+            </Link>
           ))}
           {routeLinks.map((r) => (
             <Link
@@ -217,14 +218,15 @@ export function Navbar() {
         <div className="lg:hidden bg-background border-t border-border">
           <div className="px-6 py-4 flex flex-col gap-1">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.id}
-                href={`/#${l.id}`}
+                to="/"
+                hash={l.id}
                 onClick={() => setOpen(false)}
                 className="py-3.5 text-base font-bold text-foreground border-b border-border last:border-0"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
             {routeLinks.map((r) => (
               <Link

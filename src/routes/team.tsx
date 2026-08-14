@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import secImg from "@/assets/secretary-sridevi.webp";
 import pkmAsset from "@/assets/pk-mohanty.jpg.asset.json";
+import { BackButton } from "@/components/BackButton";
 
 export const Route = createFileRoute("/team")({
   component: TeamPage,
@@ -102,6 +103,9 @@ function TeamPage() {
     <div className="min-h-screen bg-surface">
       <Navbar />
       <main className="pt-32 pb-24">
+        <div className="mx-auto max-w-7xl px-6 pt-4">
+          <BackButton label="Back" to="/" />
+        </div>
         <div className="mx-auto max-w-7xl px-6">
           <div className="max-w-2xl mb-12">
             <span className="text-xs uppercase tracking-[0.22em] text-accent font-semibold">Our Team</span>
