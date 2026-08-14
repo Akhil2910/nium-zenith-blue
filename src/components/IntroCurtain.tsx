@@ -15,8 +15,12 @@ export function IntroCurtain() {
   const [doorsGone, setDoorsGone] = useState(hasPlayed);
 
   useEffect(() => {
+    if (hasPlayed) return;
     const t1 = setTimeout(() => setOpening(true), 900);
-    const t2 = setTimeout(() => setDoorsGone(true), 2400);
+    const t2 = setTimeout(() => {
+      hasPlayed = true;
+      setDoorsGone(true);
+    }, 2400);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
