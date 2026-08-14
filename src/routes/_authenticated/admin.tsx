@@ -2,12 +2,32 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Calendar as CalIcon, LogOut, Plus, Trash2, Users, Shield, Loader2 } from "lucide-react";
+import { Calendar as CalIcon, LogOut, Plus, Trash2, Users, Shield, Loader2, Mail, ClipboardList } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminPage,
   head: () => ({ meta: [{ title: "Admin · NIUM Annual Calendar" }] }),
 });
+
+type RegRow = {
+  id: string;
+  event_id: string;
+  name: string;
+  email: string;
+  phone: string | null;
+  organization: string | null;
+  created_at: string;
+};
+
+type MessageRow = {
+  id: string;
+  name: string;
+  organization: string | null;
+  email: string;
+  phone: string | null;
+  message: string;
+  created_at: string;
+};
 
 type EventRow = {
   id: string;
@@ -27,6 +47,8 @@ function AdminPage() {
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
   const [events, setEvents] = useState<EventRow[]>([]);
   const [regsCount, setRegsCount] = useState<Record<string, number>>({});
+  const [regs, setRegs] = useState<RegRow[]>([]);
+  const [messages, setMessages] = useState<MessageRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
@@ -64,10 +86,20 @@ function AdminPage() {
       .select("*")
       .order("start_date", { ascending: true });
     setEvents((data as EventRow[]) ?? []);
-    const { data: regs } = await supabase.from("registrations").select("event_id");
+    const { data: regRows } = await supabase
+      .from("registrations")
+      .select("*")
+      .order("created_at", { ascending: false });
     const counts: Record<string, number> = {};
-    (regs ?? []).forEach((r: any) => (counts[r.event_id] = (counts[r.event_id] ?? 0) + 1));
+    (regRows ?? []).forEach((r: any) => (counts[r.event_id] = (counts[r.event_id] ?? 0) + 1));
     setRegsCount(counts);
+    setRegs((regRows as RegRow[]) ?? []);
+
+    const { data: msgs } = await supabase
+      .from("contact_messages")
+      .select("*")
+      .order("created_at", { ascending: false });
+    setMessages((msgs as MessageRow[]) ?? []);
   }
 
   async function handleCreate(e: React.FormEvent) {
@@ -213,9 +245,82 @@ function AdminPage() {
             </div>
           </section>
         </div>
+
+        {/* Registrations */}
+        <section className="mt-8 rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden">
+          <div className="flex items-center gap-2 p-5 border-b border-border">
+            <ClipboardList size={16} className="text-accent" />
+            <h2 className="font-display text-lg font-bold">Event registrations ({regs.length})</h2>
+          </div>
+          {regs.length === 0 ? (
+            <p className="p-5 text-sm text-muted-foreground">No registrations yet.</p>
+          ) : (
+            <div className="overflow-auto max-h-[60vh]">
+              <table className="w-full text-sm">
+                <thead className="bg-surface text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                  <tr>
+                    <Th>Date</Th><Th>Name</Th><Th>Email</Th><Th>Phone</Th><Th>Organisation</Th><Th>Event</Th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {regs.map((r) => (
+                    <tr key={r.id} className="hover:bg-surface align-top">
+                      <Td>{fmt(r.created_at)}</Td>
+                      <Td className="font-semibold">{r.name}</Td>
+                      <Td>{r.email}</Td>
+                      <Td>{r.phone ?? "—"}</Td>
+                      <Td>{r.organization ?? "—"}</Td>
+                      <Td className="text-muted-foreground">
+                        {events.find((e) => e.id === r.event_id)?.title ?? "—"}
+                      </Td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+
+        {/* Contact form messages */}
+        <section className="mt-8 rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden">
+          <div className="flex items-center gap-2 p-5 border-b border-border">
+            <Mail size={16} className="text-accent" />
+            <h2 className="font-display text-lg font-bold">Contact enquiries ({messages.length})</h2>
+          </div>
+          {messages.length === 0 ? (
+            <p className="p-5 text-sm text-muted-foreground">
+              {isAdmin ? "No messages yet." : "Only admins can view contact enquiries."}
+            </p>
+          ) : (
+            <div className="divide-y divide-border max-h-[60vh] overflow-auto">
+              {messages.map((m) => (
+                <div key={m.id} className="p-5">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
+                    <span>{fmt(m.created_at)}</span>
+                    <span>·</span>
+                    <span className="font-semibold text-accent">{m.organization || "Individual"}</span>
+                  </div>
+                  <div className="mt-1 text-sm font-bold text-foreground">{m.name}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {m.email}{m.phone ? ` · ${m.phone}` : ""}
+                  </div>
+                  <p className="mt-2 text-sm text-foreground whitespace-pre-line">{m.message}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
       </main>
     </div>
   );
+}
+
+function Th({ children }: { children: React.ReactNode }) {
+  return <th className="text-left font-semibold px-4 py-2.5 whitespace-nowrap">{children}</th>;
+}
+
+function Td({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return <td className={`px-4 py-2.5 ${className}`}>{children}</td>;
 }
 
 function Field({ label, value, onChange, type = "text", required }: { label: string; value: string; onChange: (v: string) => void; type?: string; required?: boolean }) {
