@@ -1,8 +1,32 @@
 import { useState } from "react";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    setSending(true);
+    const { error } = await supabase.from("contact_messages").insert({
+      name: String(fd.get("name") ?? ""),
+      organization: String(fd.get("org") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      phone: String(fd.get("phone") ?? ""),
+      message: String(fd.get("message") ?? ""),
+    });
+    setSending(false);
+    if (error) {
+      toast.error("Could not send your message. Please try again.");
+      return;
+    }
+    toast.success("Thank you — your message has reached NIUM.");
+    setSent(true);
+    e.currentTarget.reset();
+  }
 
   return (
     <section id="contact" className="relative py-14 bg-surface">
@@ -61,10 +85,7 @@ export function Contact() {
           </div>
 
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              setSent(true);
-            }}
+            onSubmit={handleSubmit}
             className="lg:col-span-7 rounded-3xl border border-border bg-card p-8 md:p-10 shadow-[var(--shadow-elevated)]"
           >
             <div className="grid sm:grid-cols-2 gap-5">
@@ -79,6 +100,7 @@ export function Contact() {
               </label>
               <textarea
                 required
+                name="message"
                 rows={6}
                 placeholder="Tell us a little about what you're working on…"
                 className="mt-2 w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
@@ -90,9 +112,10 @@ export function Contact() {
               </p>
               <button
                 type="submit"
+                disabled={sending}
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground hover:brightness-110 transition"
               >
-                {sent ? "Message received" : "Send message"}
+                {sending ? "Sending…" : sent ? "Message received" : "Send message"}
                 <Send size={16} />
               </button>
             </div>
