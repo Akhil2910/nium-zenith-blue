@@ -101,14 +101,14 @@ export function IntroCurtain() {
               animate={{ x: opening ? "-100%" : 0 }}
               transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
             >
-              <div className="absolute inset-0 flex items-center justify-end">
+              <div className="absolute inset-x-0 top-0 bottom-[38%] flex items-center justify-end">
                 <span className="translate-x-[0.06em] font-display font-bold tracking-[0.06em] text-white text-[clamp(3.5rem,17vw,15rem)] leading-none">
                   NI
                 </span>
               </div>
               {/* Ribbon half */}
               <motion.div
-                className="absolute left-0 right-0 top-1/2 h-[46px] -translate-y-1/2 bg-[var(--gold)] shadow-[0_6px_24px_rgba(0,0,0,.35)]"
+                className="absolute left-0 right-0 top-[66%] h-[46px] -translate-y-1/2 bg-[var(--gold)] shadow-[0_6px_24px_rgba(0,0,0,.35)]"
                 animate={{ x: opening ? "-30%" : 0, rotate: opening ? -4 : 0 }}
                 transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
               >
@@ -124,13 +124,13 @@ export function IntroCurtain() {
               animate={{ x: opening ? "100%" : 0 }}
               transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
             >
-              <div className="absolute inset-0 flex items-center justify-start">
+              <div className="absolute inset-x-0 top-0 bottom-[38%] flex items-center justify-start">
                 <span className="-translate-x-[0.06em] font-display font-bold tracking-[0.06em] text-white text-[clamp(3.5rem,17vw,15rem)] leading-none">
                   UM
                 </span>
               </div>
               <motion.div
-                className="absolute left-0 right-0 top-1/2 h-[46px] -translate-y-1/2 bg-[var(--gold)] shadow-[0_6px_24px_rgba(0,0,0,.35)]"
+                className="absolute left-0 right-0 top-[66%] h-[46px] -translate-y-1/2 bg-[var(--gold)] shadow-[0_6px_24px_rgba(0,0,0,.35)]"
                 animate={{ x: opening ? "30%" : 0, rotate: opening ? 4 : 0 }}
                 transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
               >
@@ -140,7 +140,7 @@ export function IntroCurtain() {
             </motion.div>
 
             {/* Ribbon knot + launch button (center seam) */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-10">
+            <div className="absolute inset-x-0 top-[66%] flex -translate-y-1/2 flex-col items-center gap-8">
               <AnimatePresence>
                 {!opening && (
                   <motion.div
