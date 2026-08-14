@@ -6,6 +6,7 @@ import { Calendar as CalIcon, ChevronLeft, ChevronRight, MapPin, Users, X, Spark
 import { toast } from "sonner";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
+import { BackButton } from "@/components/BackButton";
 
 export const Route = createFileRoute("/calendar")({
   component: CalendarPage,
@@ -191,6 +192,9 @@ function CalendarPage() {
       </div>
 
       <main className="mx-auto max-w-7xl px-6 py-10">
+        <div className="mx-auto max-w-7xl px-6 pt-4">
+          <BackButton label="Back" to="/" />
+        </div>
         {loading ? (
           <div className="py-32 flex justify-center text-muted-foreground"><Loader2 className="animate-spin" /></div>
         ) : (

@@ -27,12 +27,16 @@ export const Route = createFileRoute("/verticals/heritage-conservation")({
 });
 
 import { VerticalProjectBlock as ProjectBlock } from "@/components/VerticalProjectBlock";
+import { BackButton } from "@/components/BackButton";
 
 function HeritageConservationPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-24">
+        <div className="mx-auto max-w-7xl px-6 pt-4">
+          <BackButton label="Back" to="/" />
+        </div>
         {/* Hero */}
         <section
           className="relative text-primary-foreground py-20 overflow-hidden"

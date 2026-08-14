@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, ChevronDown, Building2, Users, FileText } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
+import { BackButton } from "@/components/BackButton";
 
 export const Route = createFileRoute("/about/more")({
   component: AboutMorePage,
@@ -109,6 +110,9 @@ function AboutMorePage() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main className="pt-8">
+        <div className="mx-auto max-w-7xl px-6 pt-4">
+          <BackButton label="Back" to="/" />
+        </div>
         <section className="bg-surface py-20">
           <div className="mx-auto max-w-5xl px-6">
             <Link
