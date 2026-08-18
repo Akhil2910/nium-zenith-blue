@@ -50,12 +50,15 @@ INSERT INTO public.user_roles (user_id, role) VALUES ('<your-user-id>', 'admin')
 
 ## 2. Production build
 
-The server bundle target is chosen by `NITRO_PRESET`:
+Set `SELF_HOST=true` to build a plain Node server instead of an edge bundle:
 
 ```bash
-NITRO_PRESET=node_server bun run build
+SELF_HOST=true bun run build
 node .output/server/index.mjs      # listens on $PORT (default 3000)
 ```
+
+(Verified: the build emits `.output/server/index.mjs` and serves the site over
+plain Node with no platform-specific runtime.)
 
 Remember: `VITE_*` values are compiled into the browser bundle, so they must be
 set **before** `bun run build`, not just at runtime.
