@@ -117,7 +117,7 @@ Deployment options:
 | --- | --- |
 | **ECS / Fargate** (recommended) | Push the image to ECR, run a service behind an ALB, put CloudFront + ACM in front. |
 | **EC2** | `docker compose up -d` using the included `docker-compose.yml`, Nginx or ALB for TLS. |
-| **Amplify Hosting** | Connect the GitHub repo; build command `NITRO_PRESET=node_server bun run build`, and set the env vars in the Amplify console. |
+| **Amplify Hosting** | Connect the GitHub repo; build command `SELF_HOST=true bun run build`, and set the env vars in the Amplify console. |
 
 Point your domain (`www.nium.org.in`) at the ALB/CloudFront/Amplify endpoint,
 and set the Supabase Auth `SITE_URL` to that same domain so sign-in redirects work.
