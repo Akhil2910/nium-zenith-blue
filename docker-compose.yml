@@ -1,0 +1,20 @@
+# Runs the NIUM website itself. It needs a Supabase-compatible backend, which
+# you run either locally with the Supabase CLI (`supabase start`) or on your own
+# server with the official self-hosted Supabase compose stack. See SELF-HOSTING.md.
+services:
+  web:
+    build:
+      context: .
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SUPABASE_PUBLISHABLE_KEY: ${VITE_SUPABASE_PUBLISHABLE_KEY}
+        VITE_SUPABASE_PROJECT_ID: ${VITE_SUPABASE_PROJECT_ID}
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      SUPABASE_URL: ${SUPABASE_URL}
+      SUPABASE_PUBLISHABLE_KEY: ${SUPABASE_PUBLISHABLE_KEY}
+      SUPABASE_PROJECT_ID: ${SUPABASE_PROJECT_ID}
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
