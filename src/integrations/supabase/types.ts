@@ -14,6 +14,47 @@ export type Database = {
   }
   public: {
     Tables: {
+      applications: {
+        Row: {
+          cover_note: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string | null
+          posting_id: string
+          resume_path: string | null
+        }
+        Insert: {
+          cover_note?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone?: string | null
+          posting_id: string
+          resume_path?: string | null
+        }
+        Update: {
+          cover_note?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string | null
+          posting_id?: string
+          resume_path?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "applications_posting_id_fkey"
+            columns: ["posting_id"]
+            isOneToOne: false
+            referencedRelation: "postings"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       contact_messages: {
         Row: {
           created_at: string
@@ -93,6 +134,60 @@ export type Database = {
           start_date?: string
           subtheme?: string | null
           theme?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      postings: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          deadline: string | null
+          details: string | null
+          external_link: string | null
+          file_no: string | null
+          form_url: string | null
+          id: string
+          is_published: boolean
+          kind: string
+          on_behalf_of: string | null
+          summary: string | null
+          tender_id: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          details?: string | null
+          external_link?: string | null
+          file_no?: string | null
+          form_url?: string | null
+          id?: string
+          is_published?: boolean
+          kind: string
+          on_behalf_of?: string | null
+          summary?: string | null
+          tender_id?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          deadline?: string | null
+          details?: string | null
+          external_link?: string | null
+          file_no?: string | null
+          form_url?: string | null
+          id?: string
+          is_published?: boolean
+          kind?: string
+          on_behalf_of?: string | null
+          summary?: string | null
+          tender_id?: string | null
           title?: string
           updated_at?: string
         }
