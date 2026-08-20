@@ -111,8 +111,14 @@ function AuthPage() {
             </button>
           </form>
           <button
+            onClick={handleForgot}
+            className="mt-5 w-full text-xs text-accent hover:brightness-110"
+          >
+            Forgot password? Email me a reset link
+          </button>
+          <button
             onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-            className="mt-5 w-full text-xs text-white/60 hover:text-white"
+            className="mt-3 w-full text-xs text-white/60 hover:text-white"
           >
             {mode === "signin" ? "Need an account? Sign up" : "Already have an account? Sign in"}
           </button>
