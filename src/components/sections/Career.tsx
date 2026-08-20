@@ -38,9 +38,9 @@ export function Career() {
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {tiles.map((t, i) => (
-            <motion.a
+            <MotionLink
               key={t.title}
-              href="#contact"
+              to={t.to}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -48,6 +48,7 @@ export function Career() {
               whileHover={{ y: -6 }}
               className="group relative rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition block"
             >
+
               <div className="flex items-start justify-between">
                 <div className="h-14 w-14 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center shadow-lg">
                   <t.icon size={24} />
