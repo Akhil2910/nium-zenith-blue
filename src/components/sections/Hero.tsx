@@ -220,20 +220,26 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Partner marquee */}
-      <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/30 backdrop-blur-sm py-4 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...partners, ...partners].map((p, i) => (
-            <span
-              key={i}
-              className="mx-8 text-xs md:text-sm font-medium uppercase tracking-[0.2em] text-white/55"
-            >
-              {p}
-              <span className="ml-8 text-accent">◆</span>
-            </span>
-          ))}
-        </div>
+      {/* Tender ticker */}
+      <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/40 backdrop-blur-sm py-3 overflow-hidden">
+        <Link to="/tenders" className="block group">
+          <div className="flex animate-marquee whitespace-nowrap">
+            {[0, 1].map((k) => (
+              <span
+                key={k}
+                className="mx-8 inline-flex items-center gap-3 text-sm md:text-base font-semibold text-white/90 group-hover:text-white"
+              >
+                <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
+                  New
+                </span>
+                Tender Notice — AI-Enabled Integrated Command &amp; Control Centre (AI-ICCC), Khammam Municipal Corporation · Tender ID 715643
+                <span className="text-accent">◆</span>
+              </span>
+            ))}
+          </div>
+        </Link>
       </div>
+
     </section>
   );
 }
