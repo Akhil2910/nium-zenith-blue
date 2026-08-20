@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Briefcase, Sparkles, ArrowUpRight } from "lucide-react";
 
 const tiles = [
@@ -8,6 +9,7 @@ const tiles = [
     blurb:
       "Full-time roles across urban planning, IT, capacity building, procurement and research. Join a team building real public infrastructure.",
     cta: "View open roles",
+    to: "/careers/jobs",
   },
   {
     icon: Sparkles,
@@ -15,8 +17,12 @@ const tiles = [
     blurb:
       "Structured internships for students of planning, public policy, architecture, engineering and data — with mentorship and field exposure.",
     cta: "Apply for internships",
+    to: "/careers/internships",
   },
 ];
+
+const MotionLink = motion.create(Link);
+
 
 export function Career() {
   return (
@@ -32,9 +38,9 @@ export function Career() {
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {tiles.map((t, i) => (
-            <motion.a
+            <MotionLink
               key={t.title}
-              href="#contact"
+              to={t.to}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -42,6 +48,7 @@ export function Career() {
               whileHover={{ y: -6 }}
               className="group relative rounded-2xl border border-border bg-card p-8 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition block"
             >
+
               <div className="flex items-start justify-between">
                 <div className="h-14 w-14 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center shadow-lg">
                   <t.icon size={24} />
@@ -53,7 +60,7 @@ export function Career() {
               <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-accent uppercase tracking-wider">
                 {t.cta} →
               </span>
-            </motion.a>
+            </MotionLink>
           ))}
         </div>
       </div>

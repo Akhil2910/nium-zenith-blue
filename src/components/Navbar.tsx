@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, CalendarDays } from "lucide-react";
+import { Menu, X, CalendarDays, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import tgEmblem from "@/assets/tg-emblem.png";
 
@@ -63,11 +63,19 @@ const links = [
   { id: "partnerships", label: "Partnerships" },
   { id: "publications", label: "Publications" },
   { id: "events", label: "Gallery of Events" },
-  { id: "career", label: "Career" },
-  { id: "contact", label: "Contact Us" },
 ];
 
+const careerMenu = [
+  { to: "/careers/jobs", label: "Jobs" },
+  { to: "/careers/internships", label: "Internships" },
+  { to: "/tenders", label: "Tenders" },
+  { to: "/competitions", label: "Events" },
+];
+
+const tailLinks = [{ id: "contact", label: "Contact Us" }];
+
 const routeLinks = [{ to: "/team", label: "Team" }];
+
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -199,6 +207,45 @@ export function Navbar() {
               )}
             </Link>
           ))}
+          <div className="relative group">
+            <button
+              type="button"
+              className={`inline-flex items-center gap-1 px-4 py-2.5 text-[17px] font-bold rounded-md transition-colors whitespace-nowrap ${
+                scrolled ? "text-foreground/90 hover:text-foreground" : "text-white/90 hover:text-white"
+              }`}
+            >
+              Career <ChevronDown size={16} />
+            </button>
+            <div className="invisible absolute left-0 top-full z-50 min-w-[200px] translate-y-1 rounded-xl border border-border bg-card p-1.5 opacity-0 shadow-[var(--shadow-elevated)] transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              {careerMenu.map((c) => (
+                <Link
+                  key={c.to}
+                  to={c.to}
+                  className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-surface hover:text-accent transition"
+                >
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          {tailLinks.map((l) => (
+            <Link
+              key={l.id}
+              to="/"
+              hash={l.id}
+              className={`relative px-4 py-2.5 text-[17px] font-bold rounded-md transition-colors whitespace-nowrap ${
+                scrolled
+                  ? active === l.id
+                    ? "text-primary"
+                    : "text-foreground/90 hover:text-foreground"
+                  : active === l.id
+                  ? "text-white"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
           {routeLinks.map((r) => (
             <Link
               key={r.to}
@@ -210,6 +257,7 @@ export function Navbar() {
               {r.label}
             </Link>
           ))}
+
         </div>
       </nav>
 
@@ -228,7 +276,34 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
+            <div className="border-b border-border py-2">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                Career
+              </div>
+              {careerMenu.map((c) => (
+                <Link
+                  key={c.to}
+                  to={c.to}
+                  onClick={() => setOpen(false)}
+                  className="block py-2.5 pl-3 text-base font-bold text-foreground"
+                >
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+            {tailLinks.map((l) => (
+              <Link
+                key={l.id}
+                to="/"
+                hash={l.id}
+                onClick={() => setOpen(false)}
+                className="py-3.5 text-base font-bold text-foreground border-b border-border"
+              >
+                {l.label}
+              </Link>
+            ))}
             {routeLinks.map((r) => (
+
               <Link
                 key={r.to}
                 to={r.to}
