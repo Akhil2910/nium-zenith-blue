@@ -24,6 +24,7 @@ const directors = [
   { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
   { name: "V Prashanthi", role: "Executive Head, UIIC" },
   { name: "Lawanya Gotety", role: "Director – Urban Governance" },
+  { name: "Venugopal V", role: "Executive Director" },
 ];
 
 
@@ -39,20 +40,17 @@ const itTeam = [
 const otherTeam = [
   { name: "Konduri Ravalee", role: "Programme Head" },
   { name: "P Yashwanth", role: "Senior Knowledge Manager" },
-  { name: "Venugopal V", role: "Programme Head (SBM)" },
   { name: "G. Laxmi Narayana", role: "Administrative Officer" },
   { name: "Nitya Khendry", role: "Lead – Heritage" },
   { name: "Kiran Kumar Bingi", role: "Executive Manager (Programmes & Administration)" },
-  { name: "G. Sowmya", role: "Research Associate" },
   { name: "D. Sindhu Priya Reddy", role: "Knowledge Manager" },
-  { name: "Manem Jahnavi", role: "Knowledge Manager" },
   { name: "Suresh Bodiga", role: "Manager (Operations)" },
   { name: "R Prajwala Sam", role: "Research Associate" },
   { name: "Nadigoti Vennela Rani", role: "HR Executive" },
   { name: "Shaik Naseema Banu", role: "Research Associate" },
   { name: "G Venkatesham", role: "Research Associate" },
-  { name: "K Vamshi Krishna Guptha", role: "Knowledge Manager" },
 ];
+
 
 function initials(name: string) {
   return name.split(/\s+/).filter(Boolean).slice(0, 2).map((n) => n[0]).join("").toUpperCase();
