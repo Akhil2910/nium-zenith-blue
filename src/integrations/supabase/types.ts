@@ -96,6 +96,7 @@ export type Database = {
           id: string
           location: string | null
           participants: string | null
+          poster_url: string | null
           source: string | null
           start_date: string
           subtheme: string | null
@@ -113,6 +114,7 @@ export type Database = {
           id?: string
           location?: string | null
           participants?: string | null
+          poster_url?: string | null
           source?: string | null
           start_date: string
           subtheme?: string | null
@@ -130,6 +132,7 @@ export type Database = {
           id?: string
           location?: string | null
           participants?: string | null
+          poster_url?: string | null
           source?: string | null
           start_date?: string
           subtheme?: string | null
@@ -152,6 +155,7 @@ export type Database = {
           is_published: boolean
           kind: string
           on_behalf_of: string | null
+          poster_url: string | null
           summary: string | null
           tender_id: string | null
           title: string
@@ -169,6 +173,7 @@ export type Database = {
           is_published?: boolean
           kind: string
           on_behalf_of?: string | null
+          poster_url?: string | null
           summary?: string | null
           tender_id?: string | null
           title: string
@@ -186,6 +191,7 @@ export type Database = {
           is_published?: boolean
           kind?: string
           on_behalf_of?: string | null
+          poster_url?: string | null
           summary?: string | null
           tender_id?: string | null
           title?: string
