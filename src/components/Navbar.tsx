@@ -63,11 +63,19 @@ const links = [
   { id: "partnerships", label: "Partnerships" },
   { id: "publications", label: "Publications" },
   { id: "events", label: "Gallery of Events" },
-  { id: "career", label: "Career" },
-  { id: "contact", label: "Contact Us" },
 ];
 
+const careerMenu = [
+  { to: "/careers/jobs", label: "Jobs" },
+  { to: "/careers/internships", label: "Internships" },
+  { to: "/tenders", label: "Tenders" },
+  { to: "/competitions", label: "Events" },
+];
+
+const tailLinks = [{ id: "contact", label: "Contact Us" }];
+
 const routeLinks = [{ to: "/team", label: "Team" }];
+
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);

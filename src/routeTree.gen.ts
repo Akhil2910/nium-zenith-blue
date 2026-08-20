@@ -9,7 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TeamRouteImport } from './routes/team'
+import { Route as CompetitionsRouteImport } from './routes/competitions'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -21,12 +23,24 @@ import { Route as VerticalsProjectManagementRouteImport } from './routes/vertica
 import { Route as VerticalsHeritageConservationRouteImport } from './routes/verticals.heritage-conservation'
 import { Route as VerticalsCommunicationOutreachRouteImport } from './routes/verticals.communication-outreach'
 import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
+import { Route as CareersJobsRouteImport } from './routes/careers.jobs'
+import { Route as CareersInternshipsRouteImport } from './routes/careers.internships'
 import { Route as AboutMoreRouteImport } from './routes/about.more'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
+const TendersRoute = TendersRouteImport.update({
+  id: '/tenders',
+  path: '/tenders',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompetitionsRoute = CompetitionsRouteImport.update({
+  id: '/competitions',
+  path: '/competitions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CalendarRoute = CalendarRouteImport.update({
@@ -89,6 +103,16 @@ const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
   path: '/projects/completed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareersJobsRoute = CareersJobsRouteImport.update({
+  id: '/careers/jobs',
+  path: '/careers/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersInternshipsRoute = CareersInternshipsRouteImport.update({
+  id: '/careers/internships',
+  path: '/careers/internships',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutMoreRoute = AboutMoreRouteImport.update({
   id: '/about/more',
   path: '/about/more',
@@ -104,9 +128,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
+  '/competitions': typeof CompetitionsRoute
   '/team': typeof TeamRoute
+  '/tenders': typeof TendersRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/about/more': typeof AboutMoreRoute
+  '/careers/internships': typeof CareersInternshipsRoute
+  '/careers/jobs': typeof CareersJobsRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
@@ -119,9 +147,13 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
+  '/competitions': typeof CompetitionsRoute
   '/team': typeof TeamRoute
+  '/tenders': typeof TendersRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/about/more': typeof AboutMoreRoute
+  '/careers/internships': typeof CareersInternshipsRoute
+  '/careers/jobs': typeof CareersJobsRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
@@ -136,9 +168,13 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
+  '/competitions': typeof CompetitionsRoute
   '/team': typeof TeamRoute
+  '/tenders': typeof TendersRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/about/more': typeof AboutMoreRoute
+  '/careers/internships': typeof CareersInternshipsRoute
+  '/careers/jobs': typeof CareersJobsRoute
   '/projects/completed': typeof ProjectsCompletedRoute
   '/verticals/communication-outreach': typeof VerticalsCommunicationOutreachRoute
   '/verticals/heritage-conservation': typeof VerticalsHeritageConservationRoute
@@ -153,9 +189,13 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/calendar'
+    | '/competitions'
     | '/team'
+    | '/tenders'
     | '/admin'
     | '/about/more'
+    | '/careers/internships'
+    | '/careers/jobs'
     | '/projects/completed'
     | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
@@ -168,9 +208,13 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/calendar'
+    | '/competitions'
     | '/team'
+    | '/tenders'
     | '/admin'
     | '/about/more'
+    | '/careers/internships'
+    | '/careers/jobs'
     | '/projects/completed'
     | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
@@ -184,9 +228,13 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/auth'
     | '/calendar'
+    | '/competitions'
     | '/team'
+    | '/tenders'
     | '/_authenticated/admin'
     | '/about/more'
+    | '/careers/internships'
+    | '/careers/jobs'
     | '/projects/completed'
     | '/verticals/communication-outreach'
     | '/verticals/heritage-conservation'
@@ -201,8 +249,12 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
   CalendarRoute: typeof CalendarRoute
+  CompetitionsRoute: typeof CompetitionsRoute
   TeamRoute: typeof TeamRoute
+  TendersRoute: typeof TendersRoute
   AboutMoreRoute: typeof AboutMoreRoute
+  CareersInternshipsRoute: typeof CareersInternshipsRoute
+  CareersJobsRoute: typeof CareersJobsRoute
   ProjectsCompletedRoute: typeof ProjectsCompletedRoute
   VerticalsCommunicationOutreachRoute: typeof VerticalsCommunicationOutreachRoute
   VerticalsHeritageConservationRoute: typeof VerticalsHeritageConservationRoute
@@ -214,11 +266,25 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tenders': {
+      id: '/tenders'
+      path: '/tenders'
+      fullPath: '/tenders'
+      preLoaderRoute: typeof TendersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/team': {
       id: '/team'
       path: '/team'
       fullPath: '/team'
       preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/competitions': {
+      id: '/competitions'
+      path: '/competitions'
+      fullPath: '/competitions'
+      preLoaderRoute: typeof CompetitionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/calendar': {
@@ -298,6 +364,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsCompletedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/careers/jobs': {
+      id: '/careers/jobs'
+      path: '/careers/jobs'
+      fullPath: '/careers/jobs'
+      preLoaderRoute: typeof CareersJobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers/internships': {
+      id: '/careers/internships'
+      path: '/careers/internships'
+      fullPath: '/careers/internships'
+      preLoaderRoute: typeof CareersInternshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about/more': {
       id: '/about/more'
       path: '/about/more'
@@ -331,8 +411,12 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
   CalendarRoute: CalendarRoute,
+  CompetitionsRoute: CompetitionsRoute,
   TeamRoute: TeamRoute,
+  TendersRoute: TendersRoute,
   AboutMoreRoute: AboutMoreRoute,
+  CareersInternshipsRoute: CareersInternshipsRoute,
+  CareersJobsRoute: CareersJobsRoute,
   ProjectsCompletedRoute: ProjectsCompletedRoute,
   VerticalsCommunicationOutreachRoute: VerticalsCommunicationOutreachRoute,
   VerticalsHeritageConservationRoute: VerticalsHeritageConservationRoute,
