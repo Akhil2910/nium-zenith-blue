@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { Calendar as CalIcon, LogOut, Plus, Trash2, Users, Shield, Loader2, Mail, ClipboardList } from "lucide-react";
+import { PostingsManager } from "@/components/admin/PostingsManager";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminPage,
@@ -310,6 +311,8 @@ function AdminPage() {
             </div>
           )}
         </section>
+
+        <PostingsManager isAdmin={Boolean(isAdmin)} />
       </main>
     </div>
   );
