@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link, useCanGoBack, useRouter } from "@tanstack/react-router";
 
 /**
  * Back control for inner pages. Uses browser history when there is somewhere to
