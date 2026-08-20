@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Download, Eye, EyeOff, FileText, Plus, Trash2 } from "lucide-react";
+import { Download, Eye, EyeOff, FileText, ImagePlus, Plus, Trash2 } from "lucide-react";
+import { uploadPoster } from "@/lib/poster-upload";
 
 type Posting = {
   id: string;
@@ -15,6 +16,7 @@ type Posting = {
   file_no: string | null;
   on_behalf_of: string | null;
   deadline: string | null;
+  poster_url: string | null;
   is_published: boolean;
   created_at: string;
 };
@@ -55,6 +57,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
   const [apps, setApps] = useState<Application[]>([]);
   const [form, setForm] = useState(empty);
   const [saving, setSaving] = useState(false);
+  const [poster, setPoster] = useState<File | null>(null);
 
   useEffect(() => {
     void load();
@@ -76,7 +79,17 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
   async function create(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
+    let poster_url: string | null = null;
+    if (poster) {
+      try {
+        poster_url = await uploadPoster(poster, "postings");
+      } catch (err: any) {
+        setSaving(false);
+        return toast.error(err.message ?? "Poster upload failed");
+      }
+    }
     const { error } = await supabase.from("postings").insert({
+      poster_url,
       kind: form.kind,
       title: form.title,
       summary: form.summary || null,
@@ -92,6 +105,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     if (error) return toast.error(error.message);
     toast.success("Published");
     setForm({ ...empty, kind: form.kind });
+    setPoster(null);
     void load();
   }
 
@@ -172,6 +186,14 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
               value={form.on_behalf_of}
               onChange={(v) => setForm({ ...form, on_behalf_of: v })}
             />
+            <div>
+              <Label>Poster / image</Label>
+              <label className="mt-1 flex cursor-pointer items-center gap-2 rounded-md border border-dashed border-input bg-background px-3 py-2 text-sm text-muted-foreground hover:border-accent">
+                <ImagePlus size={15} />
+                <span className="truncate">{poster ? poster.name : "Upload poster (JPG / PNG, max 8 MB)"}</span>
+                <input type="file" accept="image/*" className="hidden" onChange={(e) => setPoster(e.target.files?.[0] ?? null)} />
+              </label>
+            </div>
             <In
               label="Last date"
               type="date"
@@ -199,6 +221,9 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
             )}
             {rows.map((p) => (
               <div key={p.id} className="p-4 flex items-start justify-between gap-4 hover:bg-surface">
+                {p.poster_url && (
+                  <img src={p.poster_url} alt={`${p.title} poster`} loading="lazy" className="h-16 w-16 shrink-0 rounded-lg border border-border object-cover" />
+                )}
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
                     <span className="font-semibold text-accent">{p.kind}</span>
