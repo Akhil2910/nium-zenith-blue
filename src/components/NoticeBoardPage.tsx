@@ -54,12 +54,13 @@ export function NoticeBoardPage({
             <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground leading-relaxed">
               {emptyBody}
             </p>
-            <a
-              href="/#contact"
+            <Link
+              to="/"
+              hash="contact"
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-[var(--navy)] px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-white hover:opacity-90 transition"
             >
               Contact us
-            </a>
+            </Link>
           </motion.div>
         </div>
       </main>
