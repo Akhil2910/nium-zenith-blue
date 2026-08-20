@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import heroCityAsset from "@/assets/hero-city-hyderabad.jpg.asset.json";
 import tgLogo from "@/assets/tg-rising-logo.png";
@@ -75,11 +76,6 @@ const slides: Slide[] = [
     cta2: { label: "Heritage vertical", href: "#focus-areas" },
     badge: "Heritage",
   },
-];
-
-const partners = [
-  "MoHUA", "World Bank", "UN-Habitat", "ADB", "Smart Cities Mission",
-  "AMRUT", "NITI Aayog", "Government of Telangana", "NIUA", "HUDCO", "TISS", "UNICEF",
 ];
 
 export function Hero() {
