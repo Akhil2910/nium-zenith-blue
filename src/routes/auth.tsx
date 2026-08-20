@@ -22,6 +22,15 @@ function AuthPage() {
     });
   }, [navigate]);
 
+  async function handleForgot() {
+    if (!email) return toast.error("Enter your email first");
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+    if (error) return toast.error(error.message);
+    toast.success("Reset link sent. Check your inbox.");
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
@@ -111,8 +120,14 @@ function AuthPage() {
             </button>
           </form>
           <button
+            onClick={handleForgot}
+            className="mt-5 w-full text-xs text-accent hover:brightness-110"
+          >
+            Forgot password? Email me a reset link
+          </button>
+          <button
             onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-            className="mt-5 w-full text-xs text-white/60 hover:text-white"
+            className="mt-3 w-full text-xs text-white/60 hover:text-white"
           >
             {mode === "signin" ? "Need an account? Sign up" : "Already have an account? Sign in"}
           </button>

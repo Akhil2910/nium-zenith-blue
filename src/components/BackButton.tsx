@@ -1,5 +1,5 @@
 import { ArrowLeft } from "lucide-react";
-import { Link, useCanGoBack, useRouter } from "@tanstack/react-router";
+import { Link, useCanGoBack, useHydrated, useRouter } from "@tanstack/react-router";
 
 /**
  * Back control for inner pages. Uses browser history when there is somewhere to
@@ -17,7 +17,10 @@ export function BackButton({
   const router = useRouter();
   // True only when this app performed a navigation we can step back through, so
   // "Back" returns to the page the visitor actually came from.
-  const canGoBack = useCanGoBack();
+  // History is only known in the browser; keep the server and first client
+  // render identical to avoid a hydration mismatch.
+  const hydrated = useHydrated();
+  const canGoBack = useCanGoBack() && hydrated;
 
 
   const base =
