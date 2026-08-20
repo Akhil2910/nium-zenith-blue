@@ -276,7 +276,34 @@ export function Navbar() {
                 {l.label}
               </Link>
             ))}
+            <div className="border-b border-border py-2">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
+                Career
+              </div>
+              {careerMenu.map((c) => (
+                <Link
+                  key={c.to}
+                  to={c.to}
+                  onClick={() => setOpen(false)}
+                  className="block py-2.5 pl-3 text-base font-bold text-foreground"
+                >
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+            {tailLinks.map((l) => (
+              <Link
+                key={l.id}
+                to="/"
+                hash={l.id}
+                onClick={() => setOpen(false)}
+                className="py-3.5 text-base font-bold text-foreground border-b border-border"
+              >
+                {l.label}
+              </Link>
+            ))}
             {routeLinks.map((r) => (
+
               <Link
                 key={r.to}
                 to={r.to}
