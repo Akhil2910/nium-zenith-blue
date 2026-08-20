@@ -218,7 +218,7 @@ export function Hero() {
 
       {/* Tender ticker */}
       <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/40 backdrop-blur-sm py-3 overflow-hidden">
-        <Link to="/tenders" className="block group">
+        <Link to="/tenders" className="block group marquee-pause">
           <div className="flex animate-marquee whitespace-nowrap">
             {[0, 1].map((k) => (
               <span
