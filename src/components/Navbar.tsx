@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, CalendarDays } from "lucide-react";
+import { Menu, X, CalendarDays, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import tgEmblem from "@/assets/tg-emblem.png";
 
