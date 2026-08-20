@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Briefcase, Sparkles, ArrowUpRight } from "lucide-react";
 
 const tiles = [
@@ -8,6 +9,7 @@ const tiles = [
     blurb:
       "Full-time roles across urban planning, IT, capacity building, procurement and research. Join a team building real public infrastructure.",
     cta: "View open roles",
+    to: "/careers/jobs",
   },
   {
     icon: Sparkles,
@@ -15,8 +17,12 @@ const tiles = [
     blurb:
       "Structured internships for students of planning, public policy, architecture, engineering and data — with mentorship and field exposure.",
     cta: "Apply for internships",
+    to: "/careers/internships",
   },
 ];
+
+const MotionLink = motion.create(Link);
+
 
 export function Career() {
   return (
