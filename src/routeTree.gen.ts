@@ -27,7 +27,6 @@ import { Route as CareersJobsRouteImport } from './routes/careers.jobs'
 import { Route as CareersInternshipsRouteImport } from './routes/careers.internships'
 import { Route as AboutMoreRouteImport } from './routes/about.more'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
-import { Route as ApiPublicBootstrapAdminRouteImport } from './routes/api/public/bootstrap-admin'
 
 const TendersRoute = TendersRouteImport.update({
   id: '/tenders',
@@ -124,11 +123,6 @@ const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
-const ApiPublicBootstrapAdminRoute = ApiPublicBootstrapAdminRouteImport.update({
-  id: '/api/public/bootstrap-admin',
-  path: '/api/public/bootstrap-admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -148,7 +142,6 @@ export interface FileRoutesByFullPath {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
-  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -168,7 +161,6 @@ export interface FileRoutesByTo {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
-  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -190,7 +182,6 @@ export interface FileRoutesById {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
-  '/api/public/bootstrap-admin': typeof ApiPublicBootstrapAdminRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -212,7 +203,6 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
-    | '/api/public/bootstrap-admin'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -232,7 +222,6 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
-    | '/api/public/bootstrap-admin'
   id:
     | '__root__'
     | '/'
@@ -253,7 +242,6 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
-    | '/api/public/bootstrap-admin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -274,7 +262,6 @@ export interface RootRouteChildren {
   VerticalsResearchDevelopmentRoute: typeof VerticalsResearchDevelopmentRoute
   VerticalsTrainingCapacityRoute: typeof VerticalsTrainingCapacityRoute
   VerticalsUrbanInformaticsRoute: typeof VerticalsUrbanInformaticsRoute
-  ApiPublicBootstrapAdminRoute: typeof ApiPublicBootstrapAdminRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -405,13 +392,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/api/public/bootstrap-admin': {
-      id: '/api/public/bootstrap-admin'
-      path: '/api/public/bootstrap-admin'
-      fullPath: '/api/public/bootstrap-admin'
-      preLoaderRoute: typeof ApiPublicBootstrapAdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -444,7 +424,6 @@ const rootRouteChildren: RootRouteChildren = {
   VerticalsResearchDevelopmentRoute: VerticalsResearchDevelopmentRoute,
   VerticalsTrainingCapacityRoute: VerticalsTrainingCapacityRoute,
   VerticalsUrbanInformaticsRoute: VerticalsUrbanInformaticsRoute,
-  ApiPublicBootstrapAdminRoute: ApiPublicBootstrapAdminRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
