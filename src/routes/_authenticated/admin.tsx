@@ -311,6 +311,8 @@ function AdminPage() {
             </div>
           )}
         </section>
+
+        <PostingsManager isAdmin={Boolean(isAdmin)} />
       </main>
     </div>
   );
