@@ -53,7 +53,7 @@ INSERT INTO public.user_roles (user_id, role) VALUES ('<your-user-id>', 'admin')
 Set `SELF_HOST=true` to build a plain Node server instead of an edge bundle:
 
 ```bash
-SELF_HOST=true bun run build
+bun run build:selfhost
 node .output/server/index.mjs      # listens on $PORT (default 3000)
 ```
 
@@ -61,7 +61,7 @@ node .output/server/index.mjs      # listens on $PORT (default 3000)
 plain Node with no platform-specific runtime.)
 
 Remember: `VITE_*` values are compiled into the browser bundle, so they must be
-set **before** `bun run build`, not just at runtime.
+set **before** `bun run build:selfhost`, not just at runtime.
 
 ---
 
@@ -117,7 +117,7 @@ Deployment options:
 | --- | --- |
 | **ECS / Fargate** (recommended) | Push the image to ECR, run a service behind an ALB, put CloudFront + ACM in front. |
 | **EC2** | `docker compose up -d` using the included `docker-compose.yml`, Nginx or ALB for TLS. |
-| **Amplify Hosting** | Connect the GitHub repo; build command `SELF_HOST=true bun run build`, and set the env vars in the Amplify console. |
+| **Amplify Hosting** | Connect the GitHub repo; build command `bun run build:selfhost`, and set the env vars in the Amplify console. |
 
 Point your domain (`www.nium.org.in`) at the ALB/CloudFront/Amplify endpoint,
 and set the Supabase Auth `SITE_URL` to that same domain so sign-in redirects work.
@@ -142,3 +142,24 @@ and set the Supabase Auth `SITE_URL` to that same domain so sign-in redirects wo
 - Existing user accounts and any registrations/contact messages live in the
   current managed database. Export them with `pg_dump` if you need them moved
   into your own instance.
+
+## Images and media on a self-hosted server (AWS)
+
+Large media (photos, posters, videos, newsletter PDFs) are not stored in git.
+Each one is referenced by a small `*.asset.json` pointer in `src/assets/**` whose
+`url` looks like `/__l5e/assets-v1/<id>/<file>`. On Lovable those paths are served
+by Lovable's CDN; on AWS/local nothing serves them, so images appear broken.
+
+`bun run build:selfhost` fixes this: it first runs
+`node scripts/fetch-assets.mjs`, which downloads every referenced file into
+`public/__l5e/...` so the built server serves them itself.
+
+- Requires outbound internet during the build.
+- Override the source with `ASSET_BASE_URL=https://<your-lovable-domain>`.
+- Already-downloaded files are cached and skipped, so re-runs are fast.
+- `public/__l5e/` is gitignored — never commit it.
+- To fetch without building (e.g. for `bun run dev` locally): `bun run assets:fetch`.
+
+**Important:** on AWS use `bun run build:selfhost` (or `npm run build:selfhost`)
+as the build command. Plain `bun run build` produces a Cloudflare-targeted build
+without the media mirror.
