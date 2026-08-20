@@ -60,7 +60,7 @@ export function Career() {
               <span className="mt-5 inline-flex items-center gap-1 text-xs font-semibold text-accent uppercase tracking-wider">
                 {t.cta} →
               </span>
-            </motion.a>
+            </MotionLink>
           ))}
         </div>
       </div>
