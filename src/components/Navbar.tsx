@@ -207,6 +207,45 @@ export function Navbar() {
               )}
             </Link>
           ))}
+          <div className="relative group">
+            <button
+              type="button"
+              className={`inline-flex items-center gap-1 px-4 py-2.5 text-[17px] font-bold rounded-md transition-colors whitespace-nowrap ${
+                scrolled ? "text-foreground/90 hover:text-foreground" : "text-white/90 hover:text-white"
+              }`}
+            >
+              Career <ChevronDown size={16} />
+            </button>
+            <div className="invisible absolute left-0 top-full z-50 min-w-[200px] translate-y-1 rounded-xl border border-border bg-card p-1.5 opacity-0 shadow-[var(--shadow-elevated)] transition group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              {careerMenu.map((c) => (
+                <Link
+                  key={c.to}
+                  to={c.to}
+                  className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-foreground hover:bg-surface hover:text-accent transition"
+                >
+                  {c.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+          {tailLinks.map((l) => (
+            <Link
+              key={l.id}
+              to="/"
+              hash={l.id}
+              className={`relative px-4 py-2.5 text-[17px] font-bold rounded-md transition-colors whitespace-nowrap ${
+                scrolled
+                  ? active === l.id
+                    ? "text-primary"
+                    : "text-foreground/90 hover:text-foreground"
+                  : active === l.id
+                  ? "text-white"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
           {routeLinks.map((r) => (
             <Link
               key={r.to}
@@ -218,6 +257,7 @@ export function Navbar() {
               {r.label}
             </Link>
           ))}
+
         </div>
       </nav>
 
