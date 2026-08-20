@@ -63,13 +63,13 @@ export function Contact() {
                   <span className="h-10 w-10 rounded-lg bg-secondary text-primary flex items-center justify-center">
                     <Mail size={16} />
                   </span>
-                  info@nium.org.in
+                  admin@nium.org.in
                 </li>
                 <li className="flex items-center gap-3 text-sm text-foreground">
                   <span className="h-10 w-10 rounded-lg bg-secondary text-primary flex items-center justify-center">
                     <Phone size={16} />
                   </span>
-                  +91 40 0000 0000
+                  040-23220615/6
                 </li>
               </ul>
             </div>
