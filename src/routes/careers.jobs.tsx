@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { NoticeBoardPage } from "@/components/NoticeBoardPage";
+import { PostingsBoard } from "@/components/PostingsBoard";
 
 export const Route = createFileRoute("/careers/jobs")({
   component: JobsPage,
@@ -23,7 +23,9 @@ export const Route = createFileRoute("/careers/jobs")({
 
 function JobsPage() {
   return (
-    <NoticeBoardPage
+    <PostingsBoard
+      kind="job"
+      badgeLabel="Vacancy"
       eyebrow="Career"
       title="Open roles at NIUM"
       intro="Full-time roles across urban planning, IT, capacity building, procurement and research."
