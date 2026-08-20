@@ -24,7 +24,7 @@ const directors = [
   { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
   { name: "V Prashanthi", role: "Executive Head, UIIC" },
   { name: "Lawanya Gotety", role: "Director – Urban Governance" },
-  { name: "Venugopal V", role: "Executive Director" },
+  { name: "Venugopal V", role: "Director (Circularity & Sustainability)" },
 ];
 
 
