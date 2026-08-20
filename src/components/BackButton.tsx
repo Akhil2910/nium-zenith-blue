@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { Link, useRouter } from "@tanstack/react-router";
 
@@ -15,9 +16,11 @@ export function BackButton({
   className?: string;
 }) {
   const router = useRouter();
+  const [canGoBack, setCanGoBack] = useState(false);
 
-  const canGoBack =
-    typeof window !== "undefined" && window.history.length > 1;
+  useEffect(() => {
+    setCanGoBack(window.history.length > 1);
+  }, []);
 
   const base =
     "inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] hover:border-accent/50 hover:text-accent transition " +
@@ -37,3 +40,4 @@ export function BackButton({
     </Link>
   );
 }
+

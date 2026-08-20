@@ -73,9 +73,10 @@ function TendersPage() {
                   <span className="inline-flex items-center gap-2 rounded-full bg-[var(--gradient-band)] px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] text-primary-foreground">
                     <FileText size={13} /> Tender Notice
                   </span>
-                  <span className="rounded-full border border-border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  <span className="rounded-full border-2 border-accent bg-accent/10 px-4 py-1.5 text-sm font-bold tracking-wide text-foreground">
                     Tender ID: {t.tenderId}
                   </span>
+
                 </div>
 
                 <h2 className="mt-5 font-display text-2xl font-bold text-foreground leading-snug">
