@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { NoticeBoardPage } from "@/components/NoticeBoardPage";
+import { PostingsBoard } from "@/components/PostingsBoard";
 
 export const Route = createFileRoute("/careers/internships")({
   component: InternshipsPage,
@@ -14,7 +14,8 @@ export const Route = createFileRoute("/careers/internships")({
       { property: "og:title", content: "Internships at NIUM" },
       {
         property: "og:description",
-        content: "Structured internships with mentorship and field exposure across Telangana's urban sector.",
+        content:
+          "Structured internships with mentorship and field exposure across Telangana's urban sector.",
       },
       { property: "og:type", content: "website" },
     ],
@@ -23,7 +24,9 @@ export const Route = createFileRoute("/careers/internships")({
 
 function InternshipsPage() {
   return (
-    <NoticeBoardPage
+    <PostingsBoard
+      kind="internship"
+      badgeLabel="Internship"
       eyebrow="Career"
       title="Internships at NIUM"
       intro="Structured internships for students of planning, public policy, architecture, engineering and data — with mentorship and field exposure."
