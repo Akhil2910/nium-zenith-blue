@@ -31,6 +31,7 @@ type EventRow = {
   coordinator: string | null;
   department: string | null;
   source: string | null;
+  poster_url: string | null;
 };
 
 const SOURCES = ["All", "NIUM", "MCR-HRD"];
@@ -353,6 +354,13 @@ function EventDialog({ event, onClose }: { event: EventRow; onClose: () => void 
         </div>
 
         <div className="overflow-auto p-7 space-y-5">
+          {event.poster_url && (
+            <img
+              src={event.poster_url}
+              alt={`${event.title} poster`}
+              className="w-full rounded-xl border border-border object-contain"
+            />
+          )}
           {event.subtheme && (
             <Section label="Sub-theme">{event.subtheme}</Section>
           )}

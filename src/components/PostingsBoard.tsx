@@ -22,6 +22,7 @@ export type Posting = {
   file_no: string | null;
   on_behalf_of: string | null;
   deadline: string | null;
+  poster_url: string | null;
   created_at: string;
 };
 
@@ -146,6 +147,15 @@ function PostingCard({
       <h2 className="mt-5 font-display text-2xl font-bold text-foreground leading-snug">
         {p.title}
       </h2>
+
+      {p.poster_url && (
+        <img
+          src={p.poster_url}
+          alt={`${p.title} poster`}
+          loading="lazy"
+          className="mt-5 w-full rounded-xl border border-border object-contain"
+        />
+      )}
 
       {(p.file_no || p.on_behalf_of || p.summary) && (
         <dl className="mt-5 grid gap-4 sm:grid-cols-2 text-sm">
@@ -278,7 +288,7 @@ function ApplyForm({ postingId, onDone }: { postingId: string; onDone: () => voi
       />
       <label className="inline-flex items-center gap-2 rounded-md border border-dashed border-input bg-background px-3 py-2 cursor-pointer text-muted-foreground">
         <Upload size={14} />
-        <span className="truncate">{file ? file.name : "Attach resume (PDF/DOC)"}</span>
+        <span className="truncate">{file ? file.name : "Attach your resume (PDF / DOC, max 5 MB)"}</span>
         <input
           type="file"
           accept=".pdf,.doc,.docx"

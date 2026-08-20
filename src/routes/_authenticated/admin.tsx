@@ -2,8 +2,9 @@ import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Calendar as CalIcon, LogOut, Plus, Trash2, Users, Shield, Loader2, Mail, ClipboardList } from "lucide-react";
+import { Calendar as CalIcon, LogOut, Plus, Trash2, Users, Shield, ImagePlus, Loader2, Mail, ClipboardList } from "lucide-react";
 import { PostingsManager } from "@/components/admin/PostingsManager";
+import { uploadPoster } from "@/lib/poster-upload";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   component: AdminPage,
@@ -41,6 +42,7 @@ type EventRow = {
   coordinator: string | null;
   department: string | null;
   source: string | null;
+  poster_url: string | null;
 };
 
 function AdminPage() {
@@ -64,6 +66,7 @@ function AdminPage() {
     department: "MA&UD",
     source: "NIUM",
   });
+  const [poster, setPoster] = useState<File | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -106,14 +109,25 @@ function AdminPage() {
   async function handleCreate(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
+    let poster_url: string | null = null;
+    if (poster) {
+      try {
+        poster_url = await uploadPoster(poster, "events");
+      } catch (err: any) {
+        setSaving(false);
+        return toast.error(err.message ?? "Poster upload failed");
+      }
+    }
     const { error } = await supabase.from("events").insert({
       ...form,
+      poster_url,
       end_date: form.end_date || form.start_date,
     });
     setSaving(false);
     if (error) return toast.error(error.message);
     toast.success("Event added");
     setForm({ ...form, title: "", start_date: "", end_date: "", theme: "", subtheme: "", participants: "" });
+    setPoster(null);
     loadEvents();
   }
 
@@ -185,6 +199,19 @@ function AdminPage() {
               <Field label="Theme" value={form.theme} onChange={(v) => setForm({ ...form, theme: v })} />
               <Field label="Sub-theme" value={form.subtheme} onChange={(v) => setForm({ ...form, subtheme: v })} />
               <Field label="Participants" value={form.participants} onChange={(v) => setForm({ ...form, participants: v })} />
+              <div>
+                <label className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Poster / image</label>
+                <label className="mt-1 flex cursor-pointer items-center gap-2 rounded-md border border-dashed border-input bg-background px-3 py-2 text-sm text-muted-foreground hover:border-accent">
+                  <ImagePlus size={15} />
+                  <span className="truncate">{poster ? poster.name : "Upload poster (JPG / PNG, max 8 MB)"}</span>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => setPoster(e.target.files?.[0] ?? null)}
+                  />
+                </label>
+              </div>
               <div className="grid grid-cols-3 gap-3">
                 <Field label="Coordinator" value={form.coordinator} onChange={(v) => setForm({ ...form, coordinator: v })} />
                 <Field label="Department" value={form.department} onChange={(v) => setForm({ ...form, department: v })} />
@@ -222,6 +249,14 @@ function AdminPage() {
             <div className="divide-y divide-border max-h-[70vh] overflow-auto">
               {events.map((ev) => (
                 <div key={ev.id} className="p-4 hover:bg-surface flex items-start justify-between gap-4">
+                  {ev.poster_url && (
+                    <img
+                      src={ev.poster_url}
+                      alt={`${ev.title} poster`}
+                      loading="lazy"
+                      className="h-16 w-16 shrink-0 rounded-lg object-cover border border-border"
+                    />
+                  )}
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
                       <span className="font-semibold text-accent">{ev.source ?? "—"}</span>

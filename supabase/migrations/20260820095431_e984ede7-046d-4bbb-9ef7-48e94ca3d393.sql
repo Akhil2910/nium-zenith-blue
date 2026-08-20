@@ -1,0 +1,3 @@
+CREATE POLICY "Anyone can view posters" ON storage.objects FOR SELECT TO anon, authenticated USING (bucket_id = 'posters');
+CREATE POLICY "Admins upload posters" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'posters' AND public.has_role(auth.uid(), 'admin'::app_role));
+CREATE POLICY "Admins delete posters" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'posters' AND public.has_role(auth.uid(), 'admin'::app_role));
