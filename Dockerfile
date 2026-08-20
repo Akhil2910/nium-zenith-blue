@@ -15,7 +15,7 @@ COPY package.json bun.lock* bunfig.toml ./
 RUN bun install --frozen-lockfile || bun install
 
 COPY . .
-RUN bun run build
+RUN bun run build:selfhost
 
 # ---------- runtime stage ----------
 FROM node:22-alpine AS runtime
