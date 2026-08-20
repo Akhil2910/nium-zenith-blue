@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { NoticeBoardPage } from "@/components/NoticeBoardPage";
+import { PostingsBoard } from "@/components/PostingsBoard";
 
 export const Route = createFileRoute("/competitions")({
   component: CompetitionsPage,
@@ -23,7 +23,9 @@ export const Route = createFileRoute("/competitions")({
 
 function CompetitionsPage() {
   return (
-    <NoticeBoardPage
+    <PostingsBoard
+      kind="competition"
+      badgeLabel="Competition"
       eyebrow="Events"
       title="Latest competitions"
       intro="Ideathons, hackathons, design challenges and open calls hosted by NIUM."
