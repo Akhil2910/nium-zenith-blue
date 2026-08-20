@@ -8,7 +8,11 @@ import tgEmblem from "@/assets/tg-emblem.png";
  */
 // Module-level flag: resets on a full page reload, persists across client-side
 // navigation, so the doors only play once per page load.
-let hasPlayed = false;
+// If the very first page the browser loaded was not the home page, the doors
+// never play for that page load — coming back to "/" from an inner page is a
+// client-side navigation, not a fresh open.
+let hasPlayed =
+  typeof window !== "undefined" && window.location.pathname !== "/";
 
 export function IntroCurtain() {
   const [opening, setOpening] = useState(false);
