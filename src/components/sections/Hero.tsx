@@ -228,7 +228,7 @@ export function Hero() {
                 <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
                   New
                 </span>
-                Tender Notice — AI-Enabled Integrated Command &amp; Control Centre (AI-ICCC), Khammam Municipal Corporation · Tender ID 715643
+                Khammam Municipal Corporation, is inviting online tenders for engaging an agency for &ldquo;AI-ENABLED INTEGRATED COMMAND &amp; CONTROL CENTRE (AI-ICCC)&rdquo; · Tender ID 715643
                 <span className="text-accent">◆</span>
               </span>
             ))}
