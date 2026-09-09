@@ -289,7 +289,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
                     <span className="font-semibold text-accent">{p.kind}</span>
                     <span>·</span>
                     <span>{fmt(p.created_at)}</span>
-                    {!p.is_published && <span className="text-destructive">· hidden</span>}
+                    {!p.is_published && <span className="text-destructive">· draft</span>}
                   </div>
                   <h3 className="mt-1 text-sm font-bold text-foreground truncate">{p.title}</h3>
                   {p.form_url && (
@@ -309,7 +309,15 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
                 {isAdmin && (
                   <div className="flex items-center gap-2 shrink-0">
                     <button
+                      onClick={() => startEdit(p)}
+                      title="Edit"
+                      className="p-1 text-muted-foreground hover:text-foreground"
+                    >
+                      <Pencil size={14} />
+                    </button>
+                    <button
                       onClick={() => togglePublish(p)}
+
                       title={p.is_published ? "Hide" : "Publish"}
                       className="p-1 text-muted-foreground hover:text-foreground"
                     >
