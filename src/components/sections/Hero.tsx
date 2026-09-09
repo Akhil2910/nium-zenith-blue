@@ -217,24 +217,33 @@ export function Hero() {
       </div>
 
       {/* Tender ticker */}
-      <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/40 backdrop-blur-sm py-3 overflow-hidden">
-        <Link to="/tenders" className="block group marquee-pause">
-          <div className="flex animate-marquee whitespace-nowrap">
-            {[0, 1].map((k) => (
-              <span
-                key={k}
-                className="mx-8 inline-flex items-center gap-3 text-sm md:text-base font-semibold text-white/90 group-hover:text-white"
-              >
-                <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
-                  New
+      {ticker.length > 0 && (
+        <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/40 backdrop-blur-sm py-3 overflow-hidden">
+          <Link to={(ticker[0].link || "/tenders") as string} className="block group marquee-pause">
+            <div className="flex animate-marquee whitespace-nowrap">
+              {[0, 1].map((k) => (
+                <span key={k} className="flex">
+                  {ticker.map((t) => (
+                    <span
+                      key={t.id}
+                      className="mx-8 inline-flex items-center gap-3 text-sm md:text-base font-semibold text-white/90 group-hover:text-white"
+                    >
+                      {t.badge && (
+                        <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
+                          {t.badge}
+                        </span>
+                      )}
+                      {t.message}
+                      <span className="text-accent">◆</span>
+                    </span>
+                  ))}
                 </span>
-                Khammam Municipal Corporation, is inviting online tenders for engaging an agency for &ldquo;AI-ENABLED INTEGRATED COMMAND &amp; CONTROL CENTRE (AI-ICCC)&rdquo; · Tender ID 715643
-                <span className="text-accent">◆</span>
-              </span>
-            ))}
-          </div>
-        </Link>
-      </div>
+              ))}
+            </div>
+          </Link>
+        </div>
+      )}
+
 
     </section>
   );
