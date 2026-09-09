@@ -172,11 +172,18 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
           <div className="flex items-center gap-2 mb-5">
             <Plus size={16} className="text-accent" />
             <h2 className="font-display text-lg font-bold">
-              Add tender / job / internship / event
+              {editingId ? "Edit notice" : "Add tender / job / internship / event"}
             </h2>
           </div>
-          <form onSubmit={create} className="space-y-3 text-sm">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              void save(true);
+            }}
+            className="space-y-3 text-sm"
+          >
             <div>
+
               <Label>Type</Label>
               <select
                 value={form.kind}
