@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Download, Eye, EyeOff, FileText, ImagePlus, Plus, Trash2 } from "lucide-react";
+import { Download, Eye, EyeOff, FileText, ImagePlus, Pencil, Plus, Trash2 } from "lucide-react";
 import { uploadPoster } from "@/lib/poster-upload";
 
 type Posting = {
@@ -58,6 +58,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
   const [form, setForm] = useState(empty);
   const [saving, setSaving] = useState(false);
   const [poster, setPoster] = useState<File | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   useEffect(() => {
     void load();
@@ -76,8 +77,31 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     setApps((a as Application[]) ?? []);
   }
 
-  async function create(e: React.FormEvent) {
-    e.preventDefault();
+  function startEdit(p: Posting) {
+    setEditingId(p.id);
+    setPoster(null);
+    setForm({
+      kind: p.kind,
+      title: p.title,
+      summary: p.summary ?? "",
+      details: p.details ?? "",
+      form_url: p.form_url ?? "",
+      external_link: p.external_link ?? "",
+      tender_id: p.tender_id ?? "",
+      file_no: p.file_no ?? "",
+      on_behalf_of: p.on_behalf_of ?? "",
+      deadline: p.deadline ?? "",
+    });
+    window.scrollTo({ top: document.body.scrollHeight * 0.5, behavior: "smooth" });
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
+    setForm(empty);
+    setPoster(null);
+  }
+
+  async function save(publish: boolean) {
     setSaving(true);
     let poster_url: string | null = null;
     if (poster) {
@@ -88,8 +112,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
         return toast.error(err.message ?? "Poster upload failed");
       }
     }
-    const { error } = await supabase.from("postings").insert({
-      poster_url,
+    const payload: Record<string, any> = {
       kind: form.kind,
       title: form.title,
       summary: form.summary || null,
@@ -100,10 +123,18 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
       file_no: form.file_no || null,
       on_behalf_of: form.on_behalf_of || null,
       deadline: form.deadline || null,
-    });
+      is_published: publish,
+    };
+    if (poster_url) payload.poster_url = poster_url;
+
+    const { error } = editingId
+      ? await supabase.from("postings").update(payload as never).eq("id", editingId)
+      : await supabase.from("postings").insert(payload as never);
+
     setSaving(false);
     if (error) return toast.error(error.message);
-    toast.success("Published");
+    toast.success(editingId ? (publish ? "Updated & published" : "Saved as draft") : publish ? "Published" : "Saved as draft");
+    setEditingId(null);
     setForm({ ...empty, kind: form.kind });
     setPoster(null);
     void load();
@@ -123,6 +154,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     const { error } = await supabase.from("postings").delete().eq("id", id);
     if (error) return toast.error(error.message);
     toast.success("Deleted");
+    if (editingId === id) cancelEdit();
     void load();
   }
 
@@ -132,6 +164,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     window.open(data.signedUrl, "_blank", "noopener");
   }
 
+
   return (
     <>
       <section className="mt-8 grid lg:grid-cols-[1fr_1.4fr] gap-8">
@@ -139,11 +172,18 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
           <div className="flex items-center gap-2 mb-5">
             <Plus size={16} className="text-accent" />
             <h2 className="font-display text-lg font-bold">
-              Add tender / job / internship / event
+              {editingId ? "Edit notice" : "Add tender / job / internship / event"}
             </h2>
           </div>
-          <form onSubmit={create} className="space-y-3 text-sm">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              void save(true);
+            }}
+            className="space-y-3 text-sm"
+          >
             <div>
+
               <Label>Type</Label>
               <select
                 value={form.kind}
@@ -200,14 +240,34 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
               value={form.deadline}
               onChange={(v) => setForm({ ...form, deadline: v })}
             />
-            <button
-              type="submit"
-              disabled={saving || !isAdmin}
-              className="w-full rounded-lg bg-[var(--navy)] text-white font-semibold py-2.5 text-sm hover:opacity-90 disabled:opacity-50 transition"
-            >
-              {saving ? "Saving…" : "Publish"}
-            </button>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => void save(false)}
+                disabled={saving || !isAdmin || !form.title}
+                className="rounded-lg border border-input bg-background font-semibold py-2.5 text-sm hover:border-accent disabled:opacity-50 transition"
+              >
+                {saving ? "Saving…" : "Save as draft"}
+              </button>
+              <button
+                type="submit"
+                disabled={saving || !isAdmin}
+                className="rounded-lg bg-[var(--navy)] text-white font-semibold py-2.5 text-sm hover:opacity-90 disabled:opacity-50 transition"
+              >
+                {saving ? "Saving…" : editingId ? "Update & publish" : "Publish"}
+              </button>
+            </div>
+            {editingId && (
+              <button
+                type="button"
+                onClick={cancelEdit}
+                className="w-full text-xs text-muted-foreground underline"
+              >
+                Cancel editing
+              </button>
+            )}
           </form>
+
         </div>
 
         <div className="rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden">
@@ -229,7 +289,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
                     <span className="font-semibold text-accent">{p.kind}</span>
                     <span>·</span>
                     <span>{fmt(p.created_at)}</span>
-                    {!p.is_published && <span className="text-destructive">· hidden</span>}
+                    {!p.is_published && <span className="text-destructive">· draft</span>}
                   </div>
                   <h3 className="mt-1 text-sm font-bold text-foreground truncate">{p.title}</h3>
                   {p.form_url && (
@@ -249,7 +309,15 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
                 {isAdmin && (
                   <div className="flex items-center gap-2 shrink-0">
                     <button
+                      onClick={() => startEdit(p)}
+                      title="Edit"
+                      className="p-1 text-muted-foreground hover:text-foreground"
+                    >
+                      <Pencil size={14} />
+                    </button>
+                    <button
                       onClick={() => togglePublish(p)}
+
                       title={p.is_published ? "Hide" : "Publish"}
                       className="p-1 text-muted-foreground hover:text-foreground"
                     >
