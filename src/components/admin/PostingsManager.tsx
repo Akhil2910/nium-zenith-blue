@@ -128,8 +128,9 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     if (poster_url) payload.poster_url = poster_url;
 
     const { error } = editingId
-      ? await supabase.from("postings").update(payload).eq("id", editingId)
-      : await supabase.from("postings").insert(payload);
+      ? await supabase.from("postings").update(payload as never).eq("id", editingId)
+      : await supabase.from("postings").insert(payload as never);
+
     setSaving(false);
     if (error) return toast.error(error.message);
     toast.success(editingId ? (publish ? "Updated & published" : "Saved as draft") : publish ? "Published" : "Saved as draft");
