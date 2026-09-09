@@ -78,12 +78,28 @@ const slides: Slide[] = [
   },
 ];
 
+type TickerItem = { id: string; message: string; link: string | null; badge: string | null };
+
 export function Hero() {
   const [idx, setIdx] = useState(0);
+  const [ticker, setTicker] = useState<TickerItem[]>([]);
   useEffect(() => {
     const t = setInterval(() => setIdx((i) => (i + 1) % slides.length), 6000);
     return () => clearInterval(t);
   }, [idx]);
+
+  useEffect(() => {
+    (async () => {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { data } = await supabase
+        .from("ticker_items")
+        .select("id,message,link,badge")
+        .eq("is_published", true)
+        .order("sort_order", { ascending: true });
+      setTicker((data as TickerItem[]) ?? []);
+    })();
+  }, []);
+
 
   const cur = slides[idx];
   const go = (d: number) => setIdx((i) => (i + d + slides.length) % slides.length);
