@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
-import { Download, Eye, EyeOff, FileText, ImagePlus, Plus, Trash2 } from "lucide-react";
+import { Download, Eye, EyeOff, FileText, ImagePlus, Pencil, Plus, Trash2 } from "lucide-react";
 import { uploadPoster } from "@/lib/poster-upload";
 
 type Posting = {
