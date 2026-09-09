@@ -58,6 +58,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
   const [form, setForm] = useState(empty);
   const [saving, setSaving] = useState(false);
   const [poster, setPoster] = useState<File | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
 
   useEffect(() => {
     void load();
@@ -76,8 +77,31 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     setApps((a as Application[]) ?? []);
   }
 
-  async function create(e: React.FormEvent) {
-    e.preventDefault();
+  function startEdit(p: Posting) {
+    setEditingId(p.id);
+    setPoster(null);
+    setForm({
+      kind: p.kind,
+      title: p.title,
+      summary: p.summary ?? "",
+      details: p.details ?? "",
+      form_url: p.form_url ?? "",
+      external_link: p.external_link ?? "",
+      tender_id: p.tender_id ?? "",
+      file_no: p.file_no ?? "",
+      on_behalf_of: p.on_behalf_of ?? "",
+      deadline: p.deadline ?? "",
+    });
+    window.scrollTo({ top: document.body.scrollHeight * 0.5, behavior: "smooth" });
+  }
+
+  function cancelEdit() {
+    setEditingId(null);
+    setForm(empty);
+    setPoster(null);
+  }
+
+  async function save(publish: boolean) {
     setSaving(true);
     let poster_url: string | null = null;
     if (poster) {
@@ -88,8 +112,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
         return toast.error(err.message ?? "Poster upload failed");
       }
     }
-    const { error } = await supabase.from("postings").insert({
-      poster_url,
+    const payload: Record<string, any> = {
       kind: form.kind,
       title: form.title,
       summary: form.summary || null,
@@ -100,10 +123,17 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
       file_no: form.file_no || null,
       on_behalf_of: form.on_behalf_of || null,
       deadline: form.deadline || null,
-    });
+      is_published: publish,
+    };
+    if (poster_url) payload.poster_url = poster_url;
+
+    const { error } = editingId
+      ? await supabase.from("postings").update(payload).eq("id", editingId)
+      : await supabase.from("postings").insert(payload);
     setSaving(false);
     if (error) return toast.error(error.message);
-    toast.success("Published");
+    toast.success(editingId ? (publish ? "Updated & published" : "Saved as draft") : publish ? "Published" : "Saved as draft");
+    setEditingId(null);
     setForm({ ...empty, kind: form.kind });
     setPoster(null);
     void load();
@@ -123,6 +153,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     const { error } = await supabase.from("postings").delete().eq("id", id);
     if (error) return toast.error(error.message);
     toast.success("Deleted");
+    if (editingId === id) cancelEdit();
     void load();
   }
 
@@ -131,6 +162,7 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
     if (error || !data) return toast.error(error?.message ?? "Could not open resume");
     window.open(data.signedUrl, "_blank", "noopener");
   }
+
 
   return (
     <>
