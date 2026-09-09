@@ -240,6 +240,42 @@ export type Database = {
           },
         ]
       }
+      ticker_items: {
+        Row: {
+          badge: string | null
+          created_at: string
+          created_by: string | null
+          id: string
+          is_published: boolean
+          link: string | null
+          message: string
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          badge?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          is_published?: boolean
+          link?: string | null
+          message: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          badge?: string | null
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          is_published?: boolean
+          link?: string | null
+          message?: string
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
