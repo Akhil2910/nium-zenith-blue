@@ -240,14 +240,34 @@ export function PostingsManager({ isAdmin }: { isAdmin: boolean }) {
               value={form.deadline}
               onChange={(v) => setForm({ ...form, deadline: v })}
             />
-            <button
-              type="submit"
-              disabled={saving || !isAdmin}
-              className="w-full rounded-lg bg-[var(--navy)] text-white font-semibold py-2.5 text-sm hover:opacity-90 disabled:opacity-50 transition"
-            >
-              {saving ? "Saving…" : "Publish"}
-            </button>
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={() => void save(false)}
+                disabled={saving || !isAdmin || !form.title}
+                className="rounded-lg border border-input bg-background font-semibold py-2.5 text-sm hover:border-accent disabled:opacity-50 transition"
+              >
+                {saving ? "Saving…" : "Save as draft"}
+              </button>
+              <button
+                type="submit"
+                disabled={saving || !isAdmin}
+                className="rounded-lg bg-[var(--navy)] text-white font-semibold py-2.5 text-sm hover:opacity-90 disabled:opacity-50 transition"
+              >
+                {saving ? "Saving…" : editingId ? "Update & publish" : "Publish"}
+              </button>
+            </div>
+            {editingId && (
+              <button
+                type="button"
+                onClick={cancelEdit}
+                className="w-full text-xs text-muted-foreground underline"
+              >
+                Cancel editing
+              </button>
+            )}
           </form>
+
         </div>
 
         <div className="rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden">
