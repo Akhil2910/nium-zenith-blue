@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { Crown, UserCheck } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Crown, UserCheck, X } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import secImg from "@/assets/secretary-sridevi.webp";
-import pkmAsset from "@/assets/pk-mohanty.jpg.asset.json";
 import { BackButton } from "@/components/BackButton";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/team")({
   component: TeamPage,
@@ -19,62 +20,103 @@ export const Route = createFileRoute("/team")({
   }),
 });
 
-const directors = [
-  { name: "J Srinivasa Rao", role: "Executive Director" },
-  { name: "TSVN Thrilleshwar Rao", role: "Executive Director (Programmes)" },
-  { name: "V Prashanthi", role: "Executive Head, UIIC" },
-  { name: "Lawanya Gotety", role: "Director – Urban Governance" },
-  { name: "Venugopal V", role: "Director (Circularity & Sustainability)" },
-];
+type Member = {
+  id: string;
+  name: string;
+  designation: string;
+  description: string | null;
+  photo_url: string | null;
+  group_key: string;
+  sort_order: number;
+};
 
+/** Photos that ship with the site, matched by name when no upload exists yet. */
+const BUNDLED_PHOTOS: Record<string, string> = {
+  "Dr. T.K. Sreedevi IAS": secImg,
+};
 
-const itTeam = [
-  { name: "Chitla Akshita Reddy", role: "Programme Head (IT)" },
-  { name: "Maddiboina Phani Gopal", role: "Programme Head" },
-  { name: "Vikash Pilli", role: "Functional Expert" },
-  { name: "Jayaram Rathod", role: "Senior Developer" },
-  { name: "Jaipal Pola", role: "Software Developer" },
-  { name: "V Akhil Babu", role: "Software Engineer" },
-];
-
-const otherTeam = [
-  { name: "Konduri Ravalee", role: "Programme Head" },
-  { name: "P Yashwanth", role: "Senior Knowledge Manager" },
-  { name: "G. Laxmi Narayana", role: "Administrative Officer" },
-  { name: "Nitya Khendry", role: "Lead – Heritage" },
-  { name: "Kiran Kumar Bingi", role: "Executive Manager (Programmes & Administration)" },
-  { name: "D. Sindhu Priya Reddy", role: "Knowledge Manager" },
-  { name: "Suresh Bodiga", role: "Manager (Operations)" },
-  { name: "R Prajwala Sam", role: "Research Associate" },
-  { name: "Nadigoti Vennela Rani", role: "HR Executive" },
-  { name: "Shaik Naseema Banu", role: "Research Associate" },
-  { name: "G Venkatesham", role: "Research Associate" },
-];
-
+function photoOf(m: Member) {
+  return m.photo_url ?? BUNDLED_PHOTOS[m.name] ?? null;
+}
 
 function initials(name: string) {
   return name.split(/\s+/).filter(Boolean).slice(0, 2).map((n) => n[0]).join("").toUpperCase();
 }
 
-function PersonCard({ name, role }: { name: string; role: string }) {
+function PersonCard({ member, onOpen }: { member: Member; onOpen: (m: Member) => void }) {
+  const photo = photoOf(member);
   return (
-    <a
-      href="#"
-      className="group block rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] hover:border-accent/40 transition"
+    <button
+      type="button"
+      onClick={() => onOpen(member)}
+      className="group block w-full text-left rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] hover:border-accent/40 transition"
     >
       <div className="flex items-start gap-3">
-        <div className="h-11 w-11 shrink-0 rounded-full bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display font-bold text-sm">
-          {initials(name)}
-        </div>
+        {photo ? (
+          <img
+            src={photo}
+            alt={member.name}
+            loading="lazy"
+            className="h-11 w-11 shrink-0 rounded-full object-cover object-top border border-border"
+          />
+        ) : (
+          <div className="h-11 w-11 shrink-0 rounded-full bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display font-bold text-sm">
+            {initials(member.name)}
+          </div>
+        )}
         <div className="min-w-0">
-          <div className="font-semibold text-foreground text-sm leading-tight">{name}</div>
-          <div className="mt-1 text-xs text-muted-foreground leading-snug">{role}</div>
+          <div className="font-semibold text-foreground text-sm leading-tight">{member.name}</div>
+          <div className="mt-1 text-xs text-muted-foreground leading-snug">{member.designation}</div>
           <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
             Profile →
           </div>
         </div>
       </div>
-    </a>
+    </button>
+  );
+}
+
+function FeatureCard({
+  member,
+  icon,
+  eyebrow,
+  onOpen,
+}: {
+  member: Member;
+  icon: React.ReactNode;
+  eyebrow: string;
+  onOpen: (m: Member) => void;
+}) {
+  const photo = photoOf(member);
+  return (
+    <button
+      type="button"
+      onClick={() => onOpen(member)}
+      className="group flex w-full items-center gap-5 rounded-2xl border border-border bg-card p-5 text-left shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition max-w-2xl"
+    >
+      {photo ? (
+        <img
+          src={photo}
+          alt={member.name}
+          className="h-24 w-24 rounded-xl object-cover object-top border border-border"
+          loading="lazy"
+        />
+      ) : (
+        <div className="h-24 w-24 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display text-2xl font-bold">
+          {initials(member.name)}
+        </div>
+      )}
+      <div className="min-w-0">
+        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
+          {icon} {eyebrow}
+        </div>
+        <div className="mt-2 font-display text-lg font-bold text-foreground">{member.name}</div>
+        <div className="mt-1 text-sm text-muted-foreground leading-snug">{member.designation}</div>
+        <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
+          Profile →
+        </div>
+      </div>
+    </button>
   );
 }
 
@@ -96,7 +138,68 @@ function Section({ title, subtitle, children }: { title: string; subtitle?: stri
   );
 }
 
+function ProfileDialog({ member, onClose }: { member: Member; onClose: () => void }) {
+  const photo = photoOf(member);
+  return (
+    <div
+      className="fixed inset-0 z-[70] flex items-center justify-center bg-black/60 p-4"
+      onClick={onClose}
+      role="presentation"
+    >
+      <div
+        className="relative w-full max-w-lg rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-elevated)]"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          aria-label="Close profile"
+          className="absolute right-4 top-4 text-muted-foreground hover:text-foreground"
+        >
+          <X size={18} />
+        </button>
+        <div className="flex items-center gap-4">
+          {photo ? (
+            <img src={photo} alt={member.name} className="h-20 w-20 rounded-xl object-cover object-top border border-border" />
+          ) : (
+            <div className="h-20 w-20 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display text-xl font-bold">
+              {initials(member.name)}
+            </div>
+          )}
+          <div className="min-w-0 pr-6">
+            <div className="font-display text-lg font-bold text-foreground">{member.name}</div>
+            <div className="mt-1 text-sm text-muted-foreground">{member.designation}</div>
+          </div>
+        </div>
+        <p className="mt-5 text-sm leading-relaxed text-foreground whitespace-pre-line">
+          {member.description || "Profile details will be updated soon."}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function TeamPage() {
+  const [members, setMembers] = useState<Member[]>([]);
+  const [open, setOpen] = useState<Member | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      const { data } = await supabase
+        .from("team_members")
+        .select("*")
+        .eq("is_published", true)
+        .order("sort_order", { ascending: true });
+      setMembers((data as Member[]) ?? []);
+    })();
+  }, []);
+
+  const group = (key: string) => members.filter((m) => m.group_key === key);
+  const dg = group("dg");
+  const advisors = group("advisor");
+  const directors = group("executive_directors");
+  const itTeam = group("it_team");
+  const knowledge = group("knowledge_research");
+
   return (
     <div className="min-h-screen bg-surface">
       <Navbar />
@@ -115,80 +218,52 @@ function TeamPage() {
             </p>
           </div>
 
-          {/* DG */}
-          <Section title="Director General">
-            <a
-              href="#"
-              className="group flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition max-w-2xl"
-            >
-              <img
-                src={secImg}
-                alt="Director General"
-                className="h-24 w-24 rounded-xl object-cover object-top border border-border"
-                loading="lazy"
-              />
-              <div className="min-w-0">
-                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
-                  <Crown size={14} /> Director General
-                </div>
-                <div className="mt-2 font-display text-lg font-bold text-foreground">Dr. T.K. Sreedevi IAS</div>
-                <div className="mt-1 text-sm text-muted-foreground leading-snug">
-                  Director General, NIUM · Strategic leadership across all verticals.
-                </div>
-                <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
-                  Profile →
-                </div>
+          {dg.length > 0 && (
+            <Section title="Director General">
+              <div className="space-y-4">
+                {dg.map((m) => (
+                  <FeatureCard key={m.id} member={m} icon={<Crown size={14} />} eyebrow="Director General" onOpen={setOpen} />
+                ))}
               </div>
-            </a>
-          </Section>
+            </Section>
+          )}
 
-          {/* Advisor */}
-          <Section title="Advisor">
-            <a
-              href="#"
-              className="group flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition max-w-2xl"
-            >
-              <img
-                src={pkmAsset.url}
-                alt="Dr. P.K. Mohanty"
-                className="h-24 w-24 rounded-xl object-cover object-top border border-border"
-                loading="lazy"
-              />
-              <div className="min-w-0">
-                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
-                  <UserCheck size={14} /> Honorary Advisor
-                </div>
-                <div className="mt-2 font-display text-lg font-bold text-foreground">Dr. P.K. Mohanty, IAS (Retd.)</div>
-                <div className="mt-1 text-sm text-muted-foreground leading-snug">
-                  Executive Chair – Research and Programmes.
-                </div>
-                <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
-                  Profile →
-                </div>
+          {advisors.length > 0 && (
+            <Section title="Advisor">
+              <div className="space-y-4">
+                {advisors.map((m) => (
+                  <FeatureCard key={m.id} member={m} icon={<UserCheck size={14} />} eyebrow="Honorary Advisor" onOpen={setOpen} />
+                ))}
               </div>
-            </a>
-          </Section>
+            </Section>
+          )}
 
-          <Section title="Executive Directors" subtitle="Leadership team">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {directors.map((p) => <PersonCard key={p.name} {...p} />)}
-            </div>
-          </Section>
+          {directors.length > 0 && (
+            <Section title="Executive Directors" subtitle="Leadership team">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {directors.map((m) => <PersonCard key={m.id} member={m} onOpen={setOpen} />)}
+              </div>
+            </Section>
+          )}
 
+          {itTeam.length > 0 && (
+            <Section title="IT Team" subtitle="NIUM-IT">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {itTeam.map((m) => <PersonCard key={m.id} member={m} onOpen={setOpen} />)}
+              </div>
+            </Section>
+          )}
 
-          <Section title="IT Team" subtitle="NIUM-IT">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {itTeam.map((p) => <PersonCard key={p.name} {...p} />)}
-            </div>
-          </Section>
-
-          <Section title="Knowledge Management & Research" subtitle="Programmes team">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-              {otherTeam.map((p) => <PersonCard key={p.name} {...p} />)}
-            </div>
-          </Section>
+          {knowledge.length > 0 && (
+            <Section title="Knowledge Management & Research" subtitle="Programmes team">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {knowledge.map((m) => <PersonCard key={m.id} member={m} onOpen={setOpen} />)}
+              </div>
+            </Section>
+          )}
         </div>
       </main>
+      {open && <ProfileDialog member={open} onClose={() => setOpen(null)} />}
       <Footer />
     </div>
   );
