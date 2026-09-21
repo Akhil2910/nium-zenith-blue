@@ -82,18 +82,18 @@ export function TeamManager({ isAdmin }: { isAdmin: boolean }) {
       }
     }
 
-    const payload: Record<string, unknown> = {
+    const payload = {
       name: form.name.trim(),
       designation: form.designation.trim(),
       description: form.description.trim() || null,
       group_key: form.group_key,
       sort_order: Number(form.sort_order) || 0,
+      ...(photo_url ? { photo_url } : {}),
     };
-    if (photo_url) payload.photo_url = photo_url;
 
     const { error } = editingId
       ? await supabase.from("team_members").update(payload).eq("id", editingId)
-      : await supabase.from("team_members").insert(payload as any);
+      : await supabase.from("team_members").insert(payload);
 
     setSaving(false);
     if (error) return toast.error(error.message);
