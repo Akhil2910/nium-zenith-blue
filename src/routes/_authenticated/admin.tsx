@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { Calendar as CalIcon, LogOut, Plus, Trash2, Users, Shield, ImagePlus, Loader2, Mail, ClipboardList } from "lucide-react";
 import { PostingsManager } from "@/components/admin/PostingsManager";
 import { TickerManager } from "@/components/admin/TickerManager";
+import { TeamManager } from "@/components/admin/TeamManager";
 import { uploadPoster } from "@/lib/poster-upload";
 
 export const Route = createFileRoute("/_authenticated/admin")({
@@ -351,6 +352,8 @@ function AdminPage() {
         <TickerManager isAdmin={Boolean(isAdmin)} />
 
         <PostingsManager isAdmin={Boolean(isAdmin)} />
+
+        <TeamManager isAdmin={Boolean(isAdmin)} />
       </main>
     </div>
   );
