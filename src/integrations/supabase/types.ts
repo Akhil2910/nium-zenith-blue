@@ -240,6 +240,48 @@ export type Database = {
           },
         ]
       }
+      team_members: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          description: string | null
+          designation: string
+          group_key: string
+          id: string
+          is_published: boolean
+          name: string
+          photo_url: string | null
+          sort_order: number
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          designation?: string
+          group_key: string
+          id?: string
+          is_published?: boolean
+          name: string
+          photo_url?: string | null
+          sort_order?: number
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          description?: string | null
+          designation?: string
+          group_key?: string
+          id?: string
+          is_published?: boolean
+          name?: string
+          photo_url?: string | null
+          sort_order?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
       ticker_items: {
         Row: {
           badge: string | null
