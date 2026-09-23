@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X, CalendarDays, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import tgEmblem from "@/assets/tg-emblem.png";
+import niumMark from "@/assets/nium-mark.png.asset.json";
 
 const FS_KEY = "nium-fs";
 type FSLevel = "" | "fs-lg" | "fs-xl";
@@ -137,10 +138,9 @@ export function Navbar() {
             className="relative shrink-0"
             whileHover={{ scale: 1.08 }}
           >
-            <div className="h-14 w-14 md:h-[60px] md:w-[60px] rounded-xl bg-[var(--gradient-band)] flex items-center justify-center shadow-[var(--shadow-card)]">
-              <span className="font-display font-bold text-primary-foreground text-2xl tracking-tight">N</span>
+            <div className="h-14 w-14 md:h-[60px] md:w-[60px] rounded-xl bg-white flex items-center justify-center shadow-[var(--shadow-card)] p-1.5">
+              <img src={niumMark.url} alt="NIUM logo" className="h-full w-full object-contain" />
             </div>
-            <span className="absolute -bottom-1 -right-1 h-3 w-3 rounded-full bg-accent border-2 border-background" />
           </motion.div>
           <div className="leading-tight min-w-0 shrink-0">
             <div className={`font-display font-bold text-[22px] md:text-[26px] tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}>
