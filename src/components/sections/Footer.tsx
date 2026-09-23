@@ -1,4 +1,5 @@
 import { Instagram, Linkedin, Twitter } from "lucide-react";
+import niumMark from "@/assets/nium-mark.png.asset.json";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/nium_hyderabad/", Icon: Instagram },
@@ -12,8 +13,8 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-14 grid md:grid-cols-12 gap-10">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-xl bg-[var(--gradient-accent)] flex items-center justify-center">
-              <span className="font-display font-bold text-[var(--navy)] text-lg">N</span>
+            <div className="h-11 w-11 rounded-xl bg-white flex items-center justify-center p-1">
+              <img src={niumMark.url} alt="NIUM logo" className="h-full w-full object-contain" />
             </div>
             <div>
               <div className="font-display font-bold text-white">NIUM</div>
