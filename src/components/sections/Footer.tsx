@@ -1,5 +1,5 @@
 import { Instagram, Linkedin, Twitter } from "lucide-react";
-import niumMark from "@/assets/nium-mark.png.asset.json";
+import niumLogo from "@/assets/nium-logo.png.asset.json";
 
 const socials = [
   { label: "Instagram", href: "https://www.instagram.com/nium_hyderabad/", Icon: Instagram },
@@ -12,16 +12,8 @@ export function Footer() {
     <footer className="relative bg-[var(--navy)] text-white/80">
       <div className="mx-auto max-w-7xl px-6 py-14 grid md:grid-cols-12 gap-10">
         <div className="md:col-span-5">
-          <div className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-xl bg-white flex items-center justify-center p-1">
-              <img src={niumMark.url} alt="NIUM logo" className="h-full w-full object-contain" />
-            </div>
-            <div>
-              <div className="font-display font-bold text-white">NIUM</div>
-              <div className="text-xs uppercase tracking-[0.18em] text-white/55">
-                National Institute of Urban Management
-              </div>
-            </div>
+          <div className="inline-flex h-16 rounded-xl bg-white items-center px-3 py-2">
+            <img src={niumLogo.url} alt="National Institute of Urban Management" className="h-full w-auto object-contain" />
           </div>
           <p className="mt-5 text-sm text-white/65 max-w-sm leading-relaxed">
             An execution-ready institutional platform helping States plan better, deliver
