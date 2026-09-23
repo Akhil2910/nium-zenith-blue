@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Menu, X, CalendarDays, ChevronDown } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import tgEmblem from "@/assets/tg-emblem.png";
-import niumMark from "@/assets/nium-mark.png.asset.json";
+import niumLogo from "@/assets/nium-logo.png.asset.json";
 
 const FS_KEY = "nium-fs";
 type FSLevel = "" | "fs-lg" | "fs-xl";
@@ -136,20 +136,12 @@ export function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.45, ease: "easeOut" }}
             className="relative shrink-0"
-            whileHover={{ scale: 1.08 }}
+            whileHover={{ scale: 1.03 }}
           >
-            <div className="h-14 w-14 md:h-[60px] md:w-[60px] rounded-xl bg-white flex items-center justify-center shadow-[var(--shadow-card)] p-1.5">
-              <img src={niumMark.url} alt="NIUM logo" className="h-full w-full object-contain" />
+            <div className="h-14 md:h-[60px] rounded-xl bg-white flex items-center px-3 py-1.5 shadow-[var(--shadow-card)]">
+              <img src={niumLogo.url} alt="National Institute of Urban Management" className="h-full w-auto object-contain" />
             </div>
           </motion.div>
-          <div className="leading-tight min-w-0 shrink-0">
-            <div className={`font-display font-bold text-[22px] md:text-[26px] tracking-tight ${scrolled ? "text-foreground" : "text-white"}`}>
-              NIUM
-            </div>
-            <div className={`hidden md:block mt-0.5 text-[10px] uppercase tracking-[0.16em] whitespace-nowrap ${scrolled ? "text-muted-foreground" : "text-white/70"}`}>
-              National Institute of Urban Management
-            </div>
-          </div>
         </Link>
 
         <div className="hidden lg:flex items-center gap-3 shrink-0">
