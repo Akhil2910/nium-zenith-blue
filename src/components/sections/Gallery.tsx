@@ -14,7 +14,7 @@ import uw3 from "@/assets/events/used-water-3.jpg.asset.json";
 
 type Item = { src: string; caption: string; date?: string; span: string; fit?: "cover" | "contain" };
 
-const uwCaption = "Workshop on Scaling Safe and Sustainable Reuse of Treated Used Water in Telangana — Mercure Hotel";
+const uwCaption = "Treated Used Water Reuse Workshop";
 
 const items: Item[] = [
   { src: uw3.url, caption: uwCaption, date: "21 Sep 2026", span: "md:col-span-2 md:row-span-2" },
