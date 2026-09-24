@@ -17,7 +17,7 @@ type Item = { src: string; caption: string; date?: string; span: string; fit?: "
 const uwCaption = "Treated Used Water Reuse Workshop";
 
 const items: Item[] = [
-  { src: uw3.url, caption: uwCaption, date: "21 Sep 2026", span: "md:col-span-2 md:row-span-2" },
+  { src: uw3.url, caption: "Workshop on Scaling Safe and Sustainable Reuse of Treated Used Water in Telangana — Mercure Hotel", date: "21 Sep 2026", span: "md:col-span-2 md:row-span-2" },
   { src: uw1.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
   { src: uw2.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
   { src: g1, caption: "Field visit — urban green spaces", span: "md:col-span-2 md:row-span-2" },
