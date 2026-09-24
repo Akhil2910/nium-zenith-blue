@@ -16,6 +16,7 @@ import urbanX from "@/assets/events/urban_x_challenge.jpg.asset.json";
 import wardMembersVideo from "@/assets/events/ward-members-training.mp4.asset.json";
 import telanganaRisingVideo from "@/assets/events/telangana-rising-2047.mp4.asset.json";
 import niumIntroVideo from "@/assets/events/nium-intro-film.mp4.asset.json";
+import wardOfficersSwm from "@/assets/events/ward-officers-swm.png.asset.json";
 
 type EventItem = {
   src: string;
@@ -26,6 +27,11 @@ type EventItem = {
 
 // Newest first
 const events: EventItem[] = [
+  {
+    src: wardOfficersSwm.url,
+    title: "Capacity Building Programme for Ward Officers on Sanitation and Solid Waste Management — RCUES, Osmania University",
+    date: "21–23 Sep 2026",
+  },
   {
     src: wardMembersVideo.url,
     title: "Training Programme for Ward Members of Municipalities & Municipal Corporations",
