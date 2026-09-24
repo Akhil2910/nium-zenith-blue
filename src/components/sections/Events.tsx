@@ -17,9 +17,6 @@ import wardMembersVideo from "@/assets/events/ward-members-training.mp4.asset.js
 import telanganaRisingVideo from "@/assets/events/telangana-rising-2047.mp4.asset.json";
 import niumIntroVideo from "@/assets/events/nium-intro-film.mp4.asset.json";
 import wardOfficersSwm from "@/assets/events/ward-officers-swm.png.asset.json";
-import usedWater1 from "@/assets/events/used-water-1.jpg.asset.json";
-import usedWater2 from "@/assets/events/used-water-2.jpg.asset.json";
-import usedWater3 from "@/assets/events/used-water-3.jpg.asset.json";
 
 type EventItem = {
   src: string;
@@ -28,14 +25,8 @@ type EventItem = {
   kind?: "poster" | "video";
 };
 
-const usedWaterTitle =
-  "Workshop on Scaling Safe and Sustainable Reuse of Treated Used Water in Telangana — Mercure Hotel";
-
 // Newest first
 const events: EventItem[] = [
-  { src: usedWater1.url, title: usedWaterTitle, date: "21 Sep 2026" },
-  { src: usedWater2.url, title: usedWaterTitle, date: "21 Sep 2026" },
-  { src: usedWater3.url, title: usedWaterTitle, date: "21 Sep 2026" },
   {
     src: wardOfficersSwm.url,
     title: "Capacity Building Programme for Ward Officers on Sanitation and Solid Waste Management — RCUES, Osmania University",
