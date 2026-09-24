@@ -8,10 +8,18 @@ import m1 from "@/assets/gallery-meeting-1.jpeg";
 import m2 from "@/assets/gallery-meeting-2.jpeg";
 import m3 from "@/assets/gallery-meeting-3.jpeg";
 import m4 from "@/assets/gallery-meeting-4.jpeg";
+import uw1 from "@/assets/events/used-water-1.jpg.asset.json";
+import uw2 from "@/assets/events/used-water-2.jpg.asset.json";
+import uw3 from "@/assets/events/used-water-3.jpg.asset.json";
 
 type Item = { src: string; caption: string; date?: string; span: string; fit?: "cover" | "contain" };
 
+const uwCaption = "Workshop on Scaling Safe and Sustainable Reuse of Treated Used Water in Telangana — Mercure Hotel";
+
 const items: Item[] = [
+  { src: uw3.url, caption: uwCaption, date: "21 Sep 2026", span: "md:col-span-2 md:row-span-2" },
+  { src: uw1.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
+  { src: uw2.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
   { src: g1, caption: "Field visit — urban green spaces", span: "md:col-span-2 md:row-span-2" },
   { src: g2, caption: "HUDCO 56th Foundation Day recognition", span: "" },
   { src: g3, caption: "Capacity-building cohort", span: "" },
