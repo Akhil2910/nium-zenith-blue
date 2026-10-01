@@ -18,6 +18,7 @@ import telanganaRisingVideo from "@/assets/events/telangana-rising-2047.mp4.asse
 import niumIntroVideo from "@/assets/events/nium-intro-film.mp4.asset.json";
 import wardOfficersSwm from "@/assets/events/ward-officers-swm.png.asset.json";
 import worldBankTutjp from "@/assets/events/world-bank-tutjp.jpg.asset.json";
+import wardOfficersBatch2 from "@/assets/events/ward-officers-batch2.jpg.asset.json";
 
 type EventItem = {
   src: string;
@@ -28,6 +29,11 @@ type EventItem = {
 
 // Newest first
 const events: EventItem[] = [
+  {
+    src: wardOfficersBatch2.url,
+    title: "Capacity Building Programme for Ward Officers (Batch 2) on Sanitation and Solid Waste Management — RCUES, Osmania University",
+    date: "29 Sep – 1 Oct 2026",
+  },
   {
     src: worldBankTutjp.url,
     title: "World Bank Meeting on Telangana Urban Transformation and Jobs Programme",
