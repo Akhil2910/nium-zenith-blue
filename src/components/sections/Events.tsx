@@ -158,7 +158,7 @@ function EventCard({ item }: { item: EventItem }) {
 
   return (
     <figure
-      className="group mb-6 break-inside-avoid rounded-xl border border-border bg-card p-4 shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-elevated)]"
+      className="group rounded-xl border border-border bg-card p-4 shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-elevated)]"
       onMouseEnter={() => {
         if (isVideo) void videoRef.current?.play();
       }}
@@ -226,7 +226,7 @@ export function Events() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="columns-1 gap-6 sm:columns-2 lg:columns-3 xl:columns-4"
+          className="grid grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           {events.map((e) => (
             <EventCard key={e.src} item={e} />
