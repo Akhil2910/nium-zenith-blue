@@ -17,6 +17,7 @@ import wardMembersVideo from "@/assets/events/ward-members-training.mp4.asset.js
 import telanganaRisingVideo from "@/assets/events/telangana-rising-2047.mp4.asset.json";
 import niumIntroVideo from "@/assets/events/nium-intro-film.mp4.asset.json";
 import wardOfficersSwm from "@/assets/events/ward-officers-swm.png.asset.json";
+import worldBankTutjp from "@/assets/events/world-bank-tutjp.jpg.asset.json";
 
 type EventItem = {
   src: string;
@@ -27,6 +28,11 @@ type EventItem = {
 
 // Newest first
 const events: EventItem[] = [
+  {
+    src: worldBankTutjp.url,
+    title: "World Bank Meeting on Telangana Urban Transformation and Jobs Programme",
+    date: "15–23 Sep 2026",
+  },
   {
     src: wardOfficersSwm.url,
     title: "Capacity Building Programme for Ward Officers on Sanitation and Solid Waste Management — RCUES, Osmania University",
