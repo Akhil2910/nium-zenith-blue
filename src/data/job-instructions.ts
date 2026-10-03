@@ -1,6 +1,6 @@
 // Application instructions for the current NIUM recruitment notification.
 export const jobNotice = {
-  title: "Recruiting Professionals on Contract Basis for various projects",
+  title: "Engagement of subject matter experts & urban development professionals",
   intro:
     "The National Institute of Urban Management (NIUM) invites applications from qualified and experienced professionals for engagement on a contractual basis for various projects under Project Development & Management Consultants (Hyderabad), PIUs (Warangal & Karimnagar), State Project Implementation Unit – SPIU-SBM (Hyderabad) and Telangana Climate Resilient Urban Transformation Initiative – TCRUTI (Hyderabad).",
   howToApply:
