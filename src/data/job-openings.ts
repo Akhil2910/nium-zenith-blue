@@ -53,7 +53,7 @@ export const jobProjects: JobProject[] = [
     "project": "Urban Challenge Fund (UCF) / Externally Aided Projects (EAPs)",
     "location": "Hyderabad / Telangana",
     "slug": "pdmc",
-    "formUrl": null
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScvhLdrEyp-dfjz2hGLpizj892R4ZH5-C0gN31SCcG-yf_X3A/viewform"
   },
   {
     "name": "Project Implementation Unit – Greater Warangal Municipal Corporation (GWMC)",
@@ -188,7 +188,7 @@ export const jobProjects: JobProject[] = [
     "project": "Urban Challenge Fund / Externally Aided Projects",
     "location": "Warangal",
     "slug": "piu-warangal",
-    "formUrl": null
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScvhLdrEyp-dfjz2hGLpizj892R4ZH5-C0gN31SCcG-yf_X3A/viewform"
   },
   {
     "name": "Project Implementation Unit – Karimnagar Municipal Corporation (KMC)",
@@ -326,7 +326,7 @@ export const jobProjects: JobProject[] = [
     "project": "Urban Challenge Fund – Integrated Urban Infrastructure Project",
     "location": "Karimnagar",
     "slug": "piu-karimnagar",
-    "formUrl": null
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScvhLdrEyp-dfjz2hGLpizj892R4ZH5-C0gN31SCcG-yf_X3A/viewform"
   },
   {
     "name": "State Project Implementation Unit – Swachh Bharat Mission (Urban) 2.0",
@@ -416,7 +416,7 @@ export const jobProjects: JobProject[] = [
     "project": "SBM(U) 2.0 – State Project Implementation Unit",
     "location": "Hyderabad",
     "slug": "spiu-sbm",
-    "formUrl": null
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScvhLdrEyp-dfjz2hGLpizj892R4ZH5-C0gN31SCcG-yf_X3A/viewform"
   },
   {
     "name": "TCRUTI – Telangana Climate Resilient Urban Transformation Initiative",
@@ -459,6 +459,6 @@ export const jobProjects: JobProject[] = [
     "project": "Telangana climate Resilient Urban Transformation Initiative TCRUTI",
     "location": "Hyderabad",
     "slug": "tcruti",
-    "formUrl": null
+    "formUrl": "https://docs.google.com/forms/d/e/1FAIpQLScvhLdrEyp-dfjz2hGLpizj892R4ZH5-C0gN31SCcG-yf_X3A/viewform"
   }
 ];
