@@ -197,3 +197,16 @@ function ProjectCard({ project: p }: { project: JobProject }) {
     </article>
   );
 }
+
+const labelCls = "text-xs font-bold uppercase tracking-[0.14em] [color:color-mix(in_oklab,var(--accent)_70%,black)]";
+
+function ExperienceText({ text }: { text: string }) {
+  const m = text.match(/^\s*(\d+\+?\s*(?:-\s*\d+\s*)?years?)\s*(.*)$/i);
+  if (!m) return <p className="mt-1 font-medium text-foreground leading-relaxed">{text}</p>;
+  return (
+    <p className="mt-1 font-medium text-foreground leading-relaxed">
+      <span className="mr-1.5 inline-block rounded-md bg-primary px-2 py-0.5 text-xs font-bold text-primary-foreground">{m[1]}</span>
+      {m[2]}
+    </p>
+  );
+}
