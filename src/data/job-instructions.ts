@@ -6,7 +6,7 @@ export const jobNotice = {
   howToApply:
     "Interested candidates may submit their application in the prescribed format, along with their CV and supporting documents online, using the Apply now button for the project.",
   email: "hr@nium.org.in",
-  lastDate: null as string | null,
+  lastDate: "19 October 2026" as string | null,
   selection:
     "Selection will be based on the candidate's qualifications, relevant experience, and performance in the interview as determined by the Selection Committee.",
 };
