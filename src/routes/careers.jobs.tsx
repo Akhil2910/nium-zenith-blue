@@ -171,21 +171,21 @@ function ProjectCard({ project: p }: { project: JobProject }) {
           <li key={r.title + i}>
             <button onClick={() => setOpenRole(openRole === i ? null : i)} className="flex w-full items-center justify-between gap-4 py-4 text-left">
               <span className="font-semibold text-foreground">{r.title}</span>
-              <ChevronDown size={16} className={`shrink-0 text-muted-foreground transition ${openRole === i ? "rotate-180" : ""}`} />
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent text-accent-foreground"><ChevronDown size={18} strokeWidth={3} className={`transition ${openRole === i ? "rotate-180" : ""}`} /></span>
             </button>
             {openRole === i && (
               <div className="grid gap-4 pb-5 text-sm sm:grid-cols-2">
                 <div>
-                  <div className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Qualification</div>
-                  <p className="mt-1 text-foreground leading-relaxed">{r.qualification}</p>
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-accent">Qualification</div>
+                  <p className="mt-1 font-medium text-foreground leading-relaxed">{r.qualification}</p>
                 </div>
                 <div>
-                  <div className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Experience required</div>
-                  <p className="mt-1 text-foreground leading-relaxed">{r.experience}</p>
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-accent">Experience required</div>
+                  <p className="mt-1 font-medium text-foreground leading-relaxed">{r.experience}</p>
                 </div>
                 <div className="sm:col-span-2">
-                  <div className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Key responsibilities</div>
-                  <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground leading-relaxed">
+                  <div className="text-xs font-bold uppercase tracking-[0.14em] text-accent">Key responsibilities</div>
+                  <ul className="mt-1 list-disc space-y-1 pl-5 text-foreground leading-relaxed">
                     {r.responsibilities.map((x) => <li key={x}>{x}</li>)}
                   </ul>
                 </div>
