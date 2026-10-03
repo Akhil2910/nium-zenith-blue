@@ -171,7 +171,7 @@ function ProjectCard({ project: p }: { project: JobProject }) {
           <li key={r.title + i}>
             <button onClick={() => setOpenRole(openRole === i ? null : i)} className="flex w-full items-center justify-between gap-4 py-4 text-left">
               <span className="font-semibold text-foreground">{r.title}</span>
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-accent text-accent-foreground"><ChevronDown size={18} strokeWidth={3} className={`transition ${openRole === i ? "rotate-180" : ""}`} /></span>
+              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground"><ChevronDown size={18} strokeWidth={3} className={`transition ${openRole === i ? "rotate-180" : ""}`} /></span>
             </button>
             {openRole === i && (
               <div className="grid gap-4 pb-5 text-sm sm:grid-cols-2">
