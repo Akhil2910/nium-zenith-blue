@@ -151,8 +151,8 @@ function ProjectCard({ project: p }: { project: JobProject }) {
           <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-snug">{p.name}</h3>
           <p className="mt-1 text-sm text-muted-foreground">{p.project}</p>
           <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-muted-foreground">
-            <span className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1"><MapPin size={12} /> {p.location}</span>
-            <span className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1"><Users size={12} /> {p.positions.length} positions</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-accent-foreground"><MapPin size={12} /> {p.location}</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-accent px-3 py-1 text-accent-foreground"><Users size={12} /> {p.positions.length} positions</span>
           </div>
         </div>
         {p.formUrl ? (
