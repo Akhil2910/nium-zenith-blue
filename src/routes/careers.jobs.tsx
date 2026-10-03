@@ -176,15 +176,15 @@ function ProjectCard({ project: p }: { project: JobProject }) {
             {openRole === i && (
               <div className="grid gap-4 pb-5 text-sm sm:grid-cols-2">
                 <div>
-                  <div className="text-xs font-extrabold uppercase tracking-[0.14em] text-foreground">Qualification</div>
+                  <div className={labelCls}>Qualification</div>
                   <p className="mt-1 font-medium text-foreground leading-relaxed">{r.qualification}</p>
                 </div>
                 <div>
-                  <div className="text-xs font-extrabold uppercase tracking-[0.14em] text-foreground">Experience required</div>
-                  <p className="mt-1 font-medium text-foreground leading-relaxed">{r.experience}</p>
+                  <div className={labelCls}>Experience</div>
+                  <ExperienceText text={r.experience} />
                 </div>
                 <div className="sm:col-span-2">
-                  <div className="text-xs font-extrabold uppercase tracking-[0.14em] text-foreground">Key responsibilities</div>
+                  <div className={labelCls}>Key responsibilities</div>
                   <ul className="mt-1 list-disc space-y-1 pl-5 text-foreground leading-relaxed">
                     {r.responsibilities.map((x) => <li key={x}>{x}</li>)}
                   </ul>
