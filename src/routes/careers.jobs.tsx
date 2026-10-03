@@ -176,15 +176,15 @@ function ProjectCard({ project: p }: { project: JobProject }) {
             {openRole === i && (
               <div className="grid gap-4 pb-5 text-sm sm:grid-cols-2">
                 <div>
-                  <div className="text-xs font-extrabold uppercase tracking-[0.14em] text-foreground">Qualification</div>
+                  <div className={labelCls}>Qualification</div>
                   <p className="mt-1 font-medium text-foreground leading-relaxed">{r.qualification}</p>
                 </div>
                 <div>
-                  <div className="text-xs font-extrabold uppercase tracking-[0.14em] text-foreground">Experience required</div>
-                  <p className="mt-1 font-medium text-foreground leading-relaxed">{r.experience}</p>
+                  <div className={labelCls}>Experience</div>
+                  <ExperienceText text={r.experience} />
                 </div>
                 <div className="sm:col-span-2">
-                  <div className="text-xs font-extrabold uppercase tracking-[0.14em] text-foreground">Key responsibilities</div>
+                  <div className={labelCls}>Key responsibilities</div>
                   <ul className="mt-1 list-disc space-y-1 pl-5 text-foreground leading-relaxed">
                     {r.responsibilities.map((x) => <li key={x}>{x}</li>)}
                   </ul>
@@ -195,5 +195,18 @@ function ProjectCard({ project: p }: { project: JobProject }) {
         ))}
       </ul>
     </article>
+  );
+}
+
+const labelCls = "text-xs font-bold uppercase tracking-[0.14em] [color:color-mix(in_oklab,var(--accent)_70%,black)]";
+
+function ExperienceText({ text }: { text: string }) {
+  const m = text.match(/^\s*(\d+\+?\s*(?:-\s*\d+\s*)?years?)\s*(.*)$/i);
+  if (!m) return <p className="mt-1 font-medium text-foreground leading-relaxed">{text}</p>;
+  return (
+    <p className="mt-1 font-medium text-foreground leading-relaxed">
+      <span className="mr-1.5 inline-block rounded-md bg-primary px-2 py-0.5 text-xs font-bold text-primary-foreground">{m[1]}</span>
+      {m[2]}
+    </p>
   );
 }
