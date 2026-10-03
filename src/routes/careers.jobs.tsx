@@ -6,7 +6,29 @@ import { Footer } from "@/components/sections/Footer";
 import { BackButton } from "@/components/BackButton";
 import { jobProjects, type JobProject } from "@/data/job-openings";
 import { jobNotice, jobTerms } from "@/data/job-instructions";
-import torDoc from "@/assets/docs/nium-tor.docx.asset.json";
+
+function esc(s: string) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function downloadInstructions() {
+  const n = jobNotice;
+  const html = `<html><head><meta charset="utf-8"><title>Application Instructions</title></head><body style="font-family:Arial;font-size:11pt">
+<h1>${esc(n.title)}</h1><p>${esc(n.intro)}</p>
+<h2>Important — read before applying</h2>
+<p><b>How to apply:</b> ${esc(n.howToApply)}</p>
+<p><b>Last date for submission:</b> ${esc(n.lastDate ?? "To be announced")}</p>
+<p><b>Queries:</b> ${esc(n.email)}</p>
+<p><b>Selection process:</b> ${esc(n.selection)}</p>
+${jobTerms.map((t) => `<h3>${esc(t.heading)}</h3><ul>${t.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>`).join("")}
+</body></html>`;
+  const blob = new Blob(["\ufeff", html], { type: "application/msword" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "NIUM-Application-Instructions.doc";
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
 
 export const Route = createFileRoute("/careers/jobs")({
   component: JobsPage,
@@ -49,9 +71,9 @@ function JobsPage() {
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground">
               Openings by project <span className="text-muted-foreground font-medium">({total} positions)</span>
             </h2>
-            <a href={torDoc.url} download className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline">
-              <Download size={15} /> Download full Terms of Reference
-            </a>
+            <button onClick={downloadInstructions} className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline">
+              <Download size={15} /> Download application instructions
+            </button>
           </div>
           <div className="mt-6 space-y-6">
             {jobProjects.map((p) => (
