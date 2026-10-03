@@ -2,7 +2,7 @@
 export const jobNotice = {
   title: "Engagement of subject matter experts & urban development professionals",
   intro:
-    "The National Institute of Urban Management (NIUM) invites applications from qualified and experienced professionals for engagement on a contractual basis for various projects under Project Development & Management Consultants (Hyderabad), PIUs (Warangal & Karimnagar), State Project Implementation Unit – SPIU-SBM (Hyderabad) and Telangana Climate Resilient Urban Transformation Initiative – TCRUTI (Hyderabad).",
+    "The National Institute of Urban Management (NIUM) invites applications from qualified and experienced Subject Matter Experts and Urban Development Professionals for engagement on a contractual basis for various projects being implemented by NIUM in Telangana.",
   howToApply:
     "Interested candidates may submit their application in the prescribed format, along with their CV and supporting documents online, using the Apply now button for the project.",
   email: "hr@nium.org.in",
