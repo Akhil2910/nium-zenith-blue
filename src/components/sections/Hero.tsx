@@ -234,29 +234,29 @@ export function Hero() {
 
       {/* Tender ticker */}
       {ticker.length > 0 && (
-        <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/40 backdrop-blur-sm py-3 overflow-hidden">
-          <Link to={(ticker[0].link || "/tenders") as string} className="block group marquee-pause">
-            <div className="flex animate-marquee whitespace-nowrap">
-              {[0, 1].map((k) => (
-                <span key={k} className="flex">
-                  {ticker.map((t) => (
-                    <span
-                      key={t.id}
-                      className="mx-8 inline-flex items-center gap-3 text-sm md:text-base font-semibold text-white/90 group-hover:text-white"
-                    >
-                      {t.badge && (
-                        <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
-                          {t.badge}
-                        </span>
-                      )}
-                      {t.message}
-                      <span className="text-accent">◆</span>
-                    </span>
-                  ))}
-                </span>
-              ))}
-            </div>
-          </Link>
+        <div className="absolute bottom-0 inset-x-0 border-t border-white/10 bg-black/40 backdrop-blur-sm py-3 overflow-hidden marquee-pause">
+          <div className="flex w-max animate-marquee whitespace-nowrap">
+            {[0, 1].map((k) => (
+              <span key={k} className="flex shrink-0" aria-hidden={k === 1 ? true : undefined}>
+                {ticker.map((t) => (
+                  <Link
+                    key={t.id}
+                    to={(t.link || "/tenders") as string}
+                    tabIndex={k === 1 ? -1 : undefined}
+                    className="mx-8 inline-flex items-center gap-3 text-sm md:text-base font-semibold text-white/90 hover:text-white hover:underline"
+                  >
+                    {t.badge && (
+                      <span className="rounded bg-accent px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-accent-foreground">
+                        {t.badge}
+                      </span>
+                    )}
+                    {t.message}
+                    <span className="text-accent">◆</span>
+                  </Link>
+                ))}
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
