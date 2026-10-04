@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as CompetitionsRouteImport } from './routes/competitions'
 import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -42,6 +43,11 @@ const TeamRoute = TeamRouteImport.update({
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CompetitionsRoute = CompetitionsRouteImport.update({
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
   '/competitions': typeof CompetitionsRoute
+  '/jobs': typeof JobsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/team': typeof TeamRoute
   '/tenders': typeof TendersRoute
@@ -155,6 +162,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
   '/competitions': typeof CompetitionsRoute
+  '/jobs': typeof JobsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/team': typeof TeamRoute
   '/tenders': typeof TendersRoute
@@ -177,6 +185,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/calendar': typeof CalendarRoute
   '/competitions': typeof CompetitionsRoute
+  '/jobs': typeof JobsRoute
   '/reset-password': typeof ResetPasswordRoute
   '/team': typeof TeamRoute
   '/tenders': typeof TendersRoute
@@ -199,6 +208,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendar'
     | '/competitions'
+    | '/jobs'
     | '/reset-password'
     | '/team'
     | '/tenders'
@@ -219,6 +229,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendar'
     | '/competitions'
+    | '/jobs'
     | '/reset-password'
     | '/team'
     | '/tenders'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calendar'
     | '/competitions'
+    | '/jobs'
     | '/reset-password'
     | '/team'
     | '/tenders'
@@ -262,6 +274,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   CalendarRoute: typeof CalendarRoute
   CompetitionsRoute: typeof CompetitionsRoute
+  JobsRoute: typeof JobsRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   TeamRoute: typeof TeamRoute
   TendersRoute: typeof TendersRoute
@@ -298,6 +311,13 @@ declare module '@tanstack/react-router' {
       path: '/reset-password'
       fullPath: '/reset-password'
       preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/competitions': {
@@ -432,6 +452,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   CalendarRoute: CalendarRoute,
   CompetitionsRoute: CompetitionsRoute,
+  JobsRoute: JobsRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   TeamRoute: TeamRoute,
   TendersRoute: TendersRoute,
