@@ -9,55 +9,35 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TendersRouteImport } from './routes/tenders'
-import { Route as TeamRouteImport } from './routes/team'
-import { Route as ResetPasswordRouteImport } from './routes/reset-password'
-import { Route as JobsRouteImport } from './routes/jobs'
-import { Route as CompetitionsRouteImport } from './routes/competitions'
-import { Route as CalendarRouteImport } from './routes/calendar'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as VerticalsUrbanInformaticsRouteImport } from './routes/verticals.urban-informatics'
-import { Route as VerticalsTrainingCapacityRouteImport } from './routes/verticals.training-capacity'
-import { Route as VerticalsResearchDevelopmentRouteImport } from './routes/verticals.research-development'
-import { Route as VerticalsProjectManagementRouteImport } from './routes/verticals.project-management'
-import { Route as VerticalsHeritageConservationRouteImport } from './routes/verticals.heritage-conservation'
-import { Route as VerticalsCommunicationOutreachRouteImport } from './routes/verticals.communication-outreach'
-import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
-import { Route as CareersJobsRouteImport } from './routes/careers.jobs'
-import { Route as CareersInternshipsRouteImport } from './routes/careers.internships'
-import { Route as AboutMoreRouteImport } from './routes/about.more'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CalendarRouteImport } from './routes/calendar'
+import { Route as CompetitionsRouteImport } from './routes/competitions'
+import { Route as JobsRouteImport } from './routes/jobs'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as TendersRouteImport } from './routes/tenders'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
+import { Route as AboutMoreRouteImport } from './routes/about.more'
+import { Route as CareersIndexRouteImport } from './routes/careers.index'
+import { Route as CareersInternshipsRouteImport } from './routes/careers.internships'
+import { Route as CareersJobsRouteImport } from './routes/careers.jobs'
+import { Route as ProjectsCompletedRouteImport } from './routes/projects.completed'
+import { Route as VerticalsCommunicationOutreachRouteImport } from './routes/verticals.communication-outreach'
+import { Route as VerticalsHeritageConservationRouteImport } from './routes/verticals.heritage-conservation'
+import { Route as VerticalsProjectManagementRouteImport } from './routes/verticals.project-management'
+import { Route as VerticalsResearchDevelopmentRouteImport } from './routes/verticals.research-development'
+import { Route as VerticalsTrainingCapacityRouteImport } from './routes/verticals.training-capacity'
+import { Route as VerticalsUrbanInformaticsRouteImport } from './routes/verticals.urban-informatics'
 
-const TendersRoute = TendersRouteImport.update({
-  id: '/tenders',
-  path: '/tenders',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TeamRoute = TeamRouteImport.update({
-  id: '/team',
-  path: '/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResetPasswordRoute = ResetPasswordRouteImport.update({
-  id: '/reset-password',
-  path: '/reset-password',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JobsRoute = JobsRouteImport.update({
-  id: '/jobs',
-  path: '/jobs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CompetitionsRoute = CompetitionsRouteImport.update({
-  id: '/competitions',
-  path: '/competitions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CalendarRoute = CalendarRouteImport.update({
-  id: '/calendar',
-  path: '/calendar',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -65,37 +45,70 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const CalendarRoute = CalendarRouteImport.update({
+  id: '/calendar',
+  path: '/calendar',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const CompetitionsRoute = CompetitionsRouteImport.update({
+  id: '/competitions',
+  path: '/competitions',
   getParentRoute: () => rootRouteImport,
 } as any)
-const VerticalsUrbanInformaticsRoute =
-  VerticalsUrbanInformaticsRouteImport.update({
-    id: '/verticals/urban-informatics',
-    path: '/verticals/urban-informatics',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const VerticalsTrainingCapacityRoute =
-  VerticalsTrainingCapacityRouteImport.update({
-    id: '/verticals/training-capacity',
-    path: '/verticals/training-capacity',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const VerticalsResearchDevelopmentRoute =
-  VerticalsResearchDevelopmentRouteImport.update({
-    id: '/verticals/research-development',
-    path: '/verticals/research-development',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const VerticalsProjectManagementRoute =
-  VerticalsProjectManagementRouteImport.update({
-    id: '/verticals/project-management',
-    path: '/verticals/project-management',
+const JobsRoute = JobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TendersRoute = TendersRouteImport.update({
+  id: '/tenders',
+  path: '/tenders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AboutMoreRoute = AboutMoreRouteImport.update({
+  id: '/about/more',
+  path: '/about/more',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersIndexRoute = CareersIndexRouteImport.update({
+  id: '/careers/',
+  path: '/careers/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersInternshipsRoute = CareersInternshipsRouteImport.update({
+  id: '/careers/internships',
+  path: '/careers/internships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersJobsRoute = CareersJobsRouteImport.update({
+  id: '/careers/jobs',
+  path: '/careers/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
+  id: '/projects/completed',
+  path: '/projects/completed',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerticalsCommunicationOutreachRoute =
+  VerticalsCommunicationOutreachRouteImport.update({
+    id: '/verticals/communication-outreach',
+    path: '/verticals/communication-outreach',
     getParentRoute: () => rootRouteImport,
   } as any)
 const VerticalsHeritageConservationRoute =
@@ -104,37 +117,30 @@ const VerticalsHeritageConservationRoute =
     path: '/verticals/heritage-conservation',
     getParentRoute: () => rootRouteImport,
   } as any)
-const VerticalsCommunicationOutreachRoute =
-  VerticalsCommunicationOutreachRouteImport.update({
-    id: '/verticals/communication-outreach',
-    path: '/verticals/communication-outreach',
+const VerticalsProjectManagementRoute =
+  VerticalsProjectManagementRouteImport.update({
+    id: '/verticals/project-management',
+    path: '/verticals/project-management',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ProjectsCompletedRoute = ProjectsCompletedRouteImport.update({
-  id: '/projects/completed',
-  path: '/projects/completed',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareersJobsRoute = CareersJobsRouteImport.update({
-  id: '/careers/jobs',
-  path: '/careers/jobs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareersInternshipsRoute = CareersInternshipsRouteImport.update({
-  id: '/careers/internships',
-  path: '/careers/internships',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutMoreRoute = AboutMoreRouteImport.update({
-  id: '/about/more',
-  path: '/about/more',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
+const VerticalsResearchDevelopmentRoute =
+  VerticalsResearchDevelopmentRouteImport.update({
+    id: '/verticals/research-development',
+    path: '/verticals/research-development',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const VerticalsTrainingCapacityRoute =
+  VerticalsTrainingCapacityRouteImport.update({
+    id: '/verticals/training-capacity',
+    path: '/verticals/training-capacity',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const VerticalsUrbanInformaticsRoute =
+  VerticalsUrbanInformaticsRouteImport.update({
+    id: '/verticals/urban-informatics',
+    path: '/verticals/urban-informatics',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
+  '/careers/': typeof CareersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -177,6 +184,7 @@ export interface FileRoutesByTo {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
+  '/careers': typeof CareersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
+  '/careers/': typeof CareersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
+    | '/careers/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -244,6 +254,7 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
+    | '/careers'
   id:
     | '__root__'
     | '/'
@@ -266,6 +277,7 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
+    | '/careers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -288,57 +300,16 @@ export interface RootRouteChildren {
   VerticalsResearchDevelopmentRoute: typeof VerticalsResearchDevelopmentRoute
   VerticalsTrainingCapacityRoute: typeof VerticalsTrainingCapacityRoute
   VerticalsUrbanInformaticsRoute: typeof VerticalsUrbanInformaticsRoute
+  CareersIndexRoute: typeof CareersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tenders': {
-      id: '/tenders'
-      path: '/tenders'
-      fullPath: '/tenders'
-      preLoaderRoute: typeof TendersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/team': {
-      id: '/team'
-      path: '/team'
-      fullPath: '/team'
-      preLoaderRoute: typeof TeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reset-password': {
-      id: '/reset-password'
-      path: '/reset-password'
-      fullPath: '/reset-password'
-      preLoaderRoute: typeof ResetPasswordRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/jobs': {
-      id: '/jobs'
-      path: '/jobs'
-      fullPath: '/jobs'
-      preLoaderRoute: typeof JobsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/competitions': {
-      id: '/competitions'
-      path: '/competitions'
-      fullPath: '/competitions'
-      preLoaderRoute: typeof CompetitionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/calendar': {
-      id: '/calendar'
-      path: '/calendar'
-      fullPath: '/calendar'
-      preLoaderRoute: typeof CalendarRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -348,67 +319,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verticals/urban-informatics': {
-      id: '/verticals/urban-informatics'
-      path: '/verticals/urban-informatics'
-      fullPath: '/verticals/urban-informatics'
-      preLoaderRoute: typeof VerticalsUrbanInformaticsRouteImport
+    '/calendar': {
+      id: '/calendar'
+      path: '/calendar'
+      fullPath: '/calendar'
+      preLoaderRoute: typeof CalendarRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verticals/training-capacity': {
-      id: '/verticals/training-capacity'
-      path: '/verticals/training-capacity'
-      fullPath: '/verticals/training-capacity'
-      preLoaderRoute: typeof VerticalsTrainingCapacityRouteImport
+    '/competitions': {
+      id: '/competitions'
+      path: '/competitions'
+      fullPath: '/competitions'
+      preLoaderRoute: typeof CompetitionsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verticals/research-development': {
-      id: '/verticals/research-development'
-      path: '/verticals/research-development'
-      fullPath: '/verticals/research-development'
-      preLoaderRoute: typeof VerticalsResearchDevelopmentRouteImport
+    '/jobs': {
+      id: '/jobs'
+      path: '/jobs'
+      fullPath: '/jobs'
+      preLoaderRoute: typeof JobsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verticals/project-management': {
-      id: '/verticals/project-management'
-      path: '/verticals/project-management'
-      fullPath: '/verticals/project-management'
-      preLoaderRoute: typeof VerticalsProjectManagementRouteImport
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verticals/heritage-conservation': {
-      id: '/verticals/heritage-conservation'
-      path: '/verticals/heritage-conservation'
-      fullPath: '/verticals/heritage-conservation'
-      preLoaderRoute: typeof VerticalsHeritageConservationRouteImport
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/verticals/communication-outreach': {
-      id: '/verticals/communication-outreach'
-      path: '/verticals/communication-outreach'
-      fullPath: '/verticals/communication-outreach'
-      preLoaderRoute: typeof VerticalsCommunicationOutreachRouteImport
+    '/tenders': {
+      id: '/tenders'
+      path: '/tenders'
+      fullPath: '/tenders'
+      preLoaderRoute: typeof TendersRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projects/completed': {
-      id: '/projects/completed'
-      path: '/projects/completed'
-      fullPath: '/projects/completed'
-      preLoaderRoute: typeof ProjectsCompletedRouteImport
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/about/more': {
+      id: '/about/more'
+      path: '/about/more'
+      fullPath: '/about/more'
+      preLoaderRoute: typeof AboutMoreRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/careers/jobs': {
-      id: '/careers/jobs'
-      path: '/careers/jobs'
-      fullPath: '/careers/jobs'
-      preLoaderRoute: typeof CareersJobsRouteImport
+    '/careers/': {
+      id: '/careers/'
+      path: '/careers'
+      fullPath: '/careers/'
+      preLoaderRoute: typeof CareersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers/internships': {
@@ -418,19 +396,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareersInternshipsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about/more': {
-      id: '/about/more'
-      path: '/about/more'
-      fullPath: '/about/more'
-      preLoaderRoute: typeof AboutMoreRouteImport
+    '/careers/jobs': {
+      id: '/careers/jobs'
+      path: '/careers/jobs'
+      fullPath: '/careers/jobs'
+      preLoaderRoute: typeof CareersJobsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin': {
-      id: '/_authenticated/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AuthenticatedAdminRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
+    '/projects/completed': {
+      id: '/projects/completed'
+      path: '/projects/completed'
+      fullPath: '/projects/completed'
+      preLoaderRoute: typeof ProjectsCompletedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/communication-outreach': {
+      id: '/verticals/communication-outreach'
+      path: '/verticals/communication-outreach'
+      fullPath: '/verticals/communication-outreach'
+      preLoaderRoute: typeof VerticalsCommunicationOutreachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/heritage-conservation': {
+      id: '/verticals/heritage-conservation'
+      path: '/verticals/heritage-conservation'
+      fullPath: '/verticals/heritage-conservation'
+      preLoaderRoute: typeof VerticalsHeritageConservationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/project-management': {
+      id: '/verticals/project-management'
+      path: '/verticals/project-management'
+      fullPath: '/verticals/project-management'
+      preLoaderRoute: typeof VerticalsProjectManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/research-development': {
+      id: '/verticals/research-development'
+      path: '/verticals/research-development'
+      fullPath: '/verticals/research-development'
+      preLoaderRoute: typeof VerticalsResearchDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/training-capacity': {
+      id: '/verticals/training-capacity'
+      path: '/verticals/training-capacity'
+      fullPath: '/verticals/training-capacity'
+      preLoaderRoute: typeof VerticalsTrainingCapacityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verticals/urban-informatics': {
+      id: '/verticals/urban-informatics'
+      path: '/verticals/urban-informatics'
+      fullPath: '/verticals/urban-informatics'
+      preLoaderRoute: typeof VerticalsUrbanInformaticsRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -466,6 +486,7 @@ const rootRouteChildren: RootRouteChildren = {
   VerticalsResearchDevelopmentRoute: VerticalsResearchDevelopmentRoute,
   VerticalsTrainingCapacityRoute: VerticalsTrainingCapacityRoute,
   VerticalsUrbanInformaticsRoute: VerticalsUrbanInformaticsRoute,
+  CareersIndexRoute: CareersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
