@@ -18,6 +18,7 @@ import { Route as CalendarRouteImport } from './routes/calendar'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CareersIndexRouteImport } from './routes/careers.index'
 import { Route as VerticalsUrbanInformaticsRouteImport } from './routes/verticals.urban-informatics'
 import { Route as VerticalsTrainingCapacityRouteImport } from './routes/verticals.training-capacity'
 import { Route as VerticalsResearchDevelopmentRouteImport } from './routes/verticals.research-development'
@@ -72,6 +73,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersIndexRoute = CareersIndexRouteImport.update({
+  id: '/careers/',
+  path: '/careers/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VerticalsUrbanInformaticsRoute =
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
+  '/careers/': typeof CareersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -177,6 +184,7 @@ export interface FileRoutesByTo {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
+  '/careers': typeof CareersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -200,6 +208,7 @@ export interface FileRoutesById {
   '/verticals/research-development': typeof VerticalsResearchDevelopmentRoute
   '/verticals/training-capacity': typeof VerticalsTrainingCapacityRoute
   '/verticals/urban-informatics': typeof VerticalsUrbanInformaticsRoute
+  '/careers/': typeof CareersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
+    | '/careers/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -244,6 +254,7 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
+    | '/careers'
   id:
     | '__root__'
     | '/'
@@ -266,6 +277,7 @@ export interface FileRouteTypes {
     | '/verticals/research-development'
     | '/verticals/training-capacity'
     | '/verticals/urban-informatics'
+    | '/careers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -288,6 +300,7 @@ export interface RootRouteChildren {
   VerticalsResearchDevelopmentRoute: typeof VerticalsResearchDevelopmentRoute
   VerticalsTrainingCapacityRoute: typeof VerticalsTrainingCapacityRoute
   VerticalsUrbanInformaticsRoute: typeof VerticalsUrbanInformaticsRoute
+  CareersIndexRoute: typeof CareersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -353,6 +366,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers/': {
+      id: '/careers/'
+      path: '/careers'
+      fullPath: '/careers/'
+      preLoaderRoute: typeof CareersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/verticals/urban-informatics': {
@@ -466,6 +486,7 @@ const rootRouteChildren: RootRouteChildren = {
   VerticalsResearchDevelopmentRoute: VerticalsResearchDevelopmentRoute,
   VerticalsTrainingCapacityRoute: VerticalsTrainingCapacityRoute,
   VerticalsUrbanInformaticsRoute: VerticalsUrbanInformaticsRoute,
+  CareersIndexRoute: CareersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
