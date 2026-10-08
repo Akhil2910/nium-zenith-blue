@@ -31,9 +31,9 @@ const items: Item[] = [
   { src: uw2.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
 ];
 
-const slides: { src: string; caption: string }[] = [
+const slides: { src: string; caption: string; full?: boolean }[] = [
   { src: unhGroup2.url, caption: "Municipal Administration & UN-Habitat Cooperation Agreement — 8 Oct 2026" },
-  { src: unhGroup1.url, caption: "Officials and team at the UN-Habitat agreement signing — 8 Oct 2026" },
+  { src: unhGroup1.url, caption: "Officials and team at the UN-Habitat agreement signing — 8 Oct 2026", full: true },
   { src: g1, caption: "Field visit — urban green spaces" },
   { src: g2, caption: "HUDCO 56th Foundation Day recognition" },
   { src: g3, caption: "Capacity-building cohort" },
@@ -63,7 +63,7 @@ function Slider() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.7 }}
-          className="absolute inset-0 h-full w-full object-cover"
+          className={`absolute inset-0 h-full w-full ${s.full ? "object-contain bg-[var(--navy)]" : "object-cover"}`}
         />
       </AnimatePresence>
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--navy)]/90 via-[var(--navy)]/40 to-transparent p-5">
