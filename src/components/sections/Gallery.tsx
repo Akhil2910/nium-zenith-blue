@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import g1 from "@/assets/gallery-park-visit.jpeg";
 import g2 from "@/assets/gallery-hudco.jpeg";
 import g3 from "@/assets/event-training.jpg";
 import g4 from "@/assets/event-conclave.jpg";
 import g5 from "@/assets/event-policy.jpg";
-import m1 from "@/assets/gallery-meeting-1.jpeg";
 import m2 from "@/assets/gallery-meeting-2.jpeg";
 import m3 from "@/assets/gallery-meeting-3.jpeg";
 import m4 from "@/assets/gallery-meeting-4.jpeg";
@@ -26,16 +27,63 @@ const items: Item[] = [
   { src: uw3.url, caption: "Workshop on Scaling Safe and Sustainable Reuse of Treated Used Water in Telangana — Mercure Hotel", date: "21 Sep 2026", span: "md:col-span-2 md:row-span-2" },
   { src: uw1.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
   { src: uw2.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
-  { src: g1, caption: "Field visit — urban green spaces", span: "md:col-span-2 md:row-span-2" },
-  { src: g2, caption: "HUDCO 56th Foundation Day recognition", span: "" },
-  { src: g3, caption: "Capacity-building cohort", span: "" },
-  { src: g4, caption: "Hyderabad Policy Conclave", span: "md:col-span-2" },
-  { src: g5, caption: "Policy roundtable", span: "" },
-  { src: m3, caption: "International delegation roundtable", span: "md:col-span-2 md:row-span-2" },
-  { src: m1, caption: "Bilateral discussion with international partners", span: "" },
-  { src: m2, caption: "Strategic consultation session", span: "" },
-  { src: m4, caption: "Cross-sector working group convening", span: "md:col-span-2" },
 ];
+
+const slides: { src: string; caption: string }[] = [
+  { src: g1, caption: "Field visit — urban green spaces" },
+  { src: g2, caption: "HUDCO 56th Foundation Day recognition" },
+  { src: g3, caption: "Capacity-building cohort" },
+  { src: g4, caption: "Hyderabad Policy Conclave" },
+  { src: g5, caption: "Policy roundtable" },
+  { src: m3, caption: "International delegation roundtable" },
+  { src: m2, caption: "Strategic consultation session" },
+  { src: m4, caption: "Cross-sector working group convening" },
+];
+
+function Slider() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % slides.length), 10000);
+    return () => clearInterval(t);
+  }, [i]);
+  const go = (d: number) => setI((v) => (v + d + slides.length) % slides.length);
+  const s = slides[i];
+  return (
+    <div className="relative mt-4 h-[320px] md:h-[480px] overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={s.src}
+          src={s.src}
+          alt={s.caption}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </AnimatePresence>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--navy)]/90 via-[var(--navy)]/40 to-transparent p-5">
+        <p className="text-white text-sm md:text-base font-medium">{s.caption}</p>
+        <div className="mt-3 flex gap-2">
+          {slides.map((_, k) => (
+            <button
+              key={k}
+              aria-label={`Show photo ${k + 1}`}
+              onClick={() => setI(k)}
+              className={`h-1.5 rounded-full transition-all ${k === i ? "w-6 bg-[var(--gold)]" : "w-3 bg-white/50"}`}
+            />
+          ))}
+        </div>
+      </div>
+      <button aria-label="Previous photo" onClick={() => go(-1)} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60">
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <button aria-label="Next photo" onClick={() => go(1)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60">
+        <ChevronRight className="h-5 w-5" />
+      </button>
+    </div>
+  );
+}
 
 export function Gallery() {
   return (
@@ -87,6 +135,8 @@ export function Gallery() {
             </motion.figure>
           ))}
         </div>
+
+        <Slider />
       </div>
     </section>
   );
