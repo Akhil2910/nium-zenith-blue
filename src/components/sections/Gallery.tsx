@@ -11,12 +11,18 @@ import m4 from "@/assets/gallery-meeting-4.jpeg";
 import uw1 from "@/assets/events/used-water-1.jpg.asset.json";
 import uw2 from "@/assets/events/used-water-2.jpg.asset.json";
 import uw3 from "@/assets/events/used-water-3.jpg.asset.json";
+import unhSign from "@/assets/events/unh-signing.jpg.asset.json";
+import unhExchange from "@/assets/events/unh-exchange.jpg.asset.json";
+import unhMemento from "@/assets/events/unh-memento.jpg.asset.json";
 
 type Item = { src: string; caption: string; date?: string; span: string; fit?: "cover" | "contain" };
 
 const uwCaption = "Treated Used Water Reuse Workshop";
 
 const items: Item[] = [
+  { src: unhSign.url, caption: "Cooperation Agreement Signing Ceremony — Municipal Administration & UN-Habitat", date: "8 Oct 2026", span: "md:col-span-2 md:row-span-2" },
+  { src: unhExchange.url, caption: "MA & UN-Habitat agreement", date: "8 Oct 2026", span: "" },
+  { src: unhMemento.url, caption: "UN-Habitat delegation", date: "8 Oct 2026", span: "" },
   { src: uw3.url, caption: "Workshop on Scaling Safe and Sustainable Reuse of Treated Used Water in Telangana — Mercure Hotel", date: "21 Sep 2026", span: "md:col-span-2 md:row-span-2" },
   { src: uw1.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
   { src: uw2.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
