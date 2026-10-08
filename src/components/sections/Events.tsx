@@ -19,6 +19,7 @@ import niumIntroVideo from "@/assets/events/nium-intro-film.mp4.asset.json";
 import wardOfficersSwm from "@/assets/events/ward-officers-swm.png.asset.json";
 import worldBankTutjp from "@/assets/events/world-bank-tutjp.jpg.asset.json";
 import wardOfficersBatch2 from "@/assets/events/ward-officers-batch2.jpg.asset.json";
+import wardMembers31Jul from "@/assets/events/ward-members-31jul.jpg.asset.json";
 
 type EventItem = {
   src: string;
@@ -43,6 +44,11 @@ const events: EventItem[] = [
     src: wardOfficersSwm.url,
     title: "Capacity Building Programme for Ward Officers on Sanitation and Solid Waste Management — RCUES, Osmania University",
     date: "21–23 Sep 2026",
+  },
+  {
+    src: wardMembers31Jul.url,
+    title: "Training Programme for Ward Members of Municipalities & Municipal Corporations in Telangana — ESCI, Hyderabad",
+    date: "31 Jul 2026",
   },
   {
     src: wardMembersVideo.url,
