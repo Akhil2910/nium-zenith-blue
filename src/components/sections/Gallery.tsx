@@ -17,6 +17,7 @@ import unhExchange from "@/assets/events/unh-exchange.jpg.asset.json";
 import unhMemento from "@/assets/events/unh-memento.jpg.asset.json";
 import unhGroup1 from "@/assets/events/unh-group-1.jpg.asset.json";
 import unhGroup2 from "@/assets/events/unh-group-2.jpg.asset.json";
+import ucf from "@/assets/events/ucf-workshop.jpg.asset.json";
 
 type Item = { src: string; caption: string; date?: string; span: string; fit?: "cover" | "contain"; pos?: string };
 
@@ -34,6 +35,7 @@ const items: Item[] = [
 const slides: { src: string; caption: string; full?: boolean }[] = [
   { src: unhGroup2.url, caption: "Municipal Administration & UN-Habitat Cooperation Agreement — 8 Oct 2026" },
   { src: unhGroup1.url, caption: "Officials and team at the UN-Habitat agreement signing — 8 Oct 2026", full: true },
+  { src: ucf.url, caption: "Capacity Building Workshop on Urban Challenge Fund", full: true },
   { src: g1, caption: "Field visit — urban green spaces" },
   { src: g2, caption: "HUDCO 56th Foundation Day recognition" },
   { src: g3, caption: "Capacity-building cohort" },
