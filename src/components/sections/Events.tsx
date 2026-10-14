@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
 import happySundays from "@/assets/events/happy-sundays.png.asset.json";
 import womenLeaders from "@/assets/events/women-leaders.png.asset.json";
@@ -222,6 +223,19 @@ function EventCard({ item }: { item: EventItem }) {
 }
 
 export function Events() {
+  const [extra, setExtra] = useState<EventItem[]>([]);
+  useEffect(() => {
+    void supabase
+      .from("media_items")
+      .select("src_url,title,date_label,kind")
+      .eq("section", "whats_on")
+      .eq("is_published", true)
+      .order("sort_date", { ascending: false, nullsFirst: false })
+      .then(({ data }) =>
+        setExtra((data ?? []).map((r) => ({ src: r.src_url, title: r.title, date: r.date_label ?? "", kind: r.kind as EventItem["kind"] }))),
+      );
+  }, []);
+  const all = [...extra, ...events];
   return (
     <section id="events-posters" className="relative bg-surface py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -246,7 +260,7 @@ export function Events() {
           transition={{ duration: 0.5, ease: "easeOut" }}
           className="grid grid-cols-1 items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
-          {events.map((e) => (
+          {all.map((e) => (
             <EventCard key={e.src} item={e} />
           ))}
         </motion.div>

@@ -8,6 +8,13 @@
       "when": 1789976142587,
       "tag": "0000_create_team_members",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791958808890,
+      "tag": "0001_create_media_items",
+      "breakpoints": true
     }
   ]
 }
