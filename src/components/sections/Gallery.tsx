@@ -51,7 +51,7 @@ const baseSlides: { src: string; caption: string; full?: boolean }[] = [
 
 function Slider() {
   const [i, setI] = useState(0);
-  const [extra, setExtra] = useState<typeof slides>([]);
+  const [extra, setExtra] = useState<typeof baseSlides>([]);
   useEffect(() => {
     void supabase
       .from("media_items")
