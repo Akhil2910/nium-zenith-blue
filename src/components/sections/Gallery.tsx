@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import g1 from "@/assets/gallery-park-visit.jpeg";
 import g2 from "@/assets/gallery-hudco.jpeg";
 import g3 from "@/assets/event-training.jpg";
@@ -33,7 +34,7 @@ const items: Item[] = [
   { src: uw2.url, caption: uwCaption, date: "21 Sep 2026", span: "" },
 ];
 
-const slides: { src: string; caption: string; full?: boolean }[] = [
+const baseSlides: { src: string; caption: string; full?: boolean }[] = [
   { src: unhGroup2.url, caption: "Municipal Administration & UN-Habitat Cooperation Agreement — 8 Oct 2026" },
   { src: unhGroup1.url, caption: "Officials and team at the UN-Habitat agreement signing — 8 Oct 2026", full: true },
   { src: ucf.url, caption: "Capacity Building Workshop on Urban Challenge Fund", full: true },
@@ -50,12 +51,23 @@ const slides: { src: string; caption: string; full?: boolean }[] = [
 
 function Slider() {
   const [i, setI] = useState(0);
+  const [extra, setExtra] = useState<typeof slides>([]);
+  useEffect(() => {
+    void supabase
+      .from("media_items")
+      .select("src_url,title,fit")
+      .eq("section", "slider")
+      .eq("is_published", true)
+      .order("sort_order", { ascending: true })
+      .then(({ data }) => setExtra((data ?? []).map((r) => ({ src: r.src_url, caption: r.title, full: r.fit === "contain" }))));
+  }, []);
+  const slides = [...extra, ...baseSlides];
   useEffect(() => {
     const t = setInterval(() => setI((v) => (v + 1) % slides.length), 10000);
     return () => clearInterval(t);
-  }, [i]);
+  }, [i, slides.length]);
   const go = (d: number) => setI((v) => (v + d + slides.length) % slides.length);
-  const s = slides[i];
+  const s = slides[i % slides.length];
   return (
     <div className="relative mt-4 h-[320px] md:h-[480px] overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)]">
       <AnimatePresence mode="wait">

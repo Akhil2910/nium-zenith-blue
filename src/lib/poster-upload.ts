@@ -6,8 +6,8 @@ const TEN_YEARS = 60 * 60 * 24 * 365 * 10;
  * Uploads a poster image and returns a long-lived signed URL that can be
  * stored on the event / posting row and rendered publicly.
  */
-export async function uploadPoster(file: File, folder: string): Promise<string> {
-  if (file.size > 8 * 1024 * 1024) throw new Error("Poster must be under 8 MB");
+export async function uploadPoster(file: File, folder: string, maxMB = 8): Promise<string> {
+  if (file.size > maxMB * 1024 * 1024) throw new Error(`File must be under ${maxMB} MB`);
   const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
   const path = `${folder}/${crypto.randomUUID()}.${ext}`;
   const { error } = await supabase.storage.from("posters").upload(path, file, {

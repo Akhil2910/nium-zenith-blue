@@ -6,6 +6,7 @@ import { Calendar as CalIcon, LogOut, Plus, Trash2, Users, Shield, ImagePlus, Lo
 import { PostingsManager } from "@/components/admin/PostingsManager";
 import { TickerManager } from "@/components/admin/TickerManager";
 import { TeamManager } from "@/components/admin/TeamManager";
+import { MediaManager } from "@/components/admin/MediaManager";
 import { uploadPoster } from "@/lib/poster-upload";
 
 export const Route = createFileRoute("/_authenticated/admin")({
@@ -352,6 +353,8 @@ function AdminPage() {
         <TickerManager isAdmin={Boolean(isAdmin)} />
 
         <PostingsManager isAdmin={Boolean(isAdmin)} />
+
+        <MediaManager isAdmin={Boolean(isAdmin)} />
 
         <TeamManager isAdmin={Boolean(isAdmin)} />
       </main>
