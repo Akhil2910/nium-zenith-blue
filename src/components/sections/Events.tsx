@@ -20,6 +20,8 @@ import wardOfficersSwm from "@/assets/events/ward-officers-swm.png.asset.json";
 import worldBankTutjp from "@/assets/events/world-bank-tutjp.jpg.asset.json";
 import wardOfficersBatch2 from "@/assets/events/ward-officers-batch2.jpg.asset.json";
 import wardMembers31Jul from "@/assets/events/ward-members-31jul.jpg.asset.json";
+import worldBank13Oct from "@/assets/events/world-bank-13oct.jpg.asset.json";
+import wardOfficersBatch4 from "@/assets/events/ward-officers-batch4.jpg.asset.json";
 
 type EventItem = {
   src: string;
@@ -30,6 +32,16 @@ type EventItem = {
 
 // Newest first
 const events: EventItem[] = [
+  {
+    src: worldBank13Oct.url,
+    title: "World Bank Meeting — Reviewing the Telangana Urban Infrastructure, NIUM",
+    date: "13 Oct 2026",
+  },
+  {
+    src: wardOfficersBatch4.url,
+    title: "Capacity Building Programme for Ward Officers (Batch 4) on Sanitation and Solid Waste Management — RCUES, Osmania University",
+    date: "12–14 Oct 2026",
+  },
   {
     src: wardOfficersBatch2.url,
     title: "Capacity Building Programme for Ward Officers (Batch 2) on Sanitation and Solid Waste Management — RCUES, Osmania University",
