@@ -352,6 +352,8 @@ function AdminPage() {
 
         <TickerManager isAdmin={Boolean(isAdmin)} />
 
+        <JobsVisibilityManager isAdmin={Boolean(isAdmin)} />
+
         <PostingsManager isAdmin={Boolean(isAdmin)} />
 
         <MediaManager isAdmin={Boolean(isAdmin)} />
