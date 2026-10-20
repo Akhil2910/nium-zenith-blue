@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { createFileRoute } from "@tanstack/react-router";
 import { AlertTriangle, ChevronDown, ExternalLink, Mail, MapPin, Users } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
@@ -30,7 +31,32 @@ export const Route = createFileRoute("/careers/jobs")({
 });
 
 function JobsPage() {
-  const total = jobProjects.reduce((n, p) => n + p.positions.length, 0);
+  const [visible, setVisible] = useState<Set<string> | null>(null);
+  useEffect(() => {
+    supabase
+      .from("job_visibility")
+      .select("slug,is_visible")
+      .then(({ data }) => setVisible(new Set((data ?? []).filter((r) => r.is_visible).map((r) => r.slug))));
+  }, []);
+  const shown = visible ? jobProjects.filter((p) => visible.has(p.slug)) : [];
+  const total = shown.reduce((n, p) => n + p.positions.length, 0);
+  if (visible && shown.length === 0) {
+    return (
+      <div className="min-h-screen bg-surface">
+        <Navbar />
+        <main className="pt-32 pb-24">
+          <div className="mx-auto max-w-7xl px-6 pt-4">
+            <BackButton label="Back" to="/" />
+          </div>
+          <div className="mx-auto max-w-3xl px-6 mt-10 rounded-2xl border border-border bg-card p-10 text-center shadow-[var(--shadow-card)]">
+            <h1 className="font-display text-3xl font-bold text-foreground">No openings right now</h1>
+            <p className="mt-3 text-muted-foreground">There are no active job openings at this time. Please check back later.</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
   return (
     <div className="min-h-screen bg-surface">
       <Navbar />
@@ -51,7 +77,7 @@ function JobsPage() {
             </h2>
           </div>
           <div className="mt-6 space-y-6">
-            {jobProjects.map((p) => (
+            {shown.map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}
           </div>
