@@ -50,7 +50,7 @@ function JobsPage() {
           </div>
           <div className="mx-auto max-w-3xl px-6 mt-10 rounded-2xl border border-border bg-card p-10 text-center shadow-[var(--shadow-card)]">
             <h1 className="font-display text-3xl font-bold text-foreground">No openings right now</h1>
-            <p className="mt-3 text-muted-foreground">There are no active job openings at this time. Please check back later.</p>
+            <p className="mt-3 text-muted-foreground">There are no active job openings at this time.</p>
           </div>
         </main>
         <Footer />
