@@ -40,7 +40,15 @@ function JobsPage() {
   }, []);
   const shown = visible ? jobProjects.filter((p) => visible.has(p.slug)) : [];
   const total = shown.reduce((n, p) => n + p.positions.length, 0);
-  if (visible && shown.length === 0) {
+  if (!visible) {
+    return (
+      <div className="min-h-screen bg-surface">
+        <Navbar />
+        <main className="pt-32 pb-24" />
+      </div>
+    );
+  }
+  if (shown.length === 0) {
     return (
       <div className="min-h-screen bg-surface">
         <Navbar />
