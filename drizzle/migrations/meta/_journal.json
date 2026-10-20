@@ -15,6 +15,13 @@
       "when": 1791958808890,
       "tag": "0001_create_media_items",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792518094216,
+      "tag": "0002_create_job_visibility",
+      "breakpoints": true
     }
   ]
 }
