@@ -73,6 +73,7 @@ const uwCaption = "Treated Used Water Reuse Workshop";
 
 const featured: Item[] = [
   { src: cmWelcome.url, caption: "Dr. T. K. Sreedevi, IAS, Secretary to Government, Welcomes Hon’ble Chief Minister Shri A. Revanth Reddy on the Occasion of the Foundation Stone Laying Ceremony of NIUM at Bharat Future City", date: "20 Nov 2026", span: "" },
+  { src: cmWelcome.url, caption: "Dr. T. K. Sreedevi, IAS, Secretary to Government, Welcomes Hon’ble Chief Minister Shri A. Revanth Reddy on the Occasion of the Foundation Stone Laying Ceremony of NIUM at Bharat Future City", date: "20 Nov 2026", span: "" },
 
   { src: cmModel.url, caption: "Hon’ble Chief Minister Shri A. Revanth Reddy Inspects the Proposed NIUM Campus Model at Bharat Future City", date: "20 Nov 2026", span: "" },
   { src: cmPresentation.url, caption: "Hon’ble Chief Minister Shri A. Revanth Reddy Reviews the NIUM Campus Development Presentation at Bharat Future City", date: "20 Nov 2026", span: "" },
