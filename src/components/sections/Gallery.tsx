@@ -20,12 +20,18 @@ import unhGroup1 from "@/assets/events/unh-group-1.jpg.asset.json";
 import unhGroup2 from "@/assets/events/unh-group-2.jpg.asset.json";
 import ucf from "@/assets/events/ucf-workshop.jpg.asset.json";
 import parvat from "@/assets/events/parvat-manthan.jpg.asset.json";
+import cmModel from "@/assets/events/cm-model.jpg.asset.json";
+import cmPresentation from "@/assets/events/cm-presentation.jpg.asset.json";
+import cmWelcome from "@/assets/events/cm-welcome.jpg.asset.json";
 
 type Item = { src: string; caption: string; date?: string; span: string; fit?: "cover" | "contain"; pos?: string };
 
 const uwCaption = "Treated Used Water Reuse Workshop";
 
 const items: Item[] = [
+  { src: cmModel.url, caption: "Hon’ble Chief Minister Shri A. Revanth Reddy Inspects the Proposed NIUM Campus Model at Bharat Future City", date: "20 Nov 2026", span: "md:col-span-2 md:row-span-2" },
+  { src: cmPresentation.url, caption: "Hon’ble Chief Minister Shri A. Revanth Reddy Reviews the NIUM Campus Development Presentation at Bharat Future City", date: "20 Nov 2026", span: "" },
+  { src: cmWelcome.url, caption: "Dr. T. K. Sreedevi, IAS, Secretary to Government, Welcomes Hon’ble Chief Minister Shri A. Revanth Reddy on the Occasion of the Foundation Stone Laying Ceremony of NIUM at Bharat Future City", date: "20 Nov 2026", span: "" },
   { src: unhSign.url, caption: "Cooperation Agreement Signing Ceremony — Municipal Administration & UN-Habitat", date: "8 Oct 2026", span: "md:col-span-2 md:row-span-2", pos: "center 75%" },
   { src: unhExchange.url, caption: "MA & UN-Habitat agreement", date: "8 Oct 2026", span: "" },
   { src: unhMemento.url, caption: "UN-Habitat delegation", date: "8 Oct 2026", span: "" },
