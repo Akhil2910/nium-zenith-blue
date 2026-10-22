@@ -26,6 +26,49 @@ import cmWelcome from "@/assets/events/cm-welcome.jpg.asset.json";
 
 type Item = { src: string; caption: string; date?: string; span: string; fit?: "cover" | "contain"; pos?: string };
 
+function FeaturedSlider() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % featured.length), 6000);
+    return () => clearInterval(t);
+  }, [i]);
+  const go = (d: number) => setI((v) => (v + d + featured.length) % featured.length);
+  const s = featured[i];
+  return (
+    <div className="relative mb-6 overflow-hidden rounded-2xl bg-[var(--navy)] shadow-[var(--shadow-card)]">
+      <div className="relative aspect-[3/2] w-full">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={s.src}
+            src={s.src}
+            alt={s.caption}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0 h-full w-full object-contain"
+          />
+        </AnimatePresence>
+        <button aria-label="Previous photo" onClick={() => go(-1)} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60">
+          <ChevronLeft className="h-5 w-5" />
+        </button>
+        <button aria-label="Next photo" onClick={() => go(1)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60">
+          <ChevronRight className="h-5 w-5" />
+        </button>
+      </div>
+      <div className="p-5">
+        <div className="text-[var(--gold)] text-[11px] font-bold uppercase tracking-[0.16em]">{s.date}</div>
+        <p className="mt-1 text-white text-sm md:text-lg font-medium">{s.caption}</p>
+        <div className="mt-3 flex gap-2">
+          {featured.map((_, k) => (
+            <button key={k} aria-label={`Show photo ${k + 1}`} onClick={() => setI(k)} className={`h-1.5 rounded-full transition-all ${k === i ? "w-6 bg-[var(--gold)]" : "w-3 bg-white/50"}`} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const uwCaption = "Treated Used Water Reuse Workshop";
 
 const featured: Item[] = [
@@ -132,20 +175,7 @@ export function Gallery() {
           </p>
         </div>
 
-        <div className="mb-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-          {featured.map((it) => (
-            <figure
-              key={it.src}
-              className="group relative h-[300px] md:h-[440px] overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition"
-            >
-              <img src={it.src} alt={it.caption} loading="lazy" className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition duration-700" />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--navy)]/90 via-[var(--navy)]/40 to-transparent p-4">
-                <div className="text-[var(--gold)] text-[11px] font-bold uppercase tracking-[0.16em]">{it.date}</div>
-                <figcaption className="text-white text-sm font-medium">{it.caption}</figcaption>
-              </div>
-            </figure>
-          ))}
-        </div>
+        <FeaturedSlider />
 
         <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[210px] gap-4">
           {items.map((it, i) => (
