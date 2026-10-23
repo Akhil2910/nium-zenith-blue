@@ -49,21 +49,21 @@ function FeaturedSlider() {
             className="absolute inset-0 h-full w-full object-cover"
           />
         </AnimatePresence>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--navy)]/70 via-[var(--navy)]/20 to-transparent p-5">
-          <div className="text-[var(--gold)] text-[11px] font-bold uppercase tracking-[0.16em]">{s.date}</div>
-          <p className="mt-1 text-white text-sm md:text-base font-medium">{s.caption}</p>
-          <div className="mt-3 flex gap-2">
-            {featured.map((_, k) => (
-              <button key={k} aria-label={`Show photo ${k + 1}`} onClick={() => setI(k)} className={`h-1.5 rounded-full transition-all ${k === i ? "w-6 bg-[var(--gold)]" : "w-3 bg-white/50"}`} />
-            ))}
-          </div>
-        </div>
         <button aria-label="Previous photo" onClick={() => go(-1)} className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60">
           <ChevronLeft className="h-5 w-5" />
         </button>
         <button aria-label="Next photo" onClick={() => go(1)} className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 p-2 text-white hover:bg-black/60">
           <ChevronRight className="h-5 w-5" />
         </button>
+      </div>
+      <div className="relative md:absolute md:inset-x-0 md:bottom-0 bg-[var(--navy)] md:bg-transparent md:bg-gradient-to-t md:from-[var(--navy)]/70 md:via-[var(--navy)]/20 md:to-transparent p-4 md:p-5">
+        <div className="text-[var(--gold)] text-[11px] font-bold uppercase tracking-[0.16em]">{s.date}</div>
+        <p className="mt-1 text-white text-sm md:text-base font-medium">{s.caption}</p>
+        <div className="mt-3 flex gap-2">
+          {featured.map((_, k) => (
+            <button key={k} aria-label={`Show photo ${k + 1}`} onClick={() => setI(k)} className={`h-1.5 rounded-full transition-all ${k === i ? "w-6 bg-[var(--gold)]" : "w-3 bg-white/50"}`} />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -72,7 +72,6 @@ function FeaturedSlider() {
 const uwCaption = "Treated Used Water Reuse Workshop";
 
 const featured: Item[] = [
-  { src: cmWelcome.url, caption: "Dr. T. K. Sreedevi, IAS, Secretary to Government, Welcomes Hon’ble Chief Minister Shri A. Revanth Reddy on the Occasion of the Foundation Stone Laying Ceremony of NIUM at Bharat Future City", date: "20 Nov 2026", span: "" },
   { src: cmWelcome.url, caption: "Dr. T. K. Sreedevi, IAS, Secretary to Government, Welcomes Hon’ble Chief Minister Shri A. Revanth Reddy on the Occasion of the Foundation Stone Laying Ceremony of NIUM at Bharat Future City", date: "20 Nov 2026", span: "" },
 
   { src: cmModel.url, caption: "Hon’ble Chief Minister Shri A. Revanth Reddy Inspects the Proposed NIUM Campus Model at Bharat Future City", date: "20 Nov 2026", span: "" },
