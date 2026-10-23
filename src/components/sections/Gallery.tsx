@@ -49,7 +49,8 @@ function FeaturedSlider() {
             className="absolute inset-0 h-full w-full object-cover"
           />
         </AnimatePresence>
-        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[var(--navy)]/70 via-[var(--navy)]/20 to-transparent p-5">
+      </div>
+        <div className="relative md:absolute md:inset-x-0 md:bottom-0 bg-[var(--navy)] md:bg-transparent md:bg-gradient-to-t md:from-[var(--navy)]/70 md:via-[var(--navy)]/20 md:to-transparent p-4 md:p-5">
           <div className="text-[var(--gold)] text-[11px] font-bold uppercase tracking-[0.16em]">{s.date}</div>
           <p className="mt-1 text-white text-sm md:text-base font-medium">{s.caption}</p>
           <div className="mt-3 flex gap-2">
@@ -72,7 +73,6 @@ function FeaturedSlider() {
 const uwCaption = "Treated Used Water Reuse Workshop";
 
 const featured: Item[] = [
-  { src: cmWelcome.url, caption: "Dr. T. K. Sreedevi, IAS, Secretary to Government, Welcomes Hon’ble Chief Minister Shri A. Revanth Reddy on the Occasion of the Foundation Stone Laying Ceremony of NIUM at Bharat Future City", date: "20 Nov 2026", span: "" },
   { src: cmWelcome.url, caption: "Dr. T. K. Sreedevi, IAS, Secretary to Government, Welcomes Hon’ble Chief Minister Shri A. Revanth Reddy on the Occasion of the Foundation Stone Laying Ceremony of NIUM at Bharat Future City", date: "20 Nov 2026", span: "" },
 
   { src: cmModel.url, caption: "Hon’ble Chief Minister Shri A. Revanth Reddy Inspects the Proposed NIUM Campus Model at Bharat Future City", date: "20 Nov 2026", span: "" },
