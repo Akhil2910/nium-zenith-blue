@@ -209,17 +209,7 @@ function PostingCard({
             View notice <ExternalLink size={14} />
           </a>
         )}
-        {p.kind !== "tender" && (
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-foreground hover:bg-surface transition"
-          >
-            {open ? "Close application" : "Apply with resume"} <Send size={13} />
-          </button>
-        )}
       </div>
-
-      {open && <ApplyForm postingId={p.id} onDone={() => setOpen(false)} />}
     </motion.article>
   );
 }
