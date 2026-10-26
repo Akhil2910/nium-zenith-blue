@@ -57,7 +57,7 @@ function Index() {
         <Publications />
         
         <Career />
-        <FeatureVideo />
+        {false && <FeatureVideo />}
         <Contact />
       </main>
       <Footer />
