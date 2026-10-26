@@ -5,6 +5,7 @@ import { AlertTriangle, ChevronDown, ExternalLink, Mail, MapPin, Users } from "l
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { BackButton } from "@/components/BackButton";
+import { PostingsBoard } from "@/components/PostingsBoard";
 import { jobProjects, type JobProject } from "@/data/job-openings";
 import { jobNotice, jobTerms } from "@/data/job-instructions";
 
@@ -50,19 +51,15 @@ function JobsPage() {
   }
   if (shown.length === 0) {
     return (
-      <div className="min-h-screen bg-surface">
-        <Navbar />
-        <main className="pt-32 pb-24">
-          <div className="mx-auto max-w-7xl px-6 pt-4">
-            <BackButton label="Back" to="/" />
-          </div>
-          <div className="mx-auto max-w-3xl px-6 mt-10 rounded-2xl border border-border bg-card p-10 text-center shadow-[var(--shadow-card)]">
-            <h1 className="font-display text-3xl font-bold text-foreground">No openings right now</h1>
-            <p className="mt-3 text-muted-foreground">There are no active job openings at this time.</p>
-          </div>
-        </main>
-        <Footer />
-      </div>
+      <PostingsBoard
+        kind="job"
+        badgeLabel="Job"
+        eyebrow="Career"
+        title="Jobs at NIUM"
+        intro="Current job openings at the National Institute of Urban Management."
+        emptyTitle="No openings right now"
+        emptyBody="There are no active job openings at this time."
+      />
     );
   }
   return (
