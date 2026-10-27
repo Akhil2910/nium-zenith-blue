@@ -22,6 +22,7 @@ import worldBankTutjp from "@/assets/events/world-bank-tutjp.jpg.asset.json";
 import wardOfficersBatch2 from "@/assets/events/ward-officers-batch2.jpg.asset.json";
 import wardMembers31Jul from "@/assets/events/ward-members-31jul.jpg.asset.json";
 import worldBank13Oct from "@/assets/events/world-bank-13oct.jpg.asset.json";
+import ucfRaipur from "@/assets/events/ucf-raipur.jpg.asset.json";
 import wardOfficersBatch4 from "@/assets/events/ward-officers-batch4.jpg.asset.json";
 
 type EventItem = {
@@ -33,6 +34,11 @@ type EventItem = {
 
 // Newest first
 const events: EventItem[] = [
+  {
+    src: ucfRaipur.url,
+    title: "Secretary, Municipal Administration, addressing Partners and Neighbouring States to access Urban Challenge Fund — Nawa Raipur, Chhattisgarh",
+    date: "21 Oct 2026",
+  },
   {
     src: worldBank13Oct.url,
     title: "World Bank Meeting — Reviewing the Telangana Urban Infrastructure, NIUM",
