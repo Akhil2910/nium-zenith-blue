@@ -35,9 +35,9 @@ export function VideoModal({ open, onClose }: { open: boolean; onClose: () => vo
           type="button"
           onClick={onClose}
           aria-label="Close video"
-          className="absolute -top-12 right-0 rounded-full bg-background p-2 text-foreground"
+          className="fixed top-4 right-4 z-[110] flex h-12 w-12 items-center justify-center rounded-full bg-background text-foreground shadow-lg ring-2 ring-accent hover:bg-accent transition"
         >
-          <X size={20} />
+          <X size={26} strokeWidth={2.5} />
         </button>
         <div className="relative w-full overflow-hidden rounded-xl" style={{ aspectRatio: "16 / 9" }}>
           <iframe
