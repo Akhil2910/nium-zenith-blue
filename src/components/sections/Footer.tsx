@@ -47,7 +47,7 @@ export function Footer() {
               ["Publications", "publications"],
               ["Events", "events"],
               ["Career", "career"],
-              ["Email Us", "contact"],
+              ["Contact Us", "contact"],
             ].map(([l, id]) => (
               <li key={id}>
                 <a href={`#${id}`} className="hover:text-accent transition">
