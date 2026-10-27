@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import heroCityAsset from "@/assets/hero-city-hyderabad.jpg.asset.json";
 import tgLogo from "@/assets/tg-rising-logo.png";
+import { VideoModal } from "@/components/sections/FeatureVideo";
 
 
 const heroCity = heroCityAsset.url;
@@ -82,6 +83,7 @@ type TickerItem = { id: string; message: string; link: string | null; badge: str
 
 export function Hero() {
   const [idx, setIdx] = useState(0);
+  const [videoOpen, setVideoOpen] = useState(false);
   const [ticker, setTicker] = useState<TickerItem[]>([]);
   useEffect(() => {
     const t = setInterval(() => setIdx((i) => (i + 1) % slides.length), 6000);
@@ -167,6 +169,12 @@ export function Hero() {
               </a>
               <a
                 href={cur.cta2.href}
+                onClick={(e) => {
+                  if (idx === 0) {
+                    e.preventDefault();
+                    setVideoOpen(true);
+                  }
+                }}
                 className="group inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/5 backdrop-blur px-5 py-3 text-sm font-semibold text-white hover:bg-white/10 transition"
               >
                 <span className="h-7 w-7 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition">
@@ -261,6 +269,7 @@ export function Hero() {
       )}
 
 
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
     </section>
   );
 }
