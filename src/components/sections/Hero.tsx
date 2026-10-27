@@ -269,6 +269,7 @@ export function Hero() {
       )}
 
 
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
     </section>
   );
 }

@@ -73,7 +73,7 @@ const careerMenu = [
   { to: "/competitions", label: "Events" },
 ];
 
-const tailLinks = [{ id: "contact", label: "Contact Us" }];
+const tailLinks = [{ id: "contact", label: "Email Us" }];
 
 const routeLinks = [{ to: "/team", label: "Team" }];
 
