@@ -49,22 +49,22 @@ function PersonCard({ member, onOpen }: { member: Member; onOpen: (m: Member) =>
     <button
       type="button"
       onClick={() => onOpen(member)}
-      className="group block w-full text-left rounded-xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] hover:border-accent/40 transition"
+      className="group block w-full overflow-hidden text-left rounded-xl border border-border bg-card shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] hover:border-accent/40 transition"
     >
-      <div className="flex items-start gap-3">
+      <div className="flex items-stretch gap-4">
         {photo ? (
           <img
             src={photo}
             alt={member.name}
             loading="lazy"
-            className="h-11 w-11 shrink-0 rounded-full object-cover object-top border border-border"
+            className="w-24 min-h-[8.5rem] shrink-0 object-cover object-top bg-muted"
           />
         ) : (
-          <div className="h-11 w-11 shrink-0 rounded-full bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display font-bold text-sm">
+          <div className="w-24 min-h-[8.5rem] shrink-0 bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display font-bold text-lg">
             {initials(member.name)}
           </div>
         )}
-        <div className="min-w-0">
+        <div className="min-w-0 self-center py-4 pr-4">
           <div className="font-semibold text-foreground text-sm leading-tight">{member.name}</div>
           <div className="mt-1 text-xs text-muted-foreground leading-snug">{member.designation}</div>
           <div className="mt-2 text-[11px] uppercase tracking-[0.16em] text-accent font-semibold group-hover:underline">
