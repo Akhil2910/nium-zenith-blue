@@ -149,7 +149,7 @@ function ProfileDialog({ member, onClose }: { member: Member; onClose: () => voi
       role="presentation"
     >
       <div
-        className="relative w-full max-w-lg rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-elevated)]"
+        className="relative flex max-h-[85vh] w-full max-w-lg flex-col rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-elevated)]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -172,9 +172,11 @@ function ProfileDialog({ member, onClose }: { member: Member; onClose: () => voi
             <div className="mt-1 text-sm text-muted-foreground">{member.designation}</div>
           </div>
         </div>
-        <p className="mt-5 text-sm leading-relaxed text-foreground whitespace-pre-line">
-          {member.description || "Profile details will be updated soon."}
-        </p>
+        <div className="mt-5 min-h-0 flex-1 overflow-y-auto pr-2">
+          <p className="text-sm leading-relaxed text-foreground whitespace-pre-line">
+            {member.description || "Profile details will be updated soon."}
+          </p>
+        </div>
       </div>
     </div>
   );
