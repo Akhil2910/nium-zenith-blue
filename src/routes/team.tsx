@@ -92,21 +92,23 @@ function FeatureCard({
     <button
       type="button"
       onClick={() => onOpen(member)}
-      className="group flex w-full items-center gap-5 rounded-2xl border border-border bg-card p-5 text-left shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition max-w-2xl"
+      className="group flex w-full items-stretch gap-5 overflow-hidden rounded-2xl border border-border bg-card text-left shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)] transition max-w-2xl"
     >
       {photo ? (
-        <img
-          src={photo}
-          alt={member.name}
-          className="h-24 w-24 rounded-xl object-cover object-top border border-border"
-          loading="lazy"
-        />
+        <div className="relative w-32 shrink-0 self-stretch min-h-[10rem] overflow-hidden bg-muted">
+          <img
+            src={photo}
+            alt={member.name}
+            className="absolute inset-0 h-full w-full object-cover object-top"
+            loading="lazy"
+          />
+        </div>
       ) : (
-        <div className="h-24 w-24 rounded-xl bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display text-2xl font-bold">
+        <div className="w-32 shrink-0 self-stretch min-h-[10rem] bg-[var(--gradient-band)] text-primary-foreground flex items-center justify-center font-display text-2xl font-bold">
           {initials(member.name)}
         </div>
       )}
-      <div className="min-w-0">
+      <div className="min-w-0 py-5 pr-5 self-center">
         <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-accent font-semibold">
           {icon} {eyebrow}
         </div>
