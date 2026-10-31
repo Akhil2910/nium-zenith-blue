@@ -184,6 +184,23 @@ function PostingCard({
         </dl>
       )}
 
+      {p.details && (
+        <div className="mt-5 space-y-5 text-sm leading-relaxed">
+          {p.details.split(/\n\s*\n/).map((section, sectionIndex) => {
+            const [heading, ...body] = section.trim().split("\n");
+            const isHeading = heading && /[A-Z]/.test(heading) && heading === heading.toUpperCase();
+            return isHeading ? (
+              <section key={sectionIndex}>
+                <h3 className="mb-2 font-bold text-base text-foreground">{heading}</h3>
+                <p className="whitespace-pre-line text-muted-foreground">{body.join("\n")}</p>
+              </section>
+            ) : (
+              <p key={sectionIndex} className="whitespace-pre-line text-muted-foreground">{section}</p>
+            );
+          })}
+        </div>
+      )}
+
       <div className="mt-7 flex flex-wrap items-center gap-3">
         {p.kind === "job" && p.form_url?.includes("1FAIpQLSev9slI6TChgW7y8TEBxwn93ItTl_e0dv5hdTELlZyrsmqNSQ") && (
           <Button asChild variant="outline" className="h-auto min-h-10 max-w-full whitespace-normal px-5 py-2.5 text-left">
@@ -213,11 +230,6 @@ function PostingCard({
           </a>
         )}
       </div>
-      {p.details && (
-        <p className="mt-5 text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
-          {p.details}
-        </p>
-      )}
     </motion.article>
   );
 }
