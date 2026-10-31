@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, FileText, Inbox, Loader2, Send, Upload } from "lucide-react";
+import { Download, ExternalLink, FileText, Inbox, Loader2, Send, Upload } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { BackButton } from "@/components/BackButton";
+import { Button } from "@/components/ui/button";
+import applicationFormat from "@/assets/docs/Prescribed_Application_Format.docx.asset.json";
 
 export type PostingKind = "tender" | "job" | "internship" | "competition";
 
@@ -189,6 +191,13 @@ function PostingCard({
       )}
 
       <div className="mt-7 flex flex-wrap items-center gap-3">
+        {p.kind === "job" && p.form_url?.includes("1FAIpQLSev9slI6TChgW7y8TEBxwn93ItTl_e0dv5hdTELlZyrsmqNSQ") && (
+          <Button asChild variant="outline" className="h-auto min-h-10 max-w-full whitespace-normal px-5 py-2.5 text-left">
+            <a href={applicationFormat.url} download="Prescribed_Application_Format.docx">
+              <Download size={16} /> Download Prescribed Application Format
+            </a>
+          </Button>
+        )}
         {p.form_url && (
           <a
             href={p.form_url}
