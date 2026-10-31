@@ -12,7 +12,6 @@ const capabilities = [
 ];
 
 const stats = [
-  { v: "₹166.44 Cr", l: "Programme outlay" },
   { v: "23", l: "Urban Local Bodies" },
   { v: "7", l: "Districts covered" },
   { v: "24×7", l: "Operations" },
@@ -83,14 +82,12 @@ export function Aiccc() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl overflow-hidden mb-16"
+          className="grid grid-cols-1 sm:grid-cols-3 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl overflow-hidden mb-16"
         >
           {stats.map((s, i) => (
             <div
               key={s.l}
-              className={`p-6 md:p-8 ${i !== 0 ? "border-l border-white/10" : ""} ${
-                i >= 2 ? "border-t md:border-t-0 border-white/10" : ""
-              }`}
+              className={`p-6 md:p-8 ${i !== 0 ? "border-t sm:border-t-0 sm:border-l border-white/10" : ""}`}
             >
               <div className="font-display font-bold text-3xl md:text-4xl bg-gradient-to-br from-white to-[var(--cyan-brand)] bg-clip-text text-transparent">
                 {s.v}
