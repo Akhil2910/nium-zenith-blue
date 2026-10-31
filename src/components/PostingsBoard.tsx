@@ -185,7 +185,12 @@ function PostingCard({
       )}
 
       {p.details && (
-        <div className="mt-5 space-y-5 text-sm leading-relaxed">
+        <div
+          role={p.kind === "job" ? "region" : undefined}
+          aria-label={p.kind === "job" ? `${p.title} notice` : undefined}
+          tabIndex={p.kind === "job" ? 0 : undefined}
+          className={`mt-5 space-y-5 text-sm leading-relaxed ${p.kind === "job" ? "max-h-[60vh] overflow-y-scroll overscroll-contain pr-4 focus-visible:outline-2 focus-visible:outline-ring" : ""}`}
+        >
           {p.details.split("\n").map((line, lineIndex) => {
             const isHeading = /^(?:\d+(?:\.\d+)?\.[ ]+|\d+\.\d+[ ]+|Essential Qualification:)/.test(line)
               || (/[A-Z]/.test(line) && line === line.toUpperCase());
