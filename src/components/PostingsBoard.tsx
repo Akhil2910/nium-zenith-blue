@@ -255,7 +255,15 @@ function NoticeDetails({ details, collapsible }: { details: string; collapsible:
   });
 
   return <>
-    <div className="space-y-5">{renderLines(introduction)}</div>
+    {collapsible ? (
+      <div className="space-y-2 rounded-md border border-border bg-muted px-4 py-4 text-foreground">
+        {introduction.map((line, index) => (
+          <p key={index} className="whitespace-pre-wrap break-words font-bold leading-snug">{line}</p>
+        ))}
+      </div>
+    ) : (
+      <div className="space-y-5">{renderLines(introduction)}</div>
+    )}
     {sections.length > 0 && (
       <Accordion type="multiple" className="mt-5 space-y-3">
         {sections.map((section, index) => (
