@@ -186,16 +186,13 @@ function PostingCard({
 
       {p.details && (
         <div className="mt-5 space-y-5 text-sm leading-relaxed">
-          {p.details.split(/\n\s*\n/).map((section, sectionIndex) => {
-            const [heading, ...body] = section.trim().split("\n");
-            const isHeading = heading && /[A-Z]/.test(heading) && heading === heading.toUpperCase();
+          {p.details.split("\n").map((line, lineIndex) => {
+            const isHeading = /^(?:\d+(?:\.\d+)?\.[ ]+|\d+\.\d+[ ]+|Essential Qualification:)/.test(line)
+              || (/[A-Z]/.test(line) && line === line.toUpperCase());
             return isHeading ? (
-              <section key={sectionIndex}>
-                <h3 className="mb-2 font-bold text-base text-foreground">{heading}</h3>
-                <p className="whitespace-pre-line text-muted-foreground">{body.join("\n")}</p>
-              </section>
+              <h3 key={lineIndex} className="font-bold text-base text-foreground whitespace-pre-wrap">{line}</h3>
             ) : (
-              <p key={sectionIndex} className="whitespace-pre-line text-muted-foreground">{section}</p>
+              <p key={lineIndex} className="whitespace-pre-wrap text-muted-foreground">{line}</p>
             );
           })}
         </div>
