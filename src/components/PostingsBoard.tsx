@@ -147,7 +147,7 @@ function PostingCard({
         )}
       </div>
 
-      <h2 className={`mt-5 font-display text-2xl font-bold leading-snug ${p.id === "1ffc7fed-9df0-40a3-a449-e377de68fee7" ? "text-navy" : "text-foreground"}`}>
+      <h2 className={`mt-5 font-display text-2xl font-bold leading-snug ${p.id === "1ffc7fed-9df0-40a3-a449-e377de68fee7" ? "text-notice-title" : "text-foreground"}`}>
         {p.title}
       </h2>
 
