@@ -46,7 +46,7 @@
   /* NIUM brand */
   --navy: oklch(0.22 0.07 255);          /* #0B2545 */
   --royal: oklch(0.32 0.12 263);         /* #13315C */
-  --notice-title: oklch(0.4 0.16 260);
+  --notice-title: #4a2d88;
   --cyan-brand: oklch(0.72 0.15 240);    /* #3FA9F5 */
   --gold: oklch(0.78 0.13 80);           /* #E6B84C */
   --surface: oklch(0.985 0.005 240);
