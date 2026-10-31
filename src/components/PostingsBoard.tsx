@@ -9,6 +9,7 @@ import { Footer } from "@/components/sections/Footer";
 import { BackButton } from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
 import applicationFormat from "@/assets/docs/Prescribed_Application_Format.docx.asset.json";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export type PostingKind = "tender" | "job" | "internship" | "competition";
 
@@ -191,15 +192,7 @@ function PostingCard({
           tabIndex={p.kind === "job" ? 0 : undefined}
           className={`mt-5 space-y-5 text-sm leading-relaxed ${p.kind === "job" ? "max-h-[60vh] overflow-y-scroll overscroll-contain pr-4 focus-visible:outline-2 focus-visible:outline-ring" : ""}`}
         >
-          {p.details.split("\n").map((line, lineIndex) => {
-            const isHeading = /^(?:\d+(?:\.\d+)?\.[ ]+|\d+\.\d+[ ]+|Essential Qualification:)/.test(line)
-              || (/[A-Z]/.test(line) && line === line.toUpperCase());
-            return isHeading ? (
-              <h3 key={lineIndex} className="font-bold text-base text-foreground whitespace-pre-wrap">{line}</h3>
-            ) : (
-              <p key={lineIndex} className="whitespace-pre-wrap text-muted-foreground">{line}</p>
-            );
-          })}
+          <NoticeDetails details={p.details} collapsible={p.kind === "job"} />
         </div>
       )}
 
@@ -234,6 +227,48 @@ function PostingCard({
       </div>
     </motion.article>
   );
+}
+
+function NoticeDetails({ details, collapsible }: { details: string; collapsible: boolean }) {
+  const lines = details.split("\n");
+  const sections: { heading: string; lines: string[] }[] = [];
+  const introduction: string[] = [];
+  for (const line of lines) {
+    // Main headings use spaces; numbered deliverables use tabs and stay in their section.
+    if (collapsible && /^[1-9]\.[ ]+[A-Za-z]/.test(line)) {
+      sections.push({ heading: line, lines: [] });
+    } else {
+      const current = sections.at(-1);
+      if (current) current.lines.push(line);
+      else introduction.push(line);
+    }
+  }
+
+  const renderLines = (content: string[]) => content.map((line, index) => {
+    const isHeading = /^(?:\d+(?:\.\d+)?\.[ ]+|\d+\.\d+[ ]+|Essential Qualification:)/.test(line)
+      || (/[A-Z]/.test(line) && line === line.toUpperCase());
+    return isHeading ? (
+      <h3 key={index} className="font-bold text-base text-foreground whitespace-pre-wrap break-words">{line}</h3>
+    ) : (
+      <p key={index} className="whitespace-pre-wrap break-words text-muted-foreground">{line}</p>
+    );
+  });
+
+  return <>
+    <div className="space-y-5">{renderLines(introduction)}</div>
+    {sections.length > 0 && (
+      <Accordion type="multiple" className="mt-5 space-y-3">
+        {sections.map((section, index) => (
+          <AccordionItem key={index} value={`section-${index}`} className="border-0">
+            <AccordionTrigger className="gap-4 rounded-md border border-border bg-muted px-4 py-4 text-base font-bold text-foreground hover:no-underline [&>svg]:text-foreground">
+              <span className="whitespace-pre-wrap break-words">{section.heading}</span>
+            </AccordionTrigger>
+            <AccordionContent className="space-y-5 px-4 pt-5">{renderLines(section.lines)}</AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    )}
+  </>;
 }
 
 function ApplyForm({ postingId, onDone }: { postingId: string; onDone: () => void }) {
