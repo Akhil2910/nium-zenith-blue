@@ -5,6 +5,8 @@ import { ArrowLeft, ChevronDown, Building2, Users, FileText } from "lucide-react
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/sections/Footer";
 import { BackButton } from "@/components/BackButton";
+import { GovernmentOrdersTable } from "@/components/GovernmentOrdersTable";
+import { governmentOrders } from "@/data/government-orders";
 
 export const Route = createFileRoute("/about/more")({
   component: AboutMorePage,
@@ -23,6 +25,7 @@ export const Route = createFileRoute("/about/more")({
           "The founding of NIUM in 2013, its governance framework and Government Orders.",
       },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
 });
@@ -93,13 +96,7 @@ const sections: { id: string; title: string; icon: typeof Building2; blocks: Blo
     id: "government-orders",
     title: "Government Orders",
     icon: FileText,
-    blocks: [
-      {
-        paras: [
-          "The list of Government Orders relating to the establishment, institutionalisation and functioning of NIUM will be published here shortly.",
-        ],
-      },
-    ],
+    blocks: [],
   },
 ];
 
@@ -175,7 +172,9 @@ function AboutMorePage() {
 
                   {isOpen && (
                     <div className="border-t border-border px-6 pb-8 pt-6 md:px-8">
-                      <div className="space-y-7">
+                      {s.id === "government-orders" ? (
+                        <GovernmentOrdersTable orders={governmentOrders} />
+                      ) : <div className="space-y-7">
                         {s.blocks.map((b, bi) => (
                           <div key={bi}>
                             {b.heading && (
@@ -195,7 +194,7 @@ function AboutMorePage() {
                             </div>
                           </div>
                         ))}
-                      </div>
+                      </div>}
                     </div>
                   )}
                 </motion.div>
