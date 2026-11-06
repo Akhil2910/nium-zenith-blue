@@ -1,6 +1,8 @@
 import { Mail, MapPin, Phone, ExternalLink } from "lucide-react";
 
-const MAP_Q = "AC Guards, Masab Tank, Hyderabad 500004";
+// Exact NIUM location from the supplied Google Maps link.
+const MAP_Q = "17.4018927,78.4585281";
+const MAP_LINK = "https://maps.app.goo.gl/a1wczqTCoLzjFCaD9";
 
 export function Contact() {
   return (
@@ -40,7 +42,7 @@ export function Contact() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_Q)}`}
+              href={MAP_LINK}
               target="_blank"
               rel="noopener noreferrer"
               className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-md bg-card px-3 py-2 text-sm font-semibold text-primary shadow"
